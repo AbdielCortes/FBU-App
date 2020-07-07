@@ -1,9 +1,9 @@
-# INSTERT APP NAME
+# INSERT APP NAME
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
 
 ## Overview
 ### Description
@@ -27,18 +27,20 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 - [ ] User can follow other accounts
 - [ ] User in their home feed can see posts from the accounts that they follow
 - [ ] When posting user can select between making a regular post or a sell post
+- [ ] Private messages
 
 **Optional Nice-to-have Stories**
 
 - [ ] Multi image posts
 - [ ] Profile customization options (creation of separate collections in their profiles)
 - [ ] Commenting on posts
-- [ ] Private messages
 
 ### 2. Screen Archetypes
 
-* Login - User signs up / logs in into their account
+* Login - User Logs in into their account
    * User can select to mainting their account logged in so they don't have to do it every time the open the app.
+* Sign Up - User creates account
+   * User inputs all their information and creates an account.
 * Home Feed  
    * Shows posts from the accounts that the user is following, uses table view.
 * Post Details 
@@ -64,7 +66,8 @@ Optional:
 * Discover - Allows users to find new accounts to follow.
 
 **Flow Navigation** (Screen to Screen)
-* Login - Opened if the user has not registered an account, allows for account creation or login.
+* Login - Opened if the user has not registered an account, user puts their username and password to login.
+    * -> Sign Up - User creates an account by entering their email, username, and password twice.
 * Home Feed - Shows posts form the accounts the user is following.
     * -> Post Details - User can tap on post to view details or comment.
     * -> Posting - Button that allows user to create a post.
@@ -72,4 +75,18 @@ Optional:
     * -> Settings - User can modify notification and privacy settings.
 * Messaging - User can send messages to the accounts that they're are following.
 
+### 4. App Expectactions
+- [x] Your app has multiple views
+- [x] Your app interacts with a database - I'll be using Parse for the backend 
+- [x] You can log in/log out of your app as a user
+- [x] You can sign up with a new user profile
+- [x] Somewhere in your app you can use the camera to take a picture and do something with the picture - When creating a post the user can use the camera and add that picture to the post
+- [ ] Your app integrates with a SDK 
+- [ ] Your app contains at least one more complex algorithm 
+- [x] Your app uses gesture recognizers - double tap image to like and/or pinch zoom for images
+- [ ] Your app use an animation
+- [ ] Your app incorporates an external library to add visual polish
+
 ## Wireframes
+
+<img src="ReadMeImages/wireframe_hand-drawn.jpg" width="600"> 
