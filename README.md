@@ -4,6 +4,7 @@
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
 3. [Wireframes](#Wireframes)
+4. [Schema](#Schema) 
 
 ## Overview
 ### Description
@@ -83,7 +84,7 @@ Optional:
 - [x] You can log in/log out of your app as a user
 - [x] You can sign up with a new user profile
 - [x] Somewhere in your app you can use the camera to take a picture and do something with the picture - When creating a post the user can use the camera and add that picture to the post
-- [x] Your app integrates with a SDK - Google Maps SDK for iOS, used for taggin locations on posts
+- [x] Your app integrates with a SDK - iOS MapKit SDK with Foursquare API, used for taggin locations on posts
 - [ ] Your app contains at least one more complex algorithm 
 - [x] Your app uses gesture recognizers - double tap image to like and/or pinch zoom for images
 - [x] Your app use an animation - transition animation when tapping post button in home feed
@@ -92,3 +93,59 @@ Optional:
 ## Wireframes
 
 <img src="ReadMeImages/wireframe_hand-drawn.jpg" width="600"> 
+
+## Schema 
+
+### Models
+
+#### Post
+
+   | Property      | Type     | Description  |
+   | ------------- | -------- | ------------ |
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| image author |
+   | image         | File     | image that user posts |
+   | caption       | String   | image caption by author |
+   | hasLocation   | Boolean  | says whether the user wants the location displayed or not |
+   | location      | Dictionary | shows where the art is located |
+   | commentsCount | Number   | number of comments that has been posted to an image |
+   | likesCount    | Number   | number of likes for the post |
+   | sharedCount   | Number   | number of times the post has been shared |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+#### Sell Post (Inherits from Post)
+
+   | Property       | Type       | Description |
+   | -------------- | ---------- | ------------|
+   | price          | Number     | price of the item being sold |
+   | shppingCost    | Number     | shipping cost for the item |
+   | originLocation | Dictionary | location that the item is shipping from |
+   
+### Networking
+
+#### List of network requests by screen
+   
+   - Home Feed 
+      - (Read/GET) Query all posts of accounts the user is following
+      - (Create/POST) Create a new like on a post
+      - Optional
+        - (Delete) Delete existing like
+        - (Create/POST) Create a new comment on a post
+        - (Delete) Delete existing comment
+        - (Create/POST) Share a post
+        - (Delete) Un-share a post
+   - Posting 
+      - (Create/POST) Create a new post object
+      - (Create/POST) Create a new sell post object
+   - Post Details 
+      - Optional
+        - (Delete) Delete existing like
+        - (Create/POST) Create a new comment on a post
+        - (Delete) Delete existing comment
+        - (Create/POST) Share a post
+        - (Delete) Un-share a post
+   - Profile 
+      - (Read/GET) Query logged in user object
+      - (Read/GET) Query all posts where user is author
+      - (Update/PUT) Update user profile image
