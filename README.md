@@ -84,11 +84,11 @@ Optional:
 - [x] You can log in/log out of your app as a user
 - [x] You can sign up with a new user profile
 - [x] Somewhere in your app you can use the camera to take a picture and do something with the picture - When creating a post the user can use the camera and add that picture to the post
-- [x] Your app integrates with a SDK - iOS MapKit SDK with Foursquare API, used for taggin locations on posts
+- [x] Your app integrates with a SDK - [iOS MapKit SDK](https://developer.apple.com/documentation/mapkit) with [Foursquare API](https://developer.foursquare.com/), used for taggin locations on posts
 - [ ] Your app contains at least one more complex algorithm 
 - [x] Your app uses gesture recognizers - double tap image to like and/or pinch zoom for images
 - [x] Your app use an animation - transition animation when tapping post button in home feed
-- [ ] Your app incorporates an external library to add visual polish
+- [x] Your app incorporates an external library to add visual polish - custom loading pop ups with [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 
 ## Wireframes
 
