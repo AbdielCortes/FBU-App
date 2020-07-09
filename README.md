@@ -7,10 +7,10 @@
 4. [Schema](#Schema) 
 
 ## Overview
-### Description
+### 1. Description
 An app that allows artist to showcase their work and sell it. Users can follow other artists to see their posts show up in their home feed. When a user creates a post, they can select if they want to display it as a ‘for sale’ item.  
 
-### App Evaluation
+### 2. App Evaluation
 - **Category:** Social Networking / Art / Shopping
 - **Mobile:** It would be developed for mobile only at first, but with a web version coming in the future. Both the mobile and web version would have the same content and features. 
 - **Story:** Allows artists to display and sell their work. Allows art enthusiasts to view and purchase art. 
@@ -96,7 +96,7 @@ Optional:
 
 ## Schema 
 
-### Models
+### 1. Models
 
 #### Post
 
@@ -122,7 +122,7 @@ Optional:
    | shppingCost    | Number     | shipping cost for the item |
    | originLocation | Dictionary | location that the item is shipping from |
    
-### Networking
+### 2. Networking
 
 #### List of network requests by screen
    
@@ -130,6 +130,7 @@ Optional:
       - (Read/GET) Query all posts of accounts the user is following
       - (Create/POST) Create a new like on a post
       - Optional
+        - (Create/POST) Like a post
         - (Delete) Delete existing like
         - (Create/POST) Create a new comment on a post
         - (Delete) Delete existing comment
@@ -140,6 +141,7 @@ Optional:
       - (Create/POST) Create a new sell post object
    - Post Details 
       - Optional
+        - (Create/POST) Like a post
         - (Delete) Delete existing like
         - (Create/POST) Create a new comment on a post
         - (Delete) Delete existing comment
