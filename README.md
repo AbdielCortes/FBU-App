@@ -99,7 +99,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 ## Wireframes
 
 <img src="ReadMeImages/wireframe_hand-drawn.jpg" width="600"> 
-<img src="ReadMeImages/wireframe.png" width="888">
+<img src="ReadMeImages/wireframeDigital.png" width="888">
 
 ## Schema 
 
