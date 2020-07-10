@@ -16,7 +16,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 - **Story:** Allows artists to display and sell their work. Allows art enthusiasts to view and purchase art. 
 - **Market:** Visual artists (painters, sculptors, digital artists, photographers, etc..) and art enthusiasts. 
 - **Habit:** The app would really benefit from users creating a habit of using the app daily like and interacting with other users. 
-- **Scope:** The main part of this app would be for users to be able to see the posts from the users that they follow, this can be done with a table view. For the user's profile I want their post to show up in a collection view in a similar way to Instagram. The buy and sell feature would be complicated to implement, the final app should at least allow the user to select between posting a regular post or posting a sell post. 
+- **Scope:** The main part of this app would be for users to be able to see the posts from the users that they follow in their home feed. For the user's profile it should show their username, profile picture, contact information and a button to follow the account. When posting the user can select between making a regular post and a sell post. Regular posts show the username, profile picture, an image, a caption, when the post was created, and if the user wants it, it shows the location where the post was created. A sell post will show everything in a regular post, but it will also show the user's contact information, the items price, shipping cost, and where its shipping from. 
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
@@ -25,9 +25,10 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 
 - [ ] User can create an account and log in
 - [ ] Profile pages for each user
+- [ ] User can create a post with a photo and caption
 - [ ] User can follow other accounts
 - [ ] User in their home feed can see posts from the accounts that they follow
-- [ ] When posting user can select between making a regular post or a sell post
+- [ ] When posting user can select between making a regular post or a sell post, and create a sell post
 - [ ] When creating a post, the user can tag the location 
 
 **Optional Nice-to-have Stories**
@@ -41,21 +42,26 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 
 ### 2. Screen Archetypes
 
-* Login - User Logs in into their account
-   * User can select to mainting their account logged in so they don't have to do it every time the open the app.
-* Sign Up - User creates account
-   * User inputs all their information and creates an account.
-* Home Feed  
+* **Login**
+   * User Logs in into their account and their log in persists, so they don't have to do it every time the open the app.
+* **Sign Up**
+   * User inputs all their information, creates an account and is automatically logged in.
+* **Home Feed**  
    * Shows posts from the accounts that the user is following, uses table view.
-* Post Details 
-   * Shows additional information for the post and allows user to comment.
-* Posting  
+      - Regular Post - shows the profile picture, username, post creation date, an image, a caption, and if the user selects it, the location where to post was created
+      - Sell Post - shows everything in the regular post, the user's contact information, the items price, shipping cost, and where its shipping from.
+      - Liking posts - users can like other account's posts, the post shows a like count.
+      - Commenting on posts - users can comment on other account's posts, anyone can see the comments on the posts, the post shows a comment count.
+      - Sharing posts - users can share other account's posts, when they share a posts it shows up on the feed of the users followers, the post shows a shared count.
+* **Post Details** 
+   * Shows the post in a full screen view and allows user to comment.
+* **Posting**  
    * Post are image based with a text caption; the user can select between making a regular post or a buy post.
-* Profile  
-   * Shows the username, profile picture, button to follow the account, and the user's contact information.
-* Messaging - 1 on 1 messaging
+* **Profile**  
+   * Shows their username, profile picture, contact information and a button to follow the account if they're not looking at their own profile.
+* **Messaging** 
    * Users can message each other without the need to be mutually following each other.
-* Settings 
+* **Settings** 
    * Lets the user change notification and privacy settings.
 
 ### 3. Navigation
@@ -65,7 +71,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 * Home Feed
 * Profile
 
-Optional:
+**Optional**
 * Messaging
 
 **Flow Navigation** (Screen to Screen)
@@ -93,6 +99,7 @@ Optional:
 ## Wireframes
 
 <img src="ReadMeImages/wireframe_hand-drawn.jpg" width="600"> 
+<img src="ReadMeImages/wireframe.png" width="888">
 
 ## Schema 
 
@@ -116,8 +123,9 @@ Optional:
    
 #### Sell Post (Inherits from Post)
 
-   | Property       | Type       | Description |
-   | -------------- | ---------- | ------------|
+   | Property       | Type       | Description  |
+   | -------------- | ---------- | ------------ |
+   | contactInfo    | String     | users contact information |
    | price          | Number     | price of the item being sold |
    | shppingCost    | Number     | shipping cost for the item |
    | originLocation | Dictionary | location that the item is shipping from |
