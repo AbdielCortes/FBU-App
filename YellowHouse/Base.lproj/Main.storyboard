@@ -167,7 +167,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Wzd-cb-Vwr">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="yLF-2O-PEu" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalPresentationStyle="fullScreen" id="yLF-2O-PEu" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Vdj-oQ-DNo"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J3f-NA-lnc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
