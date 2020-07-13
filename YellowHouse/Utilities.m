@@ -10,7 +10,7 @@
 
 @implementation Utilities
 
-+(void)showOkAlert:(UIViewController *)viewController withTitle:(NSString *)title  withMessage:(NSString *)message {
++ (void)showOkAlert:(UIViewController *)viewController withTitle:(NSString *)title  withMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
 
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];

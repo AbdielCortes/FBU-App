@@ -39,22 +39,26 @@
     
     if ([self.emailField.text isEqual:@""]) { // email field has no text
         [Utilities showOkAlert:self withTitle:@"Email Required" withMessage:@"In order to create an account you must provide an email address."];
+        [self.hud hideAnimated:YES];
     }
-    else if ([self.usernameField.text isEqual:@""]) { // username has no text
+    else if ([self.usernameField.text isEqual:@""]) { // username field has no text
         [Utilities showOkAlert:self withTitle:@"Username Required" withMessage:@"In order to create an account you must provide a username."];
+        [self.hud hideAnimated:YES];
     }
     else if ([self.passwordField.text isEqual:@""] || [self.confirmPasswordField.text isEqual:@""]) { // password or confirmPass word have no text
         [Utilities showOkAlert:self withTitle:@"Password Required" withMessage:@"In order to create an account you must provide a password."];
+        [self.hud hideAnimated:YES];
     }
     else if (![self.passwordField.text isEqual:self.confirmPasswordField.text]){ // pasword and confirm password don't match
         [Utilities showOkAlert:self withTitle:@"Passwords Don't Match" withMessage:@"Both password must be the same."];
+        [self.hud hideAnimated:YES];
     }
     else {
         [self registerUser];
     }
 }
 
--(void)registerUser {
+- (void)registerUser {
     PFUser *newUser = [PFUser user];
     
     newUser.email = self.emailField.text;

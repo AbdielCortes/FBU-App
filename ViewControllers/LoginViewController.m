@@ -7,11 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "Utilities.h"
+#import <Parse/Parse.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -19,11 +24,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    // Create progress pop up
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud.label.text = @"Logging In";
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:self.hud];
 }
 
 - (IBAction)tappedLogin:(id)sender {
-    [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+    [self.hud showAnimated:YES]; // show progress pop up
+    
+    if ([self.usernameField.text isEqual:@""]) { // username field has no text
+        [Utilities showOkAlert:self withTitle:@"Username Required" withMessage:@"In order to login you must provide a username."];
+        [self.hud hideAnimated:YES];
+   }
+   else if ([self.passwordField.text isEqual:@""]) { // password field has no text
+       [Utilities showOkAlert:self withTitle:@"Password Required" withMessage:@"In order to login you must provide a password."];
+       [self.hud hideAnimated:YES];
+   }
+   else {
+       [self loginUser];
+   }
+}
+
+- (void)loginUser {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+            
+            if (error.code == 101) {// incorrect username/password
+                [Utilities showOkAlert:self withTitle:@"Invalid Login" withMessage:@"Username and password combination is invalid."];
+            }
+        }
+        else {
+            [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+        }
+        
+        // hide progress pop up
+        // outside if/else because we want it to always hide no matter the result
+        [self.hud hideAnimated:YES];
+    }];
 }
 
 /*
