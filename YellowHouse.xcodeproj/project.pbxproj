@@ -18,6 +18,7 @@
 		808D13AE24BCDEC7000EF2E9 /* YellowHouseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13AD24BCDEC7000EF2E9 /* YellowHouseUITests.m */; };
 		808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13BF24BCE3DF000EF2E9 /* LoginViewController.m */; };
 		808D13C324BCE3EE000EF2E9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13C224BCE3EE000EF2E9 /* SignUpViewController.m */; };
+		808D13C624BD010E000EF2E9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13C524BD010E000EF2E9 /* Utilities.m */; };
 		93BF1B6D9EB5A12EB85FF952 /* Pods_YellowHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */; };
 		E0313B31E1B0F3BEC08CF78E /* Pods_YellowHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F047A70D899226A23A84E8 /* Pods_YellowHouse.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,8 @@
 		808D13BF24BCE3DF000EF2E9 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		808D13C124BCE3EE000EF2E9 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		808D13C224BCE3EE000EF2E9 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		808D13C424BD010E000EF2E9 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		808D13C524BD010E000EF2E9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		9D3824CD7D2AD90D3BB4AA8B /* Pods-YellowHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse.release.xcconfig"; path = "Target Support Files/Pods-YellowHouse/Pods-YellowHouse.release.xcconfig"; sourceTree = "<group>"; };
 		A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowHouse_YellowHouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowHouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +149,8 @@
 				808D139424BCDEC7000EF2E9 /* LaunchScreen.storyboard */,
 				808D139724BCDEC7000EF2E9 /* Info.plist */,
 				808D139824BCDEC7000EF2E9 /* main.m */,
+				808D13C424BD010E000EF2E9 /* Utilities.h */,
+				808D13C524BD010E000EF2E9 /* Utilities.m */,
 			);
 			path = YellowHouse;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				808D13C624BD010E000EF2E9 /* Utilities.m in Sources */,
 				808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */,
 				808D13C324BCE3EE000EF2E9 /* SignUpViewController.m in Sources */,
 				808D138824BCDEC7000EF2E9 /* AppDelegate.m in Sources */,
