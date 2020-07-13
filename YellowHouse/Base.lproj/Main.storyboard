@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
@@ -49,6 +49,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ofm-YU-zie"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-Oe-1TK">
                                 <rect key="frame" x="72" y="480" width="270" height="44"/>
@@ -66,7 +69,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="izY-8I-OKq"/>
+                    <navigationItem key="navigationItem" title="Login" id="izY-8I-OKq"/>
+                    <connections>
+                        <outlet property="passwordField" destination="8w8-xD-0MG" id="Qai-Xp-HmH"/>
+                        <outlet property="usernameField" destination="Kbz-e7-2hd" id="X1i-tn-rgc"/>
+                        <segue destination="yLF-2O-PEu" kind="showDetail" identifier="LoginSegue" id="IGB-x8-6NX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="-700" y="116"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="dzl-Ae-CTY">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="59Y-k9-CjX" customClass="SignUpViewController" sceneMemberID="viewController">
@@ -96,13 +104,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-Em-tIx">
-                                <rect key="frame" x="127" y="106" width="160" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6EB-02-IYf">
                                 <rect key="frame" x="20" y="208" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -135,23 +136,40 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedSignUp:" destination="59Y-k9-CjX" eventType="touchUpInside" id="MtT-cO-j9a"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-Em-tIx">
+                                <rect key="frame" x="127" y="104" width="160" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1XB-0H-fNE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bGT-IX-pdU"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="bGT-IX-pdU"/>
+                    <connections>
+                        <outlet property="confirmPasswordField" destination="SLt-ju-7Nr" id="ZDF-HL-VjJ"/>
+                        <outlet property="emailField" destination="6EB-02-IYf" id="KCd-Do-wBm"/>
+                        <outlet property="passwordField" destination="yJj-e2-TVd" id="IeE-m1-orD"/>
+                        <outlet property="usernameField" destination="6oi-Tk-hbk" id="4EJ-pQ-cgj"/>
+                        <segue destination="yLF-2O-PEu" kind="showDetail" identifier="SignUpSegue" id="vJ2-wd-0QC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf5-2j-bgJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="943" y="116"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="CWn-3K-lxf">
             <objects>
-                <viewController id="l9O-se-DJJ" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="l9O-se-DJJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mKk-gS-REr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-Ig-JZH">
@@ -165,11 +183,33 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="43j-DD-VFu"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="PpO-nO-oX4"/>
                     <navigationItem key="navigationItem" id="WFy-8n-gLm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WO9-NH-yBe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752" y="116"/>
+            <point key="canvasLocation" x="2590" y="116"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Wzd-cb-Vwr">
+            <objects>
+                <tabBarController modalPresentationStyle="fullScreen" id="yLF-2O-PEu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vdj-oQ-DNo"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J3f-NA-lnc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="l9O-se-DJJ" kind="relationship" relationship="viewControllers" id="a7V-Lx-CQt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIg-xb-gTF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765" y="116"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vJ2-wd-0QC"/>
+    </inferredMetricsTieBreakers>
 </document>

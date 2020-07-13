@@ -10,6 +10,11 @@
 
 @interface SignUpViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
+
 @end
 
 @implementation SignUpViewController
@@ -17,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)tappedSignUp:(id)sender {
+    [self performSegueWithIdentifier:@"SignUpSegue" sender:nil];
 }
 
 /*
