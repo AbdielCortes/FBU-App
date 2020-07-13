@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */; };
 		808D138824BCDEC7000EF2E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D138724BCDEC7000EF2E9 /* AppDelegate.m */; };
 		808D138B24BCDEC7000EF2E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D138A24BCDEC7000EF2E9 /* SceneDelegate.m */; };
 		808D138E24BCDEC7000EF2E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D138D24BCDEC7000EF2E9 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 		808D139924BCDEC7000EF2E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D139824BCDEC7000EF2E9 /* main.m */; };
 		808D13A324BCDEC7000EF2E9 /* YellowHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13A224BCDEC7000EF2E9 /* YellowHouseTests.m */; };
 		808D13AE24BCDEC7000EF2E9 /* YellowHouseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13AD24BCDEC7000EF2E9 /* YellowHouseUITests.m */; };
+		93BF1B6D9EB5A12EB85FF952 /* Pods_YellowHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */; };
+		E0313B31E1B0F3BEC08CF78E /* Pods_YellowHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F047A70D899226A23A84E8 /* Pods_YellowHouse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09F047A70D899226A23A84E8 /* Pods_YellowHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1533CC7DEF058A25E406AC39 /* Pods-YellowHouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouseTests.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouseTests/Pods-YellowHouseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D3D7C7884EAA23041A17731 /* Pods-YellowHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouseTests.release.xcconfig"; path = "Target Support Files/Pods-YellowHouseTests/Pods-YellowHouseTests.release.xcconfig"; sourceTree = "<group>"; };
+		4FB7B5AA6C5FDC09DF2DAFE3 /* Pods-YellowHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouse/Pods-YellowHouse.debug.xcconfig"; sourceTree = "<group>"; };
+		571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		808D138324BCDEC7000EF2E9 /* YellowHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YellowHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		808D138624BCDEC7000EF2E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		808D138724BCDEC7000EF2E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +62,10 @@
 		808D13A924BCDEC7000EF2E9 /* YellowHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YellowHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		808D13AD24BCDEC7000EF2E9 /* YellowHouseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YellowHouseUITests.m; sourceTree = "<group>"; };
 		808D13AF24BCDEC7000EF2E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D3824CD7D2AD90D3BB4AA8B /* Pods-YellowHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse.release.xcconfig"; path = "Target Support Files/Pods-YellowHouse/Pods-YellowHouse.release.xcconfig"; sourceTree = "<group>"; };
+		A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowHouse_YellowHouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowHouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C85ADE457F125B7F935967 /* Pods-YellowHouse-YellowHouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse-YellowHouseUITests.release.xcconfig"; path = "Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0313B31E1B0F3BEC08CF78E /* Pods_YellowHouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BF1B6D9EB5A12EB85FF952 /* Pods_YellowHouseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +89,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DE349B200FF50A7F969C006 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09F047A70D899226A23A84E8 /* Pods_YellowHouse.framework */,
+				A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */,
+				C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		808D137A24BCDEC7000EF2E9 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +113,8 @@
 				808D13A124BCDEC7000EF2E9 /* YellowHouseTests */,
 				808D13AC24BCDEC7000EF2E9 /* YellowHouseUITests */,
 				808D138424BCDEC7000EF2E9 /* Products */,
+				8CB9A9FED910009439134F70 /* Pods */,
+				4DE349B200FF50A7F969C006 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +164,20 @@
 			path = YellowHouseUITests;
 			sourceTree = "<group>";
 		};
+		8CB9A9FED910009439134F70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FB7B5AA6C5FDC09DF2DAFE3 /* Pods-YellowHouse.debug.xcconfig */,
+				9D3824CD7D2AD90D3BB4AA8B /* Pods-YellowHouse.release.xcconfig */,
+				571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */,
+				D0C85ADE457F125B7F935967 /* Pods-YellowHouse-YellowHouseUITests.release.xcconfig */,
+				1533CC7DEF058A25E406AC39 /* Pods-YellowHouseTests.debug.xcconfig */,
+				2D3D7C7884EAA23041A17731 /* Pods-YellowHouseTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 808D13B224BCDEC7000EF2E9 /* Build configuration list for PBXNativeTarget "YellowHouse" */;
 			buildPhases = (
+				8862849D31607EDCA09665F8 /* [CP] Check Pods Manifest.lock */,
 				808D137F24BCDEC7000EF2E9 /* Sources */,
 				808D138024BCDEC7000EF2E9 /* Frameworks */,
 				808D138124BCDEC7000EF2E9 /* Resources */,
+				4588D17B9614EC54920364C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 808D13B524BCDEC7000EF2E9 /* Build configuration list for PBXNativeTarget "YellowHouseTests" */;
 			buildPhases = (
+				C916AB83A402C360B45DEBE8 /* [CP] Check Pods Manifest.lock */,
 				808D139A24BCDEC7000EF2E9 /* Sources */,
 				808D139B24BCDEC7000EF2E9 /* Frameworks */,
 				808D139C24BCDEC7000EF2E9 /* Resources */,
@@ -179,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 808D13B824BCDEC7000EF2E9 /* Build configuration list for PBXNativeTarget "YellowHouseUITests" */;
 			buildPhases = (
+				5BFC20FB64C39F68F4BAAAFB /* [CP] Check Pods Manifest.lock */,
 				808D13A524BCDEC7000EF2E9 /* Sources */,
 				808D13A624BCDEC7000EF2E9 /* Frameworks */,
 				808D13A724BCDEC7000EF2E9 /* Resources */,
+				0EA854333643431C25B472F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,6 +307,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EA854333643431C25B472F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4588D17B9614EC54920364C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YellowHouse/Pods-YellowHouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YellowHouse/Pods-YellowHouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YellowHouse/Pods-YellowHouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BFC20FB64C39F68F4BAAAFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YellowHouse-YellowHouseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8862849D31607EDCA09665F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YellowHouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C916AB83A402C360B45DEBE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YellowHouseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		808D137F24BCDEC7000EF2E9 /* Sources */ = {
@@ -437,6 +586,7 @@
 		};
 		808D13B324BCDEC7000EF2E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FB7B5AA6C5FDC09DF2DAFE3 /* Pods-YellowHouse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +603,7 @@
 		};
 		808D13B424BCDEC7000EF2E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D3824CD7D2AD90D3BB4AA8B /* Pods-YellowHouse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -469,6 +620,7 @@
 		};
 		808D13B624BCDEC7000EF2E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1533CC7DEF058A25E406AC39 /* Pods-YellowHouseTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +640,7 @@
 		};
 		808D13B724BCDEC7000EF2E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D3D7C7884EAA23041A17731 /* Pods-YellowHouseTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -507,6 +660,7 @@
 		};
 		808D13B924BCDEC7000EF2E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YellowHouseUITests/Info.plist;
@@ -524,6 +678,7 @@
 		};
 		808D13BA24BCDEC7000EF2E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0C85ADE457F125B7F935967 /* Pods-YellowHouse-YellowHouseUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YellowHouseUITests/Info.plist;
