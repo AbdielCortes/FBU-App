@@ -9,9 +9,15 @@
 #import "HomeFeedViewController.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import "Post.h"
+#import "PostCell.h"
 #import <Parse/Parse.h>
 
-@interface HomeFeedViewController ()
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *posts;
 
 @end
 
@@ -19,7 +25,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self fetchPosts];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.posts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+
+    Post *post = self.posts[indexPath.row];
+    [cell setPost:post];
+    
+    return cell;
+}
+
+- (void)fetchPosts {
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            self.posts = posts;
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"Error fetching posts: %@", error);
+        }
+    }];
 }
 
 - (IBAction)tappedLogOut:(id)sender {
