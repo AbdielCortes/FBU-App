@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */; };
 		8083221424BE299800734319 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221324BE299800734319 /* CreatePostViewController.m */; };
+		8083221724BE37F200734319 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221624BE37F200734319 /* Post.m */; };
 		808D138824BCDEC7000EF2E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D138724BCDEC7000EF2E9 /* AppDelegate.m */; };
 		808D138B24BCDEC7000EF2E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D138A24BCDEC7000EF2E9 /* SceneDelegate.m */; };
 		808D139124BCDEC7000EF2E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808D138F24BCDEC7000EF2E9 /* Main.storyboard */; };
@@ -50,6 +51,8 @@
 		571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8083221224BE299800734319 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePostViewController.h; sourceTree = "<group>"; };
 		8083221324BE299800734319 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePostViewController.m; sourceTree = "<group>"; };
+		8083221524BE37F200734319 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		8083221624BE37F200734319 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		808D138324BCDEC7000EF2E9 /* YellowHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YellowHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		808D138624BCDEC7000EF2E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		808D138724BCDEC7000EF2E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 		808D13BC24BCE395000EF2E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8083221524BE37F200734319 /* Post.h */,
+				8083221624BE37F200734319 /* Post.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */,
 				808D13C924BD12F5000EF2E9 /* HomeFeedViewController.m in Sources */,
 				808D13C324BCE3EE000EF2E9 /* SignUpViewController.m in Sources */,
+				8083221724BE37F200734319 /* Post.m in Sources */,
 				808D138824BCDEC7000EF2E9 /* AppDelegate.m in Sources */,
 				808D139924BCDEC7000EF2E9 /* main.m in Sources */,
 				8083221424BE299800734319 /* CreatePostViewController.m in Sources */,

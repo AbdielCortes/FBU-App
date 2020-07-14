@@ -316,7 +316,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="RLw-JB-zDH"/>
                     <connections>
-                        <outlet property="cationTextView" destination="Ree-Qb-gdu" id="0fp-hm-MZN"/>
+                        <outlet property="captionTextView" destination="Ree-Qb-gdu" id="hpN-cB-vnZ"/>
                         <outlet property="postImage" destination="adi-4m-KFE" id="0kc-X9-DFn"/>
                     </connections>
                 </viewController>

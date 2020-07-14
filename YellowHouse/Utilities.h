@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Utilities : NSObject
 
 + (void)showOkAlert:(UIViewController *)viewController withTitle:(NSString *)title  withMessage:(NSString *)message;
+
++ (PFFileObject *)getPFFileFromImage:(UIImage * _Nullable)image;
 
 @end
 

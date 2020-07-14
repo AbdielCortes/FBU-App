@@ -8,13 +8,17 @@
 
 #import "CreatePostViewController.h"
 #import "Utilities.h"
+#import "Post.h"
 #import <Parse/Parse.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 
-@property (weak, nonatomic) IBOutlet UITextView *cationTextView;
+@property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -22,7 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // Create progress pop up
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud.label.text = @"Posting";
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:self.hud];
 }
 
 - (IBAction)tappedChooseImage:(id)sender {
@@ -50,18 +59,25 @@
 }
 
 - (IBAction)tappedPost:(id)sender {
-//    [self.activityIndicator startAnimating];
-//    [Post postUserImage:self.image.image withCaption:self.captionTextView.text withCompletion:^(BOOL succeded, NSError *error) {
-//        [self.activityIndicator stopAnimating];
-//
-//        if (succeded) {
-//            self.captionTextView.text = @"";
-//            self.image.image = [UIImage imageNamed:@"image_placeholder"];
-//        }
-//        else {
-//            NSLog(@"Error when posting: %@", error);
-//        }
-//    }];
+    [self.hud showAnimated:YES]; // show progress pop up
+    
+    NSDictionary *locat = @{ @"nothing":@(0)};
+    [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:locat withCompletion:^(BOOL succeded, NSError *error) {
+    //        [self.activityIndicator stopAnimating];
+
+        if (succeded) {
+            self.captionTextView.text = @"";
+            self.postImage.image = nil;
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            NSLog(@"Error when posting: %@", error);
+        }
+        
+        // hide progress pop up
+        // outside if/else because we want it to always hide no matter the result
+        [self.hud hideAnimated:YES];
+    }];
 }
 
 - (IBAction)tappedClose:(id)sender {
