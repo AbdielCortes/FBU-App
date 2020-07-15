@@ -12,12 +12,17 @@
 #import "Post.h"
 #import "PostCell.h"
 #import <Parse/Parse.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *posts;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,7 +34,18 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    // Create progress pop up
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud.label.text = @"Loading";
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:self.hud];
+    
     [self fetchPosts];
+    
+    // Pull up refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,6 +62,8 @@
 }
 
 - (void)fetchPosts {
+    [self.hud showAnimated:YES]; // show progress pop up
+    
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
@@ -56,10 +74,15 @@
         if (posts) {
             self.posts = posts;
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             NSLog(@"Error fetching posts: %@", error);
         }
+        
+        // hide progress pop up
+        // outside if/else because we want it to always hide no matter the result
+        [self.hud hideAnimated:YES];
     }];
 }
 
