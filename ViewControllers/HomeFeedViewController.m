@@ -89,7 +89,7 @@
 - (IBAction)tappedLogOut:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootNavControl"];
     sceneDelegate.window.rootViewController = loginViewController;
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) { }];
