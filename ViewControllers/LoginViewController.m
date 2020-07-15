@@ -38,14 +38,14 @@
     if ([self.usernameField.text isEqual:@""]) { // username field has no text
         [Utilities showOkAlert:self withTitle:@"Username Required" withMessage:@"In order to login you must provide a username."];
         [self.hud hideAnimated:YES];
-   }
-   else if ([self.passwordField.text isEqual:@""]) { // password field has no text
-       [Utilities showOkAlert:self withTitle:@"Password Required" withMessage:@"In order to login you must provide a password."];
-       [self.hud hideAnimated:YES];
-   }
-   else {
-       [self loginUser];
-   }
+    }
+    else if ([self.passwordField.text isEqual:@""]) { // password field has no text
+        [Utilities showOkAlert:self withTitle:@"Password Required" withMessage:@"In order to login you must provide a password."];
+        [self.hud hideAnimated:YES];
+    }
+    else {
+        [self loginUser];
+    }
 }
 
 - (void)loginUser {

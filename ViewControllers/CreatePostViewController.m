@@ -76,27 +76,41 @@
 - (IBAction)tappedPost:(id)sender {
     [self.hud showAnimated:YES]; // show progress pop up
     
-    if (self.sellPostSwitch.isOn) {
-        [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
-            
-            if (succeded) {
-                self.postImage.image = nil;
-                self.captionTextView.text = @"";
-                
-                self.priceField.text = @"";
-                self.shippingField.text = @"";
-                self.contactInfoTextView.text = @"";
-                
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-            else {
-                NSLog(@"Error when posting: %@", error);
-            }
-           
-            // hide progress pop up
-            // outside if/else because we want it to always hide no matter the result
+    if (self.sellPostSwitch.isOn) { // user selected to create a sell post
+        if ([self.priceField.text isEqual:@""]) { // price field has no text
+            [Utilities showOkAlert:self withTitle:@"Price Required" withMessage:@"In order to create a sell post you must provide a price."];
             [self.hud hideAnimated:YES];
-        }];
+        }
+        else if ([self.shippingField.text isEqual:@""]) { // shipping cost field has no text
+            [Utilities showOkAlert:self withTitle:@"Shipping Cost Required" withMessage:@"In order to create a sell post you must provide a shipping cost."];
+            [self.hud hideAnimated:YES];
+        }
+        else if ([self.contactInfoTextView.text isEqual:@""]) { // contact info field has no text
+            [Utilities showOkAlert:self withTitle:@"Contact Information Required" withMessage:@"In order to create a sell post you must provide your contact information."];
+            [self.hud hideAnimated:YES];
+        }
+        else {
+            [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
+                
+                if (succeded) {
+                    self.postImage.image = nil;
+                    self.captionTextView.text = @"";
+                    
+                    self.priceField.text = @"";
+                    self.shippingField.text = @"";
+                    self.contactInfoTextView.text = @"";
+                    
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                else {
+                    NSLog(@"Error when posting: %@", error);
+                }
+               
+                // hide progress pop up
+                // outside if/else because we want it to always hide no matter the result
+                [self.hud hideAnimated:YES];
+            }];
+        }
     }
     else {
         [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
