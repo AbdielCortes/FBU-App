@@ -14,7 +14,6 @@
 @dynamic author;
 @dynamic image;
 @dynamic caption;
-@dynamic hasLocation;
 @dynamic location;
 @dynamic likesCount;
 @dynamic commentsCount;
@@ -24,7 +23,7 @@
     return @"Post";
 }
 
-+ (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSDictionary *)location withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion {
     
     Post *newPost = [Post new];
     newPost.author = [PFUser currentUser];
@@ -36,11 +35,7 @@
     
     if (location) {
         newPost.location = location;
-//        [newPost setHasLocation:YES];
     }
-//    else {
-//        [newPost setHasLocation:NO];
-//    }
     
     [newPost saveInBackgroundWithBlock:completion];
 }

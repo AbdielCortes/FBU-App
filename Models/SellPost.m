@@ -16,10 +16,6 @@
 @dynamic shippingCost;
 @dynamic originLocation;
 
-//+ (nonnull NSString *)parseClassName {
-//    return @"SellPost";
-//}
-
 + (void)postSellPost:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withPrice:(NSString * _Nullable)price withShipping:(NSString * _Nullable)shipping  withContactInfo:(NSString * _Nullable)contactInfo withOriginLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion {
         
     SellPost *newPost = [SellPost new];

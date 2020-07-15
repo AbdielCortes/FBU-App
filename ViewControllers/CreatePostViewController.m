@@ -99,8 +99,7 @@
         }];
     }
     else {
-        NSDictionary *locat = @{ @"nothing":@(0)};
-        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:locat withCompletion:^(BOOL succeded, NSError *error) {
+        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
 
             if (succeded) {
                 self.captionTextView.text = @"";
