@@ -10,6 +10,7 @@ target 'YellowHouse' do
   pod 'Parse/UI'
   pod 'DateTools'
   pod 'MBProgressHUD'
+  pod 'UITextView+Placeholder'
 
   target 'YellowHouseTests' do
     inherit! :search_paths

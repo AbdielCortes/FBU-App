@@ -601,7 +601,13 @@
                     <navigationItem key="navigationItem" title="Post" id="RLw-JB-zDH"/>
                     <connections>
                         <outlet property="captionTextView" destination="Ree-Qb-gdu" id="hpN-cB-vnZ"/>
+                        <outlet property="contactInfoTextView" destination="upV-zb-p9Q" id="WZw-UF-USm"/>
                         <outlet property="postImage" destination="adi-4m-KFE" id="0kc-X9-DFn"/>
+                        <outlet property="postLocation" destination="hoV-up-Axd" id="99v-dP-ND6"/>
+                        <outlet property="priceField" destination="X8a-kI-0QF" id="bxg-9c-82E"/>
+                        <outlet property="sellPostSwitch" destination="Qqa-FN-e8e" id="wyL-JH-Goi"/>
+                        <outlet property="shippingField" destination="Yno-vg-kBt" id="eAR-MT-Pet"/>
+                        <outlet property="shippingLocation" destination="qjv-QG-gXW" id="lw7-PC-oc1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sln-Rf-Q0k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

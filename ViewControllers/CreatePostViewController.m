@@ -11,12 +11,19 @@
 #import "Post.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <UITextView+Placeholder.h>
 
 @interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
-
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property (weak, nonatomic) IBOutlet UIButton *postLocation;
+
+@property (weak, nonatomic) IBOutlet UISwitch *sellPostSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *priceField;
+@property (weak, nonatomic) IBOutlet UITextField *shippingField;
+@property (weak, nonatomic) IBOutlet UITextView *contactInfoTextView;
+@property (weak, nonatomic) IBOutlet UIButton *shippingLocation;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -32,6 +39,13 @@
     self.hud.label.text = @"Posting";
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
+    
+    // Adding place holder text to text views
+    _captionTextView.placeholder = @"Write caption";
+    _captionTextView.placeholderColor = [UIColor lightGrayColor];
+    
+    _contactInfoTextView.placeholder = @"Add contact info";
+    _contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)tappedChooseImage:(id)sender {
