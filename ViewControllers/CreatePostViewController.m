@@ -9,6 +9,7 @@
 #import "CreatePostViewController.h"
 #import "Utilities.h"
 #import "Post.h"
+#import "SellPost.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UITextView+Placeholder.h>
@@ -41,11 +42,11 @@
     [self.view addSubview:self.hud];
     
     // Adding place holder text to text views
-    _captionTextView.placeholder = @"Write caption";
-    _captionTextView.placeholderColor = [UIColor lightGrayColor];
+    self.captionTextView.placeholder = @"Write caption";
+    self.captionTextView.placeholderColor = [UIColor lightGrayColor];
     
-    _contactInfoTextView.placeholder = @"Add contact info";
-    _contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
+    self.contactInfoTextView.placeholder = @"Add contact info";
+    self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)tappedChooseImage:(id)sender {
@@ -75,23 +76,46 @@
 - (IBAction)tappedPost:(id)sender {
     [self.hud showAnimated:YES]; // show progress pop up
     
-    NSDictionary *locat = @{ @"nothing":@(0)};
-    [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:locat withCompletion:^(BOOL succeded, NSError *error) {
-    //        [self.activityIndicator stopAnimating];
+    if (self.sellPostSwitch.isOn) {
+        [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
+            
+            if (succeded) {
+                self.postImage.image = nil;
+                self.captionTextView.text = @"";
+                
+                self.priceField.text = @"";
+                self.shippingField.text = @"";
+                self.contactInfoTextView.text = @"";
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            else {
+                NSLog(@"Error when posting: %@", error);
+            }
+           
+            // hide progress pop up
+            // outside if/else because we want it to always hide no matter the result
+            [self.hud hideAnimated:YES];
+        }];
+    }
+    else {
+        NSDictionary *locat = @{ @"nothing":@(0)};
+        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:locat withCompletion:^(BOOL succeded, NSError *error) {
 
-        if (succeded) {
-            self.captionTextView.text = @"";
-            self.postImage.image = nil;
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        else {
-            NSLog(@"Error when posting: %@", error);
-        }
-        
-        // hide progress pop up
-        // outside if/else because we want it to always hide no matter the result
-        [self.hud hideAnimated:YES];
-    }];
+            if (succeded) {
+                self.captionTextView.text = @"";
+                self.postImage.image = nil;
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            else {
+                NSLog(@"Error when posting: %@", error);
+            }
+            
+            // hide progress pop up
+            // outside if/else because we want it to always hide no matter the result
+            [self.hud hideAnimated:YES];
+        }];
+    }
 }
 
 - (IBAction)tappedClose:(id)sender {

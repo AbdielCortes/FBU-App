@@ -42,7 +42,7 @@
 //        [newPost setHasLocation:NO];
 //    }
     
-    [newPost saveInBackgroundWithBlock: completion];
+    [newPost saveInBackgroundWithBlock:completion];
 }
 
 @end
