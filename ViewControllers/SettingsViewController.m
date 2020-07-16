@@ -8,12 +8,17 @@
 
 #import "SettingsViewController.h"
 #import "Utilities.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <UITextView+Placeholder.h>
 #import <Parse/Parse.h>
 @import Parse;
 
 @interface SettingsViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextView *contactInfoTextView;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -21,7 +26,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // Create progress pop up
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud.label.text = @"Saving Changes";
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:self.hud];
+    
+    // Adding place holder text to contact info text view
+    self.contactInfoTextView.placeholder = @"Contact info";
+    self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)tappedProfileImage:(id)sender {
@@ -34,16 +48,34 @@
 }
 
 - (IBAction)tappedConfirm:(id)sender {
+    BOOL changed = NO; // keeps track of wether the user made a change or not
     
-    [PFUser currentUser][@"contactInfo"] = self.contactInfoTextView.text;
+    if (![self.contactInfoTextView.text isEqual:@""]) { // user changed contact info
+       [PFUser currentUser][@"contactInfo"] = self.contactInfoTextView.text;
+        changed = YES;
+    }
+    else if (self.profileImage.image != nil) { // user changed image
+        [PFUser currentUser][@"profileImage"] = [Utilities getPFFileFromImage:self.profileImage.image];
+        changed = YES;
+    }
     
-    [PFUser currentUser][@"profileImage"] = [Utilities getPFFileFromImage:self.profileImage.image];
-    
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeded, NSError *error) {
-        if (succeded) {
-            NSLog(@"saved user");
-        }
-    }];
+    if (changed) { // user changed contact info or profile image
+        [self.hud showAnimated:YES]; // show progress pop up
+        // save changes
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeded, NSError *error) {
+            if (succeded) {
+                self.profileImage.image = nil;
+                self.contactInfoTextView.text = @"";
+            }
+            else {
+                NSLog(@"Error occured while changing user info: %@", error);
+            }
+            
+           // hide progress pop up
+           // outside if/else because we want it to always hide no matter the result
+           [self.hud hideAnimated:YES];
+        }];
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
