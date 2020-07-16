@@ -660,18 +660,55 @@
         <!--Profile-->
         <scene sceneID="g9i-gC-yYm">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="ViA-93-rvZ" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ViA-93-rvZ" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hg0-mu-FoU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-2f-3GI">
+                                <rect key="frame" x="120" y="108" width="274" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGv-Ga-IsY" customClass="PFImageView">
+                                <rect key="frame" x="20" y="108" width="85" height="85"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Bio-kn-L5p"/>
+                                    <constraint firstAttribute="height" constant="85" id="aNX-jw-myG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-9Z-fRr">
+                                <rect key="frame" x="120" y="146" width="274" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="U9r-2f-3GI" firstAttribute="top" secondItem="eGv-Ga-IsY" secondAttribute="top" id="1jx-Sq-ZZH"/>
+                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="top" secondItem="U9r-2f-3GI" secondAttribute="bottom" constant="8" id="23d-8Z-Gj1"/>
+                            <constraint firstItem="eGv-Ga-IsY" firstAttribute="top" secondItem="hg0-mu-FoU" secondAttribute="topMargin" constant="20" id="3Oe-aZ-HPS"/>
+                            <constraint firstItem="U9r-2f-3GI" firstAttribute="trailing" secondItem="hg0-mu-FoU" secondAttribute="trailingMargin" id="8Uq-wG-UlG"/>
+                            <constraint firstItem="eGv-Ga-IsY" firstAttribute="leading" secondItem="hg0-mu-FoU" secondAttribute="leadingMargin" id="E9l-Fi-2an"/>
+                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="trailing" secondItem="hg0-mu-FoU" secondAttribute="trailingMargin" id="MUH-71-z4T"/>
+                            <constraint firstItem="U9r-2f-3GI" firstAttribute="leading" secondItem="eGv-Ga-IsY" secondAttribute="trailing" constant="15" id="VuJ-rK-7IT"/>
+                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="leading" secondItem="U9r-2f-3GI" secondAttribute="leading" id="fN0-bZ-oNP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VyI-Vs-hkz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="JS8-Ml-uHr"/>
+                    <connections>
+                        <outlet property="contactInfo" destination="cIh-9Z-fRr" id="48Q-Hw-cqM"/>
+                        <outlet property="profileImage" destination="eGv-Ga-IsY" id="rLE-ig-U9v"/>
+                        <outlet property="username" destination="U9r-2f-3GI" id="cjP-K5-pd3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ef1-LD-7jf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3425" y="842"/>
+            <point key="canvasLocation" x="3424.6376811594205" y="841.74107142857144"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

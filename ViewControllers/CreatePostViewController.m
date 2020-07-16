@@ -115,7 +115,7 @@
             [Utilities showOkAlert:self withTitle:@"Contact Information Required" withMessage:@"In order to create a sell post you must provide your contact information."];
             [self.hud hideAnimated:YES];
         }
-        else if (self.postImage.image == nil) {
+        else if (self.postImage.image == nil) { // user didn't provide image
             [Utilities showOkAlert:self withTitle:@"Image Required" withMessage:@"In order to create a sell post you must provide an image of the product."];
             [self.hud hideAnimated:YES];
         }
@@ -143,6 +143,7 @@
         }
     }
     else {
+        // user didn't provide image or caption
         if (self.postImage.image == nil && [self.captionTextView.text isEqual:@""]) {
             [Utilities showOkAlert:self withTitle:@"Image or Caption Required" withMessage:@"In order to create a post you must provide an image or a caption."];
             [self.hud hideAnimated:YES];
