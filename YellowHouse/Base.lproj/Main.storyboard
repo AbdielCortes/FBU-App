@@ -471,6 +471,9 @@
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-FN-e8e">
                                 <rect key="frame" x="306" y="433" width="51" height="31"/>
+                                <connections>
+                                    <action selector="tappedSellPost:" destination="CaR-co-qEc" eventType="valueChanged" id="L6E-No-vC2"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is this a sell post?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4i-RB-CJm">
                                 <rect key="frame" x="59" y="438" width="135" height="21"/>
@@ -608,6 +611,8 @@
                         <outlet property="sellPostSwitch" destination="Qqa-FN-e8e" id="wyL-JH-Goi"/>
                         <outlet property="shippingField" destination="Yno-vg-kBt" id="eAR-MT-Pet"/>
                         <outlet property="shippingLocation" destination="qjv-QG-gXW" id="lw7-PC-oc1"/>
+                        <outlet property="tagLoc" destination="dkA-If-LSt" id="CB7-Hv-Qf4"/>
+                        <outlet property="whereShip" destination="fEK-Wm-CP3" id="dam-2R-0lr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sln-Rf-Q0k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

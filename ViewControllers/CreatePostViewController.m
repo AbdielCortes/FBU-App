@@ -19,12 +19,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *postLocation;
+@property (weak, nonatomic) IBOutlet UILabel *tagLoc;
 
 @property (weak, nonatomic) IBOutlet UISwitch *sellPostSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *priceField;
 @property (weak, nonatomic) IBOutlet UITextField *shippingField;
 @property (weak, nonatomic) IBOutlet UITextView *contactInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *shippingLocation;
+@property (weak, nonatomic) IBOutlet UILabel *whereShip;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -47,6 +49,13 @@
     
     self.contactInfoTextView.placeholder = @"Add contact info";
     self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
+    
+    // hide all the sell post fields until the user select that he wants to make a sell post
+    self.priceField.hidden = YES;
+    self.shippingField.hidden = YES;
+    self.contactInfoTextView.hidden = YES;
+    self.shippingLocation.hidden = YES;
+    self.whereShip.hidden = YES;
 }
 
 - (IBAction)tappedChooseImage:(id)sender {
@@ -70,6 +79,23 @@
     }
     else { // if camera not available, show error pop up
         [Utilities showOkAlert:self withTitle:@"Camera Not Available" withMessage:@"The camera is not available at the moment, chose an image instead."];
+    }
+}
+
+- (IBAction)tappedSellPost:(id)sender {
+    if (self.sellPostSwitch.isOn) { // when switch is on show all the sell post fields
+        self.priceField.hidden = NO;
+        self.shippingField.hidden = NO;
+        self.contactInfoTextView.hidden = NO;
+        self.shippingLocation.hidden = NO;
+        self.whereShip.hidden = NO;
+    }
+    else { // when switch is off hide all the sell post fields
+        self.priceField.hidden = YES;
+        self.shippingField.hidden = YES;
+        self.contactInfoTextView.hidden = YES;
+        self.shippingLocation.hidden = YES;
+        self.whereShip.hidden = YES;
     }
 }
 
