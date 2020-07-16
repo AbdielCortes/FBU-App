@@ -7,6 +7,7 @@
 //
 
 #import "PostCell.h"
+#import "SellPost.h"
 #import "NSDate+DateTools.h"
 
 @implementation PostCell
@@ -31,7 +32,23 @@
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     
     self.postImage.file = post[@"image"];
+    
     [self.postImage loadInBackground];
+    
+    self.location.text = @"";
+    
+    if (post.isSellPost) { // if post is a sell post 
+        SellPost *sellPost = (SellPost *)post;
+        self.priceAndShipping.text = [NSString stringWithFormat:@"$%@ + $%@ shipping", sellPost.price, sellPost.shippingCost];
+        self.contactInfo.text = sellPost.contactInfo;
+    }
+    else {
+        self.priceAndShipping.text = @"";
+        self.contactInfo.text = @"";
+    }
+//    if (self.postImage) {
+//        [self.postImage loadInBackground];
+//    }
 }
 
 @end

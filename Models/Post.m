@@ -18,6 +18,7 @@
 @dynamic likesCount;
 @dynamic commentsCount;
 @dynamic sharedCount;
+@dynamic isSellPost;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -32,6 +33,7 @@
     newPost.likesCount = @(0);
     newPost.commentsCount = @(0);
     newPost.sharedCount = @(0);
+    newPost.isSellPost = NO;
     
     if (location) {
         newPost.location = location;

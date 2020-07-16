@@ -28,6 +28,7 @@
     newPost.likesCount = @(0);
     newPost.commentsCount = @(0);
     newPost.sharedCount = @(0);
+    newPost.isSellPost = YES;
     
     if (location) {
         newPost.location = location;

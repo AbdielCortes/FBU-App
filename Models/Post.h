@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *likesCount;
 @property (nonatomic, strong) NSNumber *commentsCount;
 @property (nonatomic, strong) NSNumber *sharedCount;
+@property (nonatomic) BOOL isSellPost;
 
 + (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
