@@ -46,7 +46,14 @@
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
     }
-//    if (self.postImage) {
+    
+//    if (self.postImage.file == nil) {
+//        self.postImage.hidden = YES;
+//        self.imageRatioConstraint.active = NO;
+//    }
+//    else {
+//        self.postImage.hidden = NO;
+//        self.imageRatioConstraint.active = YES;
 //        [self.postImage loadInBackground];
 //    }
 }

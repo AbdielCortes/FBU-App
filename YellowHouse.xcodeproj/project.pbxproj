@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */; };
 		802CA9A124C1018900C59ACC /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A024C1018900C59ACC /* UserProfileViewController.m */; };
+		802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A324C10A5900C59ACC /* SettingsViewController.m */; };
 		8083221424BE299800734319 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221324BE299800734319 /* CreatePostViewController.m */; };
 		8083221724BE37F200734319 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221624BE37F200734319 /* Post.m */; };
 		8083221A24BE722600734319 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221924BE722600734319 /* PostCell.m */; };
@@ -54,6 +55,8 @@
 		571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		802CA99F24C1018900C59ACC /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		802CA9A024C1018900C59ACC /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		802CA9A224C10A5900C59ACC /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		802CA9A324C10A5900C59ACC /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8083221224BE299800734319 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePostViewController.h; sourceTree = "<group>"; };
 		8083221324BE299800734319 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePostViewController.m; sourceTree = "<group>"; };
 		8083221524BE37F200734319 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 				8083221324BE299800734319 /* CreatePostViewController.m */,
 				802CA99F24C1018900C59ACC /* UserProfileViewController.h */,
 				802CA9A024C1018900C59ACC /* UserProfileViewController.m */,
+				802CA9A224C10A5900C59ACC /* SettingsViewController.h */,
+				802CA9A324C10A5900C59ACC /* SettingsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				802CA9A124C1018900C59ACC /* UserProfileViewController.m in Sources */,
 				808D138B24BCDEC7000EF2E9 /* SceneDelegate.m in Sources */,
 				8083221A24BE722600734319 /* PostCell.m in Sources */,
+				802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

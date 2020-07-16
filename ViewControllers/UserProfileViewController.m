@@ -24,7 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.username.text = [PFUser currentUser].username;
+    PFUser *user = [PFUser currentUser];
+    
+    self.username.text = user.username;
+    self.contactInfo.text = user[@"contactInfo"];
+    
+    self.profileImage.file = user[@"profileImage"];
+    [self.profileImage loadInBackground];
 }
 
 /*
