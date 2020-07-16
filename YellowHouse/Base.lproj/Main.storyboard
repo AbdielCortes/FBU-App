@@ -250,7 +250,7 @@
                                                     <rect key="frame" x="20" y="69" width="374" height="374"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="dY8-mX-ul7" secondAttribute="height" multiplier="1:1" id="gBt-IB-pxg"/>
+                                                        <constraint firstAttribute="width" secondItem="dY8-mX-ul7" secondAttribute="height" multiplier="1:1" id="bBo-Jq-psv"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GmO-fT-56i" customClass="PFImageView">
@@ -383,6 +383,7 @@
                                             <outlet property="caption" destination="k5U-7C-cBM" id="S6v-PB-jIo"/>
                                             <outlet property="commentCount" destination="pr8-Zf-Xte" id="iTw-OQ-bH0"/>
                                             <outlet property="contactInfo" destination="Rpn-XB-j2K" id="jUY-Az-mGf"/>
+                                            <outlet property="imageRatioConstraint" destination="bBo-Jq-psv" id="ntf-mI-hKh"/>
                                             <outlet property="likeCount" destination="1CE-rB-dwK" id="7rm-JF-SDW"/>
                                             <outlet property="location" destination="ng0-jb-o0o" id="kvo-zS-3OB"/>
                                             <outlet property="postImage" destination="dY8-mX-ul7" id="t66-Qq-ASJ"/>

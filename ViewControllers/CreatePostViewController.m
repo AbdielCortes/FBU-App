@@ -115,6 +115,10 @@
             [Utilities showOkAlert:self withTitle:@"Contact Information Required" withMessage:@"In order to create a sell post you must provide your contact information."];
             [self.hud hideAnimated:YES];
         }
+        else if (self.postImage.image == nil) {
+            [Utilities showOkAlert:self withTitle:@"Image Required" withMessage:@"In order to create a sell post you must provide an image of the product."];
+            [self.hud hideAnimated:YES];
+        }
         else {
             [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
                 
@@ -139,21 +143,27 @@
         }
     }
     else {
-        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
-
-            if (succeded) {
-                self.captionTextView.text = @"";
-                self.postImage.image = nil;
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-            else {
-                NSLog(@"Error when posting: %@", error);
-            }
-            
-            // hide progress pop up
-            // outside if/else because we want it to always hide no matter the result
+        if (self.postImage.image == nil && [self.captionTextView.text isEqual:@""]) {
+            [Utilities showOkAlert:self withTitle:@"Image or Caption Required" withMessage:@"In order to create a post you must provide an image or a caption."];
             [self.hud hideAnimated:YES];
-        }];
+        }
+        else {
+            [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
+
+                if (succeded) {
+                    self.captionTextView.text = @"";
+                    self.postImage.image = nil;
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                else {
+                    NSLog(@"Error when posting: %@", error);
+                }
+                
+                // hide progress pop up
+                // outside if/else because we want it to always hide no matter the result
+                [self.hud hideAnimated:YES];
+            }];
+        }
     }
 }
 
