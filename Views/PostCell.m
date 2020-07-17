@@ -28,12 +28,33 @@
     
     self.username.text = post.author.username;
     self.caption.text = post.caption;
-    
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     
-    self.postImage.file = post[@"image"];
+    self.profileImage.file = post.author[@"profileImage"];
+    [self.profileImage loadInBackground];
     
-    [self.postImage loadInBackground];
+//    self.postImage.file = post[@"image"];
+//    [self.postImage loadInBackground]; // load image
+    
+//    if (post.hasImage) {
+//        self.postImage.hidden = NO;
+//        self.imageRatioConstraint.active = YES;
+        [post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            NSLog(@"%@", self.caption.text);
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                self.postImage.image = image;
+            }
+            else {
+                NSLog(@"error loading image: %@", error);
+            }
+        }];
+//    }
+//    else {
+//        self.postImage.hidden = YES;
+//        [self.postImage setFrame:CGRectMake(0, 0, 0, 0)];
+//        self.imageRatioConstraint.active = NO;
+//    }
     
     self.location.text = @"";
     
@@ -47,15 +68,6 @@
         self.contactInfo.text = @"";
     }
     
-//    if (self.postImage.file == nil) {
-//        self.postImage.hidden = YES;
-//        self.imageRatioConstraint.active = NO;
-//    }
-//    else {
-//        self.postImage.hidden = NO;
-//        self.imageRatioConstraint.active = YES;
-//        [self.postImage loadInBackground];
-//    }
 }
 
 @end

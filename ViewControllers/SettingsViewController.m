@@ -54,7 +54,8 @@
        [PFUser currentUser][@"contactInfo"] = self.contactInfoTextView.text;
         changed = YES;
     }
-    else if (self.profileImage.image != nil) { // user changed image
+    
+    if (self.profileImage.image != nil) { // user changed image
         [PFUser currentUser][@"profileImage"] = [Utilities getPFFileFromImage:self.profileImage.image];
         changed = YES;
     }
@@ -66,7 +67,8 @@
             if (succeded) {
                 self.profileImage.image = nil;
                 self.contactInfoTextView.text = @"";
-                [self.navigationController popViewControllerAnimated:YES];            }
+                [self.navigationController popViewControllerAnimated:YES];
+            }
             else {
                 NSLog(@"Error occured while changing user info: %@", error);
             }

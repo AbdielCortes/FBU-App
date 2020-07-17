@@ -18,6 +18,7 @@
 @dynamic likesCount;
 @dynamic commentsCount;
 @dynamic sharedCount;
+@dynamic hasImage;
 @dynamic isSellPost;
 
 + (nonnull NSString *)parseClassName {
@@ -28,7 +29,15 @@
     
     Post *newPost = [Post new];
     newPost.author = [PFUser currentUser];
-    newPost.image = [Utilities getPFFileFromImage:image];
+    
+    if (image) {
+        newPost.hasImage = YES;
+        newPost.image = [Utilities getPFFileFromImage:image];
+    }
+    else {
+        newPost.hasImage = NO;
+    }
+    
     newPost.caption = caption;
     newPost.likesCount = @(0);
     newPost.commentsCount = @(0);
