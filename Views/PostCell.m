@@ -33,28 +33,16 @@
     self.profileImage.file = post.author[@"profileImage"];
     [self.profileImage loadInBackground];
     
-//    self.postImage.file = post[@"image"];
-//    [self.postImage loadInBackground]; // load image
-    
-//    if (post.hasImage) {
-//        self.postImage.hidden = NO;
-//        self.imageRatioConstraint.active = YES;
-        [post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-            NSLog(@"%@", self.caption.text);
-            if (!error) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                self.postImage.image = image;
-            }
-            else {
-                NSLog(@"error loading image: %@", error);
-            }
-        }];
-//    }
-//    else {
-//        self.postImage.hidden = YES;
-//        [self.postImage setFrame:CGRectMake(0, 0, 0, 0)];
-//        self.imageRatioConstraint.active = NO;
-//    }
+    // gets image from parse
+    [post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            self.postImage.image = image;
+        }
+        else {
+            NSLog(@"error loading image: %@", error);
+        }
+    }];
     
     self.location.text = @"";
     
@@ -67,7 +55,6 @@
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
     }
-    
 }
 
 @end

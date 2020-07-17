@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "NoImagePostCell.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
@@ -53,10 +54,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-
     Post *post = self.posts[indexPath.row];
-    [cell setPost:post];
+    
+    UITableViewCell *cell;
+    if (post.hasImage) {
+        cell = [PostCell new];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+        [(PostCell *)cell setPost:post];
+    }
+    else {
+        cell = [NoImagePostCell new];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
+        [(NoImagePostCell *)cell setPost:post];
+    }
     
     return cell;
 }
