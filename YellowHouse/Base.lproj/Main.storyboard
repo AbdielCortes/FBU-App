@@ -645,6 +645,7 @@
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="jLv-5D-wca" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="BOE-ou-doU"/>
+                    <navigationItem key="navigationItem" id="Vue-Nm-jML"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hY2-SA-kFT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

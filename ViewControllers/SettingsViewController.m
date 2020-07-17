@@ -66,7 +66,7 @@
             if (succeded) {
                 self.profileImage.image = nil;
                 self.contactInfoTextView.text = @"";
-            }
+                [self.navigationController popViewControllerAnimated:YES];            }
             else {
                 NSLog(@"Error occured while changing user info: %@", error);
             }

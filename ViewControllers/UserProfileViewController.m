@@ -23,7 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self fetchUserData];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self fetchUserData];
+}
+
+- (void)fetchUserData {
     PFUser *user = [PFUser currentUser];
     
     self.username.text = user.username;
