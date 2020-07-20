@@ -9,6 +9,7 @@
 #import "HomeFeedViewController.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import "PostDetailsViewController.h"
 #import "Post.h"
 #import "PostCell.h"
 #import "NoImagePostCell.h"
@@ -49,6 +50,12 @@
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    [self fetchPosts];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
@@ -121,7 +128,14 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier  isEqual: @"AccountProfileSegue"]) {
+    if ([segue.identifier  isEqual: @"PostCellDetails"] || [segue.identifier  isEqual: @"NoImagePostCellDetails"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.posts[cellIndexPath.row];
+        PostDetailsViewController *postDetailsVC = [segue destinationViewController];
+        postDetailsVC.post = post;
+    }
+    else if ([segue.identifier  isEqual: @"AccountProfileSegue"]) {
         AccountProfileViewController *accountProfileVC = [segue destinationViewController];
         accountProfileVC.account = (PFUser *)sender;
     }
