@@ -36,6 +36,10 @@
     // Adding place holder text to contact info text view
     self.contactInfoTextView.placeholder = @"Contact info";
     self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
+    
+    // rounding corners
+    self.profileImage.layer.cornerRadius = 10.0f;
+    self.contactInfoTextView.layer.cornerRadius = 5.0f;
 }
 
 - (IBAction)tappedProfileImage:(id)sender {

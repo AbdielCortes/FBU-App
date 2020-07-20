@@ -34,6 +34,7 @@
     self.contactInfo.text = self.account[@"contactInfo"];
     
     self.profileImage.file = self.account[@"profileImage"];
+    self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
 }
 

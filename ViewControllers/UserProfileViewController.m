@@ -40,6 +40,7 @@
     self.contactInfo.text = user[@"contactInfo"];
     
     self.profileImage.file = user[@"profileImage"];
+    self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
 }
 

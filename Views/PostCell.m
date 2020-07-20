@@ -35,8 +35,10 @@
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     
     self.profileImage.file = post.author[@"profileImage"];
+    self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
     
+    self.postImage.layer.cornerRadius = 5.0f;
     // gets image from parse
     [post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

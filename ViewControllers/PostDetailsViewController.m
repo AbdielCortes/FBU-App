@@ -54,9 +54,11 @@
     self.creationDate.text = [formatter stringFromDate:self.post.createdAt];
     
     self.profileImage.file = self.post.author[@"profileImage"];
+    self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
     
     if (self.post.hasImage) { // post has an image
+        self.postImage.layer.cornerRadius = 5.0f;
         // gets image from parse
         [self.post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {

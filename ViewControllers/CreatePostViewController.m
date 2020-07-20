@@ -56,6 +56,11 @@
     self.contactInfoTextView.hidden = YES;
     self.shippingLocation.hidden = YES;
     self.whereShip.hidden = YES;
+    
+    // rounding corners
+    self.postImage.layer.cornerRadius = 5.0f;
+    self.captionTextView.layer.cornerRadius = 5.0f;
+    self.contactInfoTextView.layer.cornerRadius = 5.0f;
 }
 
 - (IBAction)tappedChooseImage:(id)sender {
