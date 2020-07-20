@@ -12,10 +12,11 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "NoImagePostCell.h"
+#import "AccountProfileViewController.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, NoImagePostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -61,11 +62,13 @@
         cell = [PostCell new];
         cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
         [(PostCell *)cell setPost:post];
+        ((PostCell *)cell).delegate = self;
     }
     else {
         cell = [NoImagePostCell new];
         cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
         [(NoImagePostCell *)cell setPost:post];
+        ((NoImagePostCell *)cell).delegate = self;
     }
     
     return cell;
@@ -105,14 +108,23 @@
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) { }];
 }
 
-/*
+- (void)postCell:(nonnull PostCell *)postCell didTap:(nonnull PFUser *)user {
+    [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
+}
+
+- (void)noImagePostCell:(NoImagePostCell *)noImagePostCell didTap:(PFUser *)user {
+    [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"AccountProfileSegue"]) {
+        AccountProfileViewController *accountProfileVC = [segue destinationViewController];
+        accountProfileVC.account = (PFUser *)sender;
+    }
 }
-*/
 
 @end

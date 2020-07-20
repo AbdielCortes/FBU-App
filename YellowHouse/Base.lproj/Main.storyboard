@@ -227,6 +227,71 @@
             </objects>
             <point key="canvasLocation" x="2588" y="116"/>
         </scene>
+        <!--Account Profile View Controller-->
+        <scene sceneID="qjM-uZ-15Q">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Hql-Sf-UNL" customClass="AccountProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rJ3-R1-mjc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-iE-tno">
+                                <rect key="frame" x="120" y="108" width="274" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kKP-El-GfN" customClass="PFImageView">
+                                <rect key="frame" x="20" y="108" width="85" height="85"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="VmT-mb-F94"/>
+                                    <constraint firstAttribute="width" constant="85" id="YdI-eZ-lbo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-wU-Un5">
+                                <rect key="frame" x="120" y="146" width="274" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6R-CZ-tzA">
+                                <rect key="frame" x="40.5" y="201" width="44" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="tmc-uI-gZe"/>
+                                </constraints>
+                                <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="tappedFollow:" destination="Hql-Sf-UNL" eventType="touchUpInside" id="mcf-Cb-cA2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ozp-iE-tno" firstAttribute="trailing" secondItem="rJ3-R1-mjc" secondAttribute="trailingMargin" id="2sF-M5-L1B"/>
+                            <constraint firstItem="S6R-CZ-tzA" firstAttribute="centerX" secondItem="kKP-El-GfN" secondAttribute="centerX" id="65o-0J-abd"/>
+                            <constraint firstItem="S6R-CZ-tzA" firstAttribute="top" secondItem="kKP-El-GfN" secondAttribute="bottom" constant="8" id="6F9-bP-JxB"/>
+                            <constraint firstItem="ozp-iE-tno" firstAttribute="leading" secondItem="kKP-El-GfN" secondAttribute="trailing" constant="15" id="EhV-Qy-NB1"/>
+                            <constraint firstItem="HPh-wU-Un5" firstAttribute="leading" secondItem="ozp-iE-tno" secondAttribute="leading" id="FDs-Oy-oJW"/>
+                            <constraint firstItem="HPh-wU-Un5" firstAttribute="top" secondItem="ozp-iE-tno" secondAttribute="bottom" constant="8" id="Wxw-4q-VdK"/>
+                            <constraint firstItem="HPh-wU-Un5" firstAttribute="trailing" secondItem="rJ3-R1-mjc" secondAttribute="trailingMargin" id="gMG-sO-Z6L"/>
+                            <constraint firstItem="kKP-El-GfN" firstAttribute="top" secondItem="rJ3-R1-mjc" secondAttribute="topMargin" constant="20" id="nDN-gJ-32e"/>
+                            <constraint firstItem="kKP-El-GfN" firstAttribute="leading" secondItem="rJ3-R1-mjc" secondAttribute="leadingMargin" id="tTM-rh-3Fb"/>
+                            <constraint firstItem="ozp-iE-tno" firstAttribute="top" secondItem="kKP-El-GfN" secondAttribute="top" id="xnp-3C-iHJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dfp-8N-e3s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bq0-h8-5eC"/>
+                    <connections>
+                        <outlet property="contactInfo" destination="HPh-wU-Un5" id="OO8-U7-fYL"/>
+                        <outlet property="profileImage" destination="kKP-El-GfN" id="TnG-C8-Pqe"/>
+                        <outlet property="username" destination="ozp-iE-tno" id="e26-zl-P77"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4t-EW-xpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3844.9275362318845" y="-588.61607142857144"/>
+        </scene>
         <!--Yellow House-->
         <scene sceneID="i74-yH-rkc">
             <objects>
@@ -285,29 +350,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Y8-iH-34C">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Y8-iH-34C">
                                                     <rect key="frame" x="107.5" y="518" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="JGX-wC-nWr"/>
                                                         <constraint firstAttribute="width" constant="21" id="VeL-B8-LPE"/>
                                                     </constraints>
-                                                    <state key="normal" title="c"/>
+                                                    <state key="normal" image="text.bubble" catalog="system"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neC-W6-RMS">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neC-W6-RMS">
                                                     <rect key="frame" x="196.5" y="518" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="FtQ-Po-0Gb"/>
                                                         <constraint firstAttribute="width" constant="21" id="Pe9-7a-HbF"/>
                                                     </constraints>
-                                                    <state key="normal" title="l"/>
+                                                    <state key="normal" image="heart" catalog="system"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-lg-vUp">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-lg-vUp">
                                                     <rect key="frame" x="285.5" y="518" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="0zR-ad-ooN"/>
                                                         <constraint firstAttribute="width" constant="21" id="tfU-Mw-mnk"/>
                                                     </constraints>
-                                                    <state key="normal" title="s"/>
+                                                    <state key="normal" title="s" image="arrowshape.turn.up.right" catalog="system"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeSinceCreation" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-yk-BAH">
                                                     <rect key="frame" x="78" y="11" width="316" height="16"/>
@@ -427,29 +492,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygY-EV-J2h">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygY-EV-J2h">
                                                     <rect key="frame" x="107.5" y="104" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="21" id="6TK-w2-jo4"/>
                                                         <constraint firstAttribute="height" constant="21" id="fic-jC-ydB"/>
                                                     </constraints>
-                                                    <state key="normal" title="c"/>
+                                                    <state key="normal" image="text.bubble" catalog="system"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGu-2B-4R9">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGu-2B-4R9">
                                                     <rect key="frame" x="196.5" y="104" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="21" id="4bM-3b-Fq6"/>
                                                         <constraint firstAttribute="height" constant="21" id="ZGH-bD-Sgr"/>
                                                     </constraints>
-                                                    <state key="normal" title="l"/>
+                                                    <state key="normal" title="l" image="heart" catalog="system"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-kg-sks">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-kg-sks">
                                                     <rect key="frame" x="285.5" y="104" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="21" id="OHG-Xn-f2L"/>
                                                         <constraint firstAttribute="height" constant="21" id="eRK-gt-FkH"/>
                                                     </constraints>
-                                                    <state key="normal" title="s"/>
+                                                    <state key="normal" title="s" image="arrowshape.turn.up.right" catalog="system"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwE-wU-Rhf">
                                                     <rect key="frame" x="78" y="24.5" width="316" height="23"/>
@@ -550,6 +615,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YIX-Jm-2QU" id="cbj-Pb-JOV"/>
+                        <segue destination="Hql-Sf-UNL" kind="show" identifier="AccountProfileSegue" id="HX0-0w-LHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBu-Tb-XFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -564,16 +630,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-a7-nJi">
-                                <rect key="frame" x="59" y="93" width="99" height="30"/>
-                                <state key="normal" title="Choose Image"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-a7-nJi">
+                                <rect key="frame" x="59" y="93" width="141" height="22"/>
+                                <state key="normal" title="Choose Image" image="photo" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedChooseImage:" destination="CaR-co-qEc" eventType="touchUpInside" id="J1u-iJ-ASk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-eC-5JH">
-                                <rect key="frame" x="59" y="152" width="76" height="30"/>
-                                <state key="normal" title="Take Photo"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-eC-5JH">
+                                <rect key="frame" x="59" y="144" width="114" height="22"/>
+                                <state key="normal" title="Take Photo" image="camera" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedTakePhoto:" destination="CaR-co-qEc" eventType="touchUpInside" id="Ol4-IF-1Uw"/>
                                 </connections>
@@ -932,12 +1002,17 @@
         <segue reference="IGB-x8-6NX"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="paperplane" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <image name="text.bubble" catalog="system" width="128" height="110"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>

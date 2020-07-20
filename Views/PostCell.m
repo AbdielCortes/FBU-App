@@ -14,7 +14,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedProfileImage:)];
+    
+    [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileImage setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -55,6 +59,10 @@
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
     }
+}
+
+- (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
+    [self.delegate postCell:self didTap:self.post.author];
 }
 
 @end

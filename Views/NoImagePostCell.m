@@ -13,7 +13,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedProfileImage:)];
+    
+    [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileImage setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,6 +36,10 @@
     self.caption.text = post.caption;
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     self.location.text = @"";
+}
+
+- (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
+    [self.delegate noImagePostCell:self didTap:self.post.author];
 }
 
 @end

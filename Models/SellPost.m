@@ -21,6 +21,7 @@
     SellPost *newPost = [SellPost new];
     newPost.author = [PFUser currentUser];
     newPost.image = [Utilities getPFFileFromImage:image];
+    newPost.hasImage = YES;
     newPost.caption = caption;
     newPost.price = price;
     newPost.shippingCost = shipping;

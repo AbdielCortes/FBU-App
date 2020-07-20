@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */; };
 		80166EA424C25F6B00EDD732 /* NoImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80166EA324C25F6B00EDD732 /* NoImagePostCell.m */; };
+		80166EA724C2897000EDD732 /* AccountProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80166EA624C2897000EDD732 /* AccountProfileViewController.m */; };
 		802CA9A124C1018900C59ACC /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A024C1018900C59ACC /* UserProfileViewController.m */; };
 		802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A324C10A5900C59ACC /* SettingsViewController.m */; };
 		8083221424BE299800734319 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221324BE299800734319 /* CreatePostViewController.m */; };
@@ -56,6 +57,8 @@
 		571A268632196943F789506B /* Pods-YellowHouse-YellowHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-YellowHouse-YellowHouseUITests/Pods-YellowHouse-YellowHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80166EA224C25F6B00EDD732 /* NoImagePostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoImagePostCell.h; sourceTree = "<group>"; };
 		80166EA324C25F6B00EDD732 /* NoImagePostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoImagePostCell.m; sourceTree = "<group>"; };
+		80166EA524C2897000EDD732 /* AccountProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountProfileViewController.h; sourceTree = "<group>"; };
+		80166EA624C2897000EDD732 /* AccountProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountProfileViewController.m; sourceTree = "<group>"; };
 		802CA99F24C1018900C59ACC /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		802CA9A024C1018900C59ACC /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		802CA9A224C10A5900C59ACC /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				802CA9A024C1018900C59ACC /* UserProfileViewController.m */,
 				802CA9A224C10A5900C59ACC /* SettingsViewController.h */,
 				802CA9A324C10A5900C59ACC /* SettingsViewController.m */,
+				80166EA524C2897000EDD732 /* AccountProfileViewController.h */,
+				80166EA624C2897000EDD732 /* AccountProfileViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */,
 				80AEFF4324BF9FB300F25B4E /* SellPost.m in Sources */,
 				808D13C924BD12F5000EF2E9 /* HomeFeedViewController.m in Sources */,
+				80166EA724C2897000EDD732 /* AccountProfileViewController.m in Sources */,
 				808D13C324BCE3EE000EF2E9 /* SignUpViewController.m in Sources */,
 				8083221724BE37F200734319 /* Post.m in Sources */,
 				808D138824BCDEC7000EF2E9 /* AppDelegate.m in Sources */,
