@@ -394,6 +394,7 @@
                         <outlet property="shareCount" destination="wdP-Di-sGm" id="Qf5-bD-euu"/>
                         <outlet property="timeSinceCreation" destination="i0U-SG-Lfh" id="8Uw-lI-vrt"/>
                         <outlet property="username" destination="AZ4-4D-nxS" id="Wbt-fc-hdS"/>
+                        <segue destination="Hql-Sf-UNL" kind="show" identifier="DetailsProfileSegue" id="Ulw-wM-CJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4Z-zP-toa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1174,6 +1175,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Ulw-wM-CJs"/>
         <segue reference="y02-1i-8FO"/>
         <segue reference="IGB-x8-6NX"/>
     </inferredMetricsTieBreakers>

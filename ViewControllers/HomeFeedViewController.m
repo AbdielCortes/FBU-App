@@ -51,11 +51,16 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 //    [self fetchPosts];
-//}
+    
+    NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
+    if (selected) {
+        [self.tableView deselectRowAtIndexPath:selected animated:YES];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;

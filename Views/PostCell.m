@@ -15,8 +15,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    // Gesture recognizer for tapping on profile image
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedProfileImage:)];
-    
     [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImage setUserInteractionEnabled:YES];
 }

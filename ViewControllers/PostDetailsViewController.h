@@ -12,9 +12,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PostDetailsDelegate;
+
 @interface PostDetailsViewController : UIViewController
 
 @property (strong, nonatomic) Post *post;
+
+@property (nonatomic, weak) id<PostDetailsDelegate> delegate;
+
+@end
+
+@protocol PostDetailsDelegate
+
+- (void)postDetails:(PostDetailsViewController *)postDetails didTap:(PFUser *)user;
 
 @end
 
