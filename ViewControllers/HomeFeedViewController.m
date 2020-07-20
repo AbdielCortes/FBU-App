@@ -17,9 +17,12 @@
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, NoImagePostCellDelegate>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PostCellDelegate, NoImagePostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) BOOL isMoreDataLoading; // is a Parse network request running?
+@property (assign, nonatomic) NSInteger querieLimit; // how many posts we're getting from parse
+@property (assign, nonatomic) BOOL morePosts; // determines wether we have already gotten all the posts from parse
 
 @property (strong, nonatomic) NSArray *posts;
 
@@ -43,6 +46,8 @@
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
     
+    self.querieLimit = 10; // amount of posts we want to load for the first querie
+    self.morePosts = YES; // initiliazing morePosts to YES so that scrollViewDidScroll can call fetchPosts
     [self fetchPosts];
     
     // Pull up refresh
@@ -86,18 +91,44 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+     if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = YES;
+            
+            if (self.morePosts) { // if there are more posts to be found
+                [self fetchPosts];
+            }
+        }
+     }
+}
+
 - (void)fetchPosts {
     [self.hud showAnimated:YES]; // show progress pop up
     
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
-    postQuery.limit = 20;
+    postQuery.limit = self.querieLimit;
 
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            self.posts = posts;
+            if (self.posts.count == posts.count) { // if fetch post got called but it didn'f find any extra posts
+                self.morePosts = NO; // sets more posts to NO so that scrollViewDidScroll wont call fetch posts
+            }
+            else { // else fetch posts found more posts
+                self.morePosts = YES;
+                self.posts = posts; // update posts array
+            }
+            
+            self.isMoreDataLoading = NO; // makes it so that scrollViewDidScroll can be called again when necessary
+            self.querieLimit += 10; // increases querie limit so that fetch posts gets more posts
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }
