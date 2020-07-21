@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyH-Fq-ZTG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qyH-Fq-ZTG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -84,7 +84,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="izY-8I-OKq"/>
                     <connections>
+                        <outlet property="loginButton" destination="ip2-ig-BoD" id="9JW-9m-Wcf"/>
                         <outlet property="passwordField" destination="8w8-xD-0MG" id="Qai-Xp-HmH"/>
+                        <outlet property="signUpButton" destination="Tpz-Oe-1TK" id="3Hn-s8-1Og"/>
                         <outlet property="usernameField" destination="Kbz-e7-2hd" id="X1i-tn-rgc"/>
                         <segue destination="yLF-2O-PEu" kind="showDetail" identifier="LoginSegue" id="IGB-x8-6NX"/>
                     </connections>
@@ -183,6 +185,7 @@
                         <outlet property="confirmPasswordField" destination="SLt-ju-7Nr" id="ZDF-HL-VjJ"/>
                         <outlet property="emailField" destination="6EB-02-IYf" id="KCd-Do-wBm"/>
                         <outlet property="passwordField" destination="yJj-e2-TVd" id="IeE-m1-orD"/>
+                        <outlet property="signUpButton" destination="15V-oH-4nf" id="O6N-1L-sWc"/>
                         <outlet property="usernameField" destination="6oi-Tk-hbk" id="4EJ-pQ-cgj"/>
                         <segue destination="yLF-2O-PEu" kind="showDetail" identifier="SignUpSegue" id="vJ2-wd-0QC"/>
                     </connections>
@@ -1177,7 +1180,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ulw-wM-CJs"/>
         <segue reference="y02-1i-8FO"/>
-        <segue reference="IGB-x8-6NX"/>
+        <segue reference="vJ2-wd-0QC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>

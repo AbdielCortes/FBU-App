@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
@@ -30,6 +33,9 @@
     self.hud.label.text = @"Logging In";
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
+    
+    self.loginButton.layer.cornerRadius = 5.0f;
+    self.signUpButton.layer.cornerRadius = 5.0f;
 }
 
 - (IBAction)tappedLogin:(id)sender {

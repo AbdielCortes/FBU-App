@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
@@ -32,6 +34,8 @@
     self.hud.label.text = @"Signing Up";
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
+    
+    self.signUpButton.layer.cornerRadius = 5.0f;
 }
 
 - (IBAction)tappedSignUp:(id)sender {
