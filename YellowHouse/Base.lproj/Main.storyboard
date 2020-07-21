@@ -1000,6 +1000,7 @@
                         <outlet property="contactInfoTextView" destination="upV-zb-p9Q" id="WZw-UF-USm"/>
                         <outlet property="postImage" destination="adi-4m-KFE" id="0kc-X9-DFn"/>
                         <outlet property="postLocation" destination="hoV-up-Axd" id="99v-dP-ND6"/>
+                        <outlet property="postLocationHeight" destination="cf2-28-K14" id="Vmn-uQ-vae"/>
                         <outlet property="priceField" destination="X8a-kI-0QF" id="bxg-9c-82E"/>
                         <outlet property="sellPostSwitch" destination="Qqa-FN-e8e" id="wyL-JH-Goi"/>
                         <outlet property="shippingField" destination="Yno-vg-kBt" id="eAR-MT-Pet"/>

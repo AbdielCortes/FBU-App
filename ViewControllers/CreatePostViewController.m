@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
 @property (weak, nonatomic) IBOutlet UIButton *postLocation;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *postLocationHeight;
 @property (weak, nonatomic) IBOutlet UILabel *tagLoc;
 
 @property (weak, nonatomic) IBOutlet UISwitch *sellPostSwitch;
@@ -57,6 +58,12 @@
     self.shippingLocation.hidden = YES;
     self.whereShip.hidden = YES;
     
+    // show tag location button
+    self.postLocation.hidden = NO;
+    self.postLocationHeight.constant = 46;
+    self.tagLoc.hidden = NO;
+    self.tagLoc.text = @"Tag Location";
+    
     // rounding corners
     self.postImage.layer.cornerRadius = 5.0f;
     self.captionTextView.layer.cornerRadius = 5.0f;
@@ -94,6 +101,12 @@
         self.contactInfoTextView.hidden = NO;
         self.shippingLocation.hidden = NO;
         self.whereShip.hidden = NO;
+        
+        // hide tag location button
+        self.postLocation.hidden = YES;
+        self.postLocationHeight.constant = 0;
+        self.tagLoc.hidden = YES;
+        self.tagLoc.text = @"";
     }
     else { // when switch is off hide all the sell post fields
         self.priceField.hidden = YES;
@@ -101,6 +114,12 @@
         self.contactInfoTextView.hidden = YES;
         self.shippingLocation.hidden = YES;
         self.whereShip.hidden = YES;
+        
+        // show tag location button
+        self.postLocation.hidden = NO;
+        self.postLocationHeight.constant = 46;
+        self.tagLoc.hidden = NO;
+        self.tagLoc.text = @"Tag Location";
     }
 }
 
