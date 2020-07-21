@@ -52,7 +52,7 @@
     
     // Pull up refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refreshPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
@@ -140,6 +140,13 @@
         // outside if/else because we want it to always hide no matter the result
         [self.hud hideAnimated:YES];
     }];
+}
+
+- (void)refreshPosts {
+    // resets querie limit to 10 so that it wont load the entire feed again, but just the first 10 posts
+    self.querieLimit = 10;
+    // call fetch posts to do the actual network call
+    [self fetchPosts];
 }
 
 - (IBAction)tappedLogOut:(id)sender {
