@@ -35,7 +35,8 @@
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     
     self.profileImage.file = post.author[@"profileImage"];
-    self.profileImage.layer.cornerRadius = 10.0f;
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+    self.profileImage.clipsToBounds = YES;
     [self.profileImage loadInBackground];
     
     self.postImage.layer.cornerRadius = 5.0f;

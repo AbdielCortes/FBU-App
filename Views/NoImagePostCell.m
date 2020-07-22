@@ -30,7 +30,8 @@
     _post = post;
     
     self.profileImage.file = post.author[@"profileImage"];
-    self.profileImage.layer.cornerRadius = 10.0f;
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+    self.profileImage.clipsToBounds = YES;
     [self.profileImage loadInBackground];
 
     self.username.text = post.author.username;

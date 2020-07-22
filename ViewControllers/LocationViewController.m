@@ -10,8 +10,8 @@
 #import "LocationCell.h"
 
 // Foursquare API keys
-static NSString * const clientID = @"EQY3DAIBQYOOHD15Y1GT3BTITDVB4JVD32GMPL20U4RWZIPK";
-static NSString * const clientSecret = @"MJME2EB0UXAKZ2JMLJGFJB05VM1KUSFGCZD2JDQQUAQ5SW3Y";
+static NSString * const clientID = @"key";
+static NSString * const clientSecret = @"key";
 
 @interface LocationViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
