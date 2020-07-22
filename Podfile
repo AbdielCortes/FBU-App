@@ -11,6 +11,7 @@ target 'YellowHouse' do
   pod 'DateTools'
   pod 'MBProgressHUD'
   pod 'UITextView+Placeholder'
+  pod 'AFNetworking'
 
   target 'YellowHouseTests' do
     inherit! :search_paths

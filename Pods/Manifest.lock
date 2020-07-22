@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - Bolts/Tasks (1.9.1)
   - DateTools (2.0.0)
   - MBProgressHUD (1.2.0)
@@ -11,6 +26,7 @@ PODS:
   - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
+  - AFNetworking
   - DateTools
   - MBProgressHUD
   - Parse
@@ -19,6 +35,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - Bolts
     - DateTools
     - MBProgressHUD
@@ -26,12 +43,13 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: ce447d635144662733571be606037dead9879ef2
+PODFILE CHECKSUM: 80226cf1e99a4b760420dfdb626e7866bdb90372
 
 COCOAPODS: 1.9.3

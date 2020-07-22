@@ -10,11 +10,12 @@
 #import "Utilities.h"
 #import "Post.h"
 #import "SellPost.h"
+#import "MapViewController.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UITextView+Placeholder.h>
 
-@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
@@ -28,6 +29,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *contactInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *shippingLocation;
 @property (weak, nonatomic) IBOutlet UILabel *whereShip;
+
+@property (strong, nonatomic) NSString *locationName;
+@property (nonatomic) BOOL hasLocation;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -63,6 +67,8 @@
     self.postLocationHeight.constant = 46;
     self.tagLoc.hidden = NO;
     self.tagLoc.text = @"Tag Location";
+    self.locationName = @"";
+    self.hasLocation = NO;
     
     // rounding corners
     self.postImage.layer.cornerRadius = 5.0f;
@@ -119,7 +125,13 @@
         self.postLocation.hidden = NO;
         self.postLocationHeight.constant = 46;
         self.tagLoc.hidden = NO;
-        self.tagLoc.text = @"Tag Location";
+        
+        if ([self.locationName isEqualToString:@""]) {
+            self.tagLoc.text = @"Tag Location";
+        }
+        else {
+            self.tagLoc.text = self.locationName;
+        }
     }
 }
 
@@ -208,14 +220,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+- (void)mapViewController:(MapViewController *)controller withLocationName:(NSString *)name {
+    self.tagLoc.text = name;
+    self.whereShip.text = name;
+    self.locationName = name;
+    self.hasLocation = YES;
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"TagLocationSegue"]) {
+        MapViewController *mapVC = [segue destinationViewController];
+        mapVC.delegate = self;
+    }
 }
-*/
 
 @end

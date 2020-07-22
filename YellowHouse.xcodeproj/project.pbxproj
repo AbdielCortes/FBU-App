@@ -27,6 +27,10 @@
 		808D13C324BCE3EE000EF2E9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13C224BCE3EE000EF2E9 /* SignUpViewController.m */; };
 		808D13C624BD010E000EF2E9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13C524BD010E000EF2E9 /* Utilities.m */; };
 		808D13C924BD12F5000EF2E9 /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D13C824BD12F5000EF2E9 /* HomeFeedViewController.m */; };
+		809881F924C796E100272950 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809881F824C796E100272950 /* MapKit.framework */; };
+		809881FC24C7987A00272950 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809881FB24C7987A00272950 /* MapViewController.m */; };
+		809881FF24C7A0AD00272950 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809881FE24C7A0AD00272950 /* LocationViewController.m */; };
+		8098820224C7A3DB00272950 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8098820124C7A3DB00272950 /* LocationCell.m */; };
 		809E85E324C60C4200E06A47 /* PostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809E85E224C60C4200E06A47 /* PostDetailsViewController.m */; };
 		80AEFF4324BF9FB300F25B4E /* SellPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80AEFF4224BF9FB300F25B4E /* SellPost.m */; };
 		93BF1B6D9EB5A12EB85FF952 /* Pods_YellowHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */; };
@@ -94,6 +98,13 @@
 		808D13C524BD010E000EF2E9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		808D13C724BD12F5000EF2E9 /* HomeFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeFeedViewController.h; sourceTree = "<group>"; };
 		808D13C824BD12F5000EF2E9 /* HomeFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFeedViewController.m; sourceTree = "<group>"; };
+		809881F824C796E100272950 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		809881FA24C7987A00272950 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		809881FB24C7987A00272950 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		809881FD24C7A0AD00272950 /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		809881FE24C7A0AD00272950 /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		8098820024C7A3DB00272950 /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		8098820124C7A3DB00272950 /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		809E85E124C60C4200E06A47 /* PostDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailsViewController.h; sourceTree = "<group>"; };
 		809E85E224C60C4200E06A47 /* PostDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailsViewController.m; sourceTree = "<group>"; };
 		80AEFF4124BF9FB300F25B4E /* SellPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SellPost.h; sourceTree = "<group>"; };
@@ -109,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809881F924C796E100272950 /* MapKit.framework in Frameworks */,
 				E0313B31E1B0F3BEC08CF78E /* Pods_YellowHouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +147,7 @@
 		4DE349B200FF50A7F969C006 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				809881F824C796E100272950 /* MapKit.framework */,
 				09F047A70D899226A23A84E8 /* Pods_YellowHouse.framework */,
 				A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */,
 				C7ED869714FDEE97EFDCEB90 /* Pods_YellowHouseTests.framework */,
@@ -222,6 +235,10 @@
 				80166EA624C2897000EDD732 /* AccountProfileViewController.m */,
 				809E85E124C60C4200E06A47 /* PostDetailsViewController.h */,
 				809E85E224C60C4200E06A47 /* PostDetailsViewController.m */,
+				809881FA24C7987A00272950 /* MapViewController.h */,
+				809881FB24C7987A00272950 /* MapViewController.m */,
+				809881FD24C7A0AD00272950 /* LocationViewController.h */,
+				809881FE24C7A0AD00272950 /* LocationViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -244,6 +261,8 @@
 				8083221924BE722600734319 /* PostCell.m */,
 				80166EA224C25F6B00EDD732 /* NoImagePostCell.h */,
 				80166EA324C25F6B00EDD732 /* NoImagePostCell.m */,
+				8098820024C7A3DB00272950 /* LocationCell.h */,
+				8098820124C7A3DB00272950 /* LocationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -499,7 +518,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8098820224C7A3DB00272950 /* LocationCell.m in Sources */,
 				808D13C624BD010E000EF2E9 /* Utilities.m in Sources */,
+				809881FF24C7A0AD00272950 /* LocationViewController.m in Sources */,
 				809E85E324C60C4200E06A47 /* PostDetailsViewController.m in Sources */,
 				808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */,
 				80AEFF4324BF9FB300F25B4E /* SellPost.m in Sources */,
@@ -514,6 +535,7 @@
 				808D138B24BCDEC7000EF2E9 /* SceneDelegate.m in Sources */,
 				8083221A24BE722600734319 /* PostCell.m in Sources */,
 				80166EA424C25F6B00EDD732 /* NoImagePostCell.m in Sources */,
+				809881FC24C7987A00272950 /* MapViewController.m in Sources */,
 				802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
