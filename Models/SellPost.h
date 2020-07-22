@@ -15,9 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *contactInfo;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *shippingCost;
-@property (nonatomic, strong) NSDictionary *originLocation;
 
-+ (void)postSellPost:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withPrice:(NSString * _Nullable)price withShipping:(NSString * _Nullable)shipping  withContactInfo:(NSString * _Nullable)contactInfo withOriginLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion;
++ (void)postSellPost:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withPrice:(NSString * _Nullable)price withShipping:(NSString * _Nullable)shipping  withContactInfo:(NSString * _Nullable)contactInfo withOriginLocation:(NSString * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion;
 
 @end
 

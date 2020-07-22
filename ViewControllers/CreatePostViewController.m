@@ -156,7 +156,7 @@
             [self.hud hideAnimated:YES];
         }
         else {
-            [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
+            [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:self.locationName withCompletion:^(BOOL succeded, NSError *error) {
                 
                 if (succeded) {
                     self.postImage.image = nil;
@@ -185,7 +185,7 @@
             [self.hud hideAnimated:YES];
         }
         else {
-            [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:nil withCompletion:^(BOOL succeded, NSError *error) {
+            [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:self.locationName withCompletion:^(BOOL succeded, NSError *error) {
 
                 if (succeded) {
                     self.captionTextView.text = @"";

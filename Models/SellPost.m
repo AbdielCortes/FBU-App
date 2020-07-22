@@ -14,9 +14,8 @@
 @dynamic contactInfo;
 @dynamic price;
 @dynamic shippingCost;
-@dynamic originLocation;
 
-+ (void)postSellPost:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withPrice:(NSString * _Nullable)price withShipping:(NSString * _Nullable)shipping  withContactInfo:(NSString * _Nullable)contactInfo withOriginLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion {
++ (void)postSellPost:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withPrice:(NSString * _Nullable)price withShipping:(NSString * _Nullable)shipping  withContactInfo:(NSString * _Nullable)contactInfo withOriginLocation:(NSString * _Nullable)location withCompletion:(PFBooleanResultBlock _Nullable)completion {
         
     SellPost *newPost = [SellPost new];
     newPost.author = [PFUser currentUser];
@@ -32,7 +31,10 @@
     newPost.isSellPost = YES;
     
     if (location) {
-        newPost.location = location;
+        newPost.locationName = location;
+    }
+    else {
+        newPost.locationName = @"";
     }
     
     [newPost saveInBackgroundWithBlock:completion];

@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSString *caption;
-@property (nonatomic, strong) NSDictionary *location;
+@property (nonatomic, strong) NSString *locationName;
 @property (nonatomic, strong) NSNumber *likesCount;
 @property (nonatomic, strong) NSNumber *commentsCount;
 @property (nonatomic, strong) NSNumber *sharedCount;
 @property (nonatomic) BOOL hasImage;
 @property (nonatomic) BOOL isSellPost;
 
-+ (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSDictionary * _Nullable)location withCompletion:(PFBooleanResultBlock  _Nullable)completion;
++ (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSString * _Nullable)location withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

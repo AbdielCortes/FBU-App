@@ -75,7 +75,7 @@
         [self.postImage removeFromSuperview]; // remove image view from view
     }
     
-    self.location.text = @"";
+    self.location.text = self.post.locationName;;
     
     if (self.post.isSellPost) { // if post is a sell post
         SellPost *sellPost = (SellPost *)self.post;

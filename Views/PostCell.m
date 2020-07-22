@@ -51,7 +51,7 @@
         }
     }];
     
-    self.location.text = @"";
+    self.location.text = self.post.locationName;
     
     if (post.isSellPost) { // if post is a sell post 
         SellPost *sellPost = (SellPost *)post;

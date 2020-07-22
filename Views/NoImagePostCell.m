@@ -37,7 +37,7 @@
     self.username.text = post.author.username;
     self.caption.text = post.caption;
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
-    self.location.text = @"";
+    self.location.text = self.post.locationName;;
 }
 
 - (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
