@@ -10,8 +10,8 @@
 #import "LocationCell.h"
 
 // Foursquare API keys
-static NSString * const clientID = @"key";
-static NSString * const clientSecret = @"key";
+static NSString * const clientID = @"EQY3DAIBQYOOHD15Y1GT3BTITDVB4JVD32GMPL20U4RWZIPK";
+static NSString * const clientSecret = @"MJME2EB0UXAKZ2JMLJGFJB05VM1KUSFGCZD2JDQQUAQ5SW3Y";
 
 @interface LocationViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -60,17 +60,17 @@ static NSString * const clientSecret = @"key";
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
-    [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
+    [self fetchLocationsWithQuery:newText nearLatitude:self.latitude longitude:self.longitude];
     return true;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
+    [self fetchLocationsWithQuery:searchBar.text nearLatitude:self.latitude longitude:self.longitude];
 }
 
-- (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
+- (void)fetchLocationsWithQuery:(NSString *)query nearLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
+    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&ll=%@,%@&query=%@", clientID, clientSecret, latitude, longitude, query];
     queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];

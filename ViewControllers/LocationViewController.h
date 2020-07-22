@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LocationViewController : UIViewController
 
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
+
 @property (weak, nonatomic) id<LocationViewControllerDelegate> delegate;
 
 @end

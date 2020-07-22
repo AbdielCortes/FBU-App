@@ -1048,7 +1048,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVT-ix-tfX">
-                                <rect key="frame" x="184" y="737" width="46" height="30"/>
+                                <rect key="frame" x="184" y="646" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -1088,9 +1088,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-jx-XBy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-jx-XBy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="O21-3E-h1q">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1147,6 +1146,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AcU-jx-XBy" secondAttribute="bottom" id="BWf-Ky-mxJ"/>
+                            <constraint firstAttribute="trailing" secondItem="AcU-jx-XBy" secondAttribute="trailing" id="CV7-Ds-odm"/>
+                            <constraint firstItem="AcU-jx-XBy" firstAttribute="leading" secondItem="ZCk-AA-61N" secondAttribute="leading" id="Zsv-E6-ig0"/>
+                            <constraint firstItem="AcU-jx-XBy" firstAttribute="top" secondItem="ZCk-AA-61N" secondAttribute="top" id="fFh-me-8sY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XSl-gD-qeD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tag Location" id="oGp-Nt-vaG"/>

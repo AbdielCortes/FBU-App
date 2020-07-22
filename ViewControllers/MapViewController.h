@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
 @property (weak, nonatomic) id<MapViewControllerDelegate> delegate;
 

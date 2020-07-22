@@ -221,10 +221,18 @@
 }
 
 - (void)mapViewController:(MapViewController *)controller withLocationName:(NSString *)name {
-    self.tagLoc.text = name;
-    self.whereShip.text = name;
-    self.locationName = name;
-    self.hasLocation = YES;
+    if (name) {
+        self.tagLoc.text = name;
+        self.whereShip.text = name;
+        self.locationName = name;
+        self.hasLocation = YES;
+    }
+    else {
+        self.tagLoc.text = @"Tag Location";
+        self.whereShip.text = @"Where is this item shipping from?";
+        self.locationName = @"";
+        self.hasLocation = NO;
+    }
 }
 
 
