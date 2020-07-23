@@ -113,9 +113,15 @@
 - (void)fetchPosts {
     [self.hud showAnimated:YES]; // show progress pop up
     
+    // creates Parse query
     PFQuery *postQuery = [Post query];
+    // orders query results by the time they where created
     [postQuery orderByDescending:@"createdAt"];
+    // includes the User object of the account that created the post
     [postQuery includeKey:@"author"];
+    // filters posts to only include the ones form accounts that the user is following
+    [postQuery whereKey:@"author" containedIn:[PFUser currentUser][@"following"]];
+    // limits the amount of posts that the query will get
     postQuery.limit = self.querieLimit;
 
     // fetch data asynchronously
