@@ -461,6 +461,7 @@
                     <navigationItem key="navigationItem" id="Bq0-h8-5eC"/>
                     <connections>
                         <outlet property="contactInfo" destination="HPh-wU-Un5" id="OO8-U7-fYL"/>
+                        <outlet property="followButton" destination="S6R-CZ-tzA" id="2qF-db-fH2"/>
                         <outlet property="profileImage" destination="kKP-El-GfN" id="TnG-C8-Pqe"/>
                         <outlet property="username" destination="ozp-iE-tno" id="e26-zl-P77"/>
                     </connections>
