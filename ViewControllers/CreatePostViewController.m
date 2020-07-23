@@ -64,7 +64,7 @@
     
     // show tag location button
     self.postLocation.hidden = NO;
-    self.postLocationHeight.constant = 46;
+    self.postLocationHeight.constant = 35;
     self.tagLoc.hidden = NO;
     self.tagLoc.text = @"Tag Location";
     self.locationName = @"";
@@ -123,7 +123,7 @@
         
         // show tag location button
         self.postLocation.hidden = NO;
-        self.postLocationHeight.constant = 46;
+        self.postLocationHeight.constant = 35;
         self.tagLoc.hidden = NO;
         
         if ([self.locationName isEqualToString:@""]) {
@@ -188,8 +188,9 @@
             [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:self.locationName withCompletion:^(BOOL succeded, NSError *error) {
 
                 if (succeded) {
-                    self.captionTextView.text = @"";
                     self.postImage.image = nil;
+                    self.captionTextView.text = @"";
+                    
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
                 else {

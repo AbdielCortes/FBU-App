@@ -68,6 +68,8 @@
     newUser.email = self.emailField.text;
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
+    UIImage *profileImage = [UIImage imageNamed:@"profile"];
+    newUser[@"profileImage"] = [Utilities getPFFileFromImage:profileImage];
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {

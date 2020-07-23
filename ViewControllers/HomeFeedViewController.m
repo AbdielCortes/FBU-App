@@ -23,6 +23,7 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading; // is a Parse network request running?
 @property (assign, nonatomic) NSInteger querieLimit; // how many posts we're getting from parse
 @property (assign, nonatomic) BOOL morePosts; // determines wether we have already gotten all the posts from parse
+@property (assign, nonatomic) BOOL refreshed; // determines when the user called refreshPosts
 
 @property (strong, nonatomic) NSArray *posts;
 
@@ -54,6 +55,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    self.refreshed = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,7 +121,11 @@
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            if (self.posts.count == posts.count) { // if fetch post got called but it didn'f find any extra posts
+            if (self.refreshed) {
+                self.posts = posts; // update posts array
+                self.refreshed = NO;
+            }
+            else if (self.posts.count == posts.count) { // if fetch post got called but it didn'f find any extra posts
                 self.morePosts = NO; // sets more posts to NO so that scrollViewDidScroll wont call fetch posts
             }
             else { // else fetch posts found more posts
@@ -143,6 +149,7 @@
 }
 
 - (void)refreshPosts {
+    self.refreshed = YES;
     // resets querie limit to 10 so that it wont load the entire feed again, but just the first 10 posts
     self.querieLimit = 10;
     // call fetch posts to do the actual network call
