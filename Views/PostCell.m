@@ -51,16 +51,22 @@
         }
     }];
     
-    self.location.text = self.post.locationName;
-    
     if (post.isSellPost) { // if post is a sell post 
         SellPost *sellPost = (SellPost *)post;
         self.priceAndShipping.text = [NSString stringWithFormat:@"$%@ + $%@ shipping", sellPost.price, sellPost.shippingCost];
         self.contactInfo.text = sellPost.contactInfo;
+        
+        if ([self.post.locationName isEqualToString:@""]) {
+            self.location.text = @"";
+        }
+        else {
+            self.location.text = [NSString stringWithFormat:@"Ships from %@", self.post.locationName];
+        }
     }
     else {
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
+        self.location.text = self.post.locationName;
     }
 }
 

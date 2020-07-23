@@ -38,22 +38,19 @@
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
     
-    [self CurrentLocationIdentifier];
+    [self getCurrentLocation];
     // San Francisco: 37.783333, -122.416667
     // New York City: 40.73, -73.99
     
     self.tagLocationButton.hidden = NO;
 }
 
-//------------ Current Location Address-----
--(void)CurrentLocationIdentifier {
-    //---- For getting current gps location
+-(void)getCurrentLocation {
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    //------
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {

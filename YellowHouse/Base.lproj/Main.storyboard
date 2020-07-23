@@ -915,7 +915,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="bk6-sI-IH5" kind="show" id="G90-Ob-cS5"/>
+                                    <segue destination="bk6-sI-IH5" kind="show" identifier="ShippingLocationSegue" id="G90-Ob-cS5"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syk-47-bCW">
@@ -1336,7 +1336,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mqj-4c-Dwx"/>
+        <segue reference="G90-Ob-cS5"/>
         <segue reference="Ulw-wM-CJs"/>
         <segue reference="y02-1i-8FO"/>
         <segue reference="IGB-x8-6NX"/>
