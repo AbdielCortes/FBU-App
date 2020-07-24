@@ -24,12 +24,12 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 **Required Must-have Stories**
 
 - [x] User can create an account and log in
-- [ ] Profile pages for each user *(in progress)*
+- [x] Profile pages for each user *(in progress)*
 - [x] User can create a post with a photo and caption
-- [ ] User can follow other accounts
-- [ ] User in their home feed can see posts from the accounts that they follow *(in progress)*
+- [x] User can follow other accounts
+- [x] User in their home feed can see posts from the accounts that they follow *(in progress)*
 - [x] When posting user can select between making a regular post or a sell post, and create a sell post
-- [ ] When creating a post, the user can tag the location 
+- [x] When creating a post, the user can tag the location 
 
 **Optional Nice-to-have Stories**
 
@@ -79,27 +79,32 @@ An app that allows artist to showcase their work and sell it. Users can follow o
     * -> Sign Up - User creates an account by entering their email, username, and password twice.
 * Home Feed - Shows posts form the accounts the user is following.
     * -> Post Details - User can tap on post to view details or comment.
+    * -> Image - Tapping on image shows it in full screen.
     * -> Posting - Button that allows user to create a post.
+       * --> Map and Location - Shows map and search view for taggin a post location.
 * Profile - User can modify ther profile picture image, and contact information.
     * -> Settings - User can modify notification and privacy settings.
 * Messaging - User can send messages to the accounts that they're are following.
 
 ### 4. App Expectactions
 - [x] Your app has multiple views
-- [x] Your app interacts with a database - I'll be using Parse for the backend 
+- [x] Your app interacts with a database - I'll be using [Parse](https://parseplatform.org/) for the backend 
 - [x] You can log in/log out of your app as a user
 - [x] You can sign up with a new user profile
 - [x] Somewhere in your app you can use the camera to take a picture and do something with the picture - When creating a post the user can use the camera and add that picture to the post
 - [x] Your app integrates with a SDK - [iOS MapKit SDK](https://developer.apple.com/documentation/mapkit) with [Foursquare API](https://developer.foursquare.com/), used for taggin locations on posts
 - [ ] Your app contains at least one more complex algorithm 
-- [x] Your app uses gesture recognizers - double tap image to like and/or pinch zoom for images
+- [x] Your app uses gesture recognizers - pinch zoom images
 - [x] Your app use an animation - transition animation when tapping post button in home feed
 - [x] Your app incorporates an external library to add visual polish - custom loading pop ups with [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 
 ## Wireframes
 
 <img src="ReadMeImages/wireframe_hand-drawn.jpg" width="600"> 
+
 <img src="ReadMeImages/wireframeDigital.png" width="888">
+
+Wireframe created with [Figma](https://www.figma.com)
 
 ## Schema 
 
@@ -113,7 +118,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
    | image         | File     | image that user posts |
    | hasImage      | Boolean  | says whether the post contains an image or not |
    | caption       | String   | image caption by author |
-   | location      | Dictionary | shows where the art is located |
+   | locationName  | String   | shows where the art is located or where its shipping from |
    | commentsCount | Number   | number of comments that has been posted to an image |
    | likesCount    | Number   | number of likes for the post |
    | sharedCount   | Number   | number of times the post has been shared |
@@ -127,7 +132,6 @@ An app that allows artist to showcase their work and sell it. Users can follow o
    | contactInfo    | String     | users contact information |
    | price          | String     | price of the item being sold |
    | shppingCost    | String     | shipping cost for the item |
-   | originLocation | Dictionary | location that the item is shipping from |
    
 ### 2. Networking
 
@@ -156,3 +160,14 @@ An app that allows artist to showcase their work and sell it. Users can follow o
       - (Read/GET) Query all posts where user is author
       - (Update/PUT) Update user's profile image
       - (Update/PUT) Update user's contact info
+      
+### 3. External Libraries and Other Dependencies
+
+- [Parse](https://parseplatform.org/) - open source backend
+- [Parse UI](https://github.com/parse-community/Parse-SDK-iOS-OSX) - used for easily extracting and displaying images from Parse
+- [iOS MapKit SDK](https://developer.apple.com/documentation/mapkit) - used with Foursquare APW for displaying locations on the map
+- [Foursquare API](https://developer.foursquare.com/) - API that allows searching for locations near a specified city or coordinates
+- [DateTools](https://github.com/MatthewYork/DateTools) - easy to use date formmating tools that can be used with NSDate
+- [MBProgressHUD](https://github.com/jdg/MBProgressHUD) - shows custom loading pop ups
+- [UITextView Placeholder](https://github.com/devxoul/UITextView-Placeholder) - inserts placeholder text in UITextViews
+- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
