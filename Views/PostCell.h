@@ -5,6 +5,10 @@
 //  Created by zurken on 7/14/20.
 //  Copyright © 2020 Abdiel Cortes. All rights reserved.
 //
+//  PostCell is a UITableViewCell used in the HomeFeedViewController to display posts with
+//  images and sell posts. The PostCell has a Post as one of its properties and all the labels
+//  are assigned using this property with the method setPost.
+//
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
@@ -37,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// Delegate used when the user taps on the profile image to send the Account to the AccountProfile view
 @protocol PostCellDelegate
 
 - (void)postCell:(PostCell *)postCell didTap:(PFUser *)user;

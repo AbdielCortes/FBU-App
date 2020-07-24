@@ -32,6 +32,8 @@
     
     self.username.text = post.author.username;
     self.caption.text = post.caption;
+    // converts date into a string that says how long ago the post was created
+    // example: "2 hours ago"
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
     
     self.profileImage.file = post.author[@"profileImage"];
@@ -52,7 +54,7 @@
     }];
     
     if (post.isSellPost) { // if post is a sell post 
-        SellPost *sellPost = (SellPost *)post;
+        SellPost *sellPost = (SellPost *)post; // cast Post into SellPost
         self.priceAndShipping.text = [NSString stringWithFormat:@"$%@ + $%@ shipping", sellPost.price, sellPost.shippingCost];
         self.contactInfo.text = sellPost.contactInfo;
         
@@ -63,13 +65,14 @@
             self.location.text = [NSString stringWithFormat:@"Ships from %@", self.post.locationName];
         }
     }
-    else {
+    else { // post is a regular post
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
         self.location.text = self.post.locationName;
     }
 }
 
+// send post to AccountProfile when the profile image was tapped
 - (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
     [self.delegate postCell:self didTap:self.post.author];
 }

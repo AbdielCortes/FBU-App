@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *whereShip;
 
 @property (strong, nonatomic) NSString *locationName;
-@property (nonatomic) BOOL hasLocation;
+@property (nonatomic) BOOL hasLocation; // tells us if the user has tagged a location
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -76,6 +76,7 @@
     self.contactInfoTextView.layer.cornerRadius = 5.0f;
 }
 
+// opens the image gallery to pick an image and then set it as the post's image
 - (IBAction)tappedChooseImage:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -85,6 +86,7 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
+// opens camera to take a picture and then set it as the post's image
 - (IBAction)tappedTakePhoto:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -95,7 +97,7 @@
         
         [self presentViewController:imagePickerVC animated:YES completion:nil];
     }
-    else { // if camera not available, show error pop up
+    else { // if camera is not available, show error pop up
         [Utilities showOkAlert:self withTitle:@"Camera Not Available" withMessage:@"The camera is not available at the moment, chose an image instead."];
     }
 }
@@ -126,10 +128,10 @@
         self.postLocationHeight.constant = 35;
         self.tagLoc.hidden = NO;
         
-        if ([self.locationName isEqualToString:@""]) {
+        if ([self.locationName isEqualToString:@""]) { // user didn't select a location
             self.tagLoc.text = @"Tag Location";
         }
-        else {
+        else { // user selected a location
             self.tagLoc.text = self.locationName;
         }
     }
@@ -156,9 +158,11 @@
             [self.hud hideAnimated:YES];
         }
         else {
+            // send post to Parse
             [SellPost postSellPost:self.postImage.image withCaption:self.captionTextView.text withPrice:self.priceField.text withShipping:self.shippingField.text withContactInfo:self.contactInfoTextView.text withOriginLocation:self.locationName withCompletion:^(BOOL succeded, NSError *error) {
                 
                 if (succeded) {
+                    // empty text fields and segue back to home feed
                     self.postImage.image = nil;
                     self.captionTextView.text = @"";
                     
@@ -185,9 +189,11 @@
             [self.hud hideAnimated:YES];
         }
         else {
+            // send post to Parse
             [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withLocation:self.locationName withCompletion:^(BOOL succeded, NSError *error) {
 
                 if (succeded) {
+                    // empty text fields and segue back to home feed
                     self.postImage.image = nil;
                     self.captionTextView.text = @"";
                     
@@ -214,7 +220,7 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // shrink image resolution to make feel load faster
     UIImage *resizedImage = [Utilities resizeImage:editedImage withSize:CGSizeMake(450, 450)];
-    
+    // shows selected image
     self.postImage.image = resizedImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
@@ -222,13 +228,13 @@
 }
 
 - (void)mapViewController:(MapViewController *)controller withLocationName:(NSString *)name {
-    if (name) {
+    if (name) { // if name is not null then the user tagged a location
         self.tagLoc.text = name;
         self.whereShip.text = name;
         self.locationName = name;
         self.hasLocation = YES;
     }
-    else {
+    else { // the user opended the map view controller but didn't tag a location
         self.tagLoc.text = @"Tag Location";
         self.whereShip.text = @"Where is this item shipping from?";
         self.locationName = @"";
@@ -241,6 +247,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // segue to map view, assing delegate so that we can retrieve the info from the map view
     if ([segue.identifier  isEqual: @"TagLocationSegue"] || [segue.identifier  isEqual: @"ShippingLocationSegue"]) {
         MapViewController *mapVC = [segue destinationViewController];
         mapVC.delegate = self;

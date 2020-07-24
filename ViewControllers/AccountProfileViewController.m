@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
-@property (strong, nonatomic) NSMutableArray *following;
-@property (nonatomic) BOOL isFollowing;
+@property (strong, nonatomic) NSMutableArray *following;  // array that stores all the accounts that the user is followinf
+@property (nonatomic) BOOL isFollowing; // tells us if the user is already following this accounts
 
 @end
 
@@ -33,11 +33,12 @@
     if ([self.account.objectId isEqual:[PFUser currentUser].objectId]) { // user is not allowed to follow themself
         self.followButton.hidden = YES; // hide follow button so that the user can't click it
     }
-    else {
-        self.following = [PFUser currentUser][@"following"];
+    else { // user is not looking at their own profile
+        self.following = [PFUser currentUser][@"following"]; // get array of accounts that the user is following
         self.isFollowing = NO;
         if (self.following) { // if following array is not null
-            for (PFUser *accountToFollow in self.following) { // we search through the followed accounts to see if this account is already being followed by the user
+            // we search through the followed accounts to see if this account is already being followed by the user
+            for (PFUser *accountToFollow in self.following) {
                 if ([accountToFollow.objectId isEqual:self.account.objectId]) { // user is following this account
                     self.isFollowing = YES;
                     [self.followButton setTitle:@"Following" forState:UIControlStateNormal];

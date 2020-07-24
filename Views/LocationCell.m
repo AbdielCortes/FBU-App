@@ -29,11 +29,13 @@
     // set image
     NSArray *categories = location[@"categories"];
     if (categories && categories.count > 0) {
+        // create image url string
         NSDictionary *category = categories[0];
         NSString *urlPrefix = [category valueForKeyPath:@"icon.prefix"];
         NSString *urlSuffix = [category valueForKeyPath:@"icon.suffix"];
         NSString *urlString = [NSString stringWithFormat:@"%@bg_32%@", urlPrefix, urlSuffix];
 
+        // get image using url and AFNetworking
         NSURL *url = [NSURL URLWithString:urlString];
         self.categoryImage.layer.cornerRadius = 10.0f;
         [self.categoryImage setImageWithURL:url];

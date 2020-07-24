@@ -46,8 +46,11 @@
     // Setting labels and images to their proper values
     self.username.text = self.post.author.username;
     self.caption.text = self.post.caption;
+    // converts date into a string that says how long ago the post was created
+    // example: "2 hours ago"
     self.timeSinceCreation.text = self.post.createdAt.timeAgoSinceNow;
     
+    // use formatter to show the date when the post was created
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterLongStyle;
     formatter.timeStyle = NSDateFormatterShortStyle;
@@ -88,6 +91,7 @@
     }
 }
 
+// send post to AccountProfile when the profile image was tapped
 - (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
     [self.delegate postDetails:self didTap:self.post.author];
 }
@@ -101,6 +105,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // segue to AccountProfile view
     if ([segue.identifier  isEqual: @"DetailsProfileSegue"]) {
         AccountProfileViewController *accountProfileVC = [segue destinationViewController];
         accountProfileVC.account = (PFUser *)sender;

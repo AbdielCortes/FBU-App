@@ -42,6 +42,7 @@
     self.contactInfoTextView.layer.cornerRadius = 5.0f;
 }
 
+// open image gallery so that the user can pick a profile picture
 - (IBAction)tappedProfileImage:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -51,6 +52,7 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
+// sends updates user data to Parse
 - (IBAction)tappedConfirm:(id)sender {
     BOOL changed = NO; // keeps track of wether the user made a change or not
     
@@ -89,10 +91,10 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // shrink image resolution to make feel load faster
     UIImage *resizedImage = [Utilities resizeImage:editedImage withSize:CGSizeMake(450, 450)];
-    
+    // shows selected image
     self.profileImage.image = resizedImage;
     
-    // Dismiss UIImagePickerController to go back to your original view controller
+    // dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

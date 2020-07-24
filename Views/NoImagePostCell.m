@@ -40,6 +40,7 @@
     self.location.text = self.post.locationName;;
 }
 
+// send post to AccountProfile when the profile image was tapped
 - (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
     [self.delegate noImagePostCell:self didTap:self.post.author];
 }

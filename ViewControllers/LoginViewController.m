@@ -58,6 +58,7 @@
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     
+    // sends loggin info to Parse
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);

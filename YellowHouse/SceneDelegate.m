@@ -21,7 +21,7 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
-    // persists user login
+    // persists Parse user login and sets the first view controller to the tab bar controller
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *homeFeedViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];

@@ -45,6 +45,7 @@
     self.tagLocationButton.hidden = NO;
 }
 
+// uses CLLocation manager to get the user's current location
 -(void)getCurrentLocation {
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
@@ -88,6 +89,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// drops pin on selected location
 - (void)locationViewController:(LocationViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude withName:name{
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
     
@@ -106,6 +108,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // segue to location view
     if ([segue.identifier  isEqual: @"LocationSegue"]) {
         LocationViewController *locationVC = [segue destinationViewController];
         locationVC.delegate = self;

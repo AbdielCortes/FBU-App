@@ -10,7 +10,7 @@
 
 @implementation Utilities
 
-// Shows a pop up alert with only an ok option
+// shows a pop up alert with only an ok option
 + (void)showOkAlert:(UIViewController *)viewController withTitle:(NSString *)title  withMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
 
@@ -20,6 +20,7 @@
     [viewController presentViewController:alert animated:YES completion:^{}];
 }
 
+// takes an image and resizes it so that its smaller and therefore takes up less memory and loads faster
 + (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -34,7 +35,7 @@
     return newImage;
 }
 
-// Takes UImage and returns a PFFile
+// takes UImage and returns a PFFile
 // used for sending images to Parse
 + (PFFileObject *)getPFFileFromImage:(UIImage * _Nullable)image {
     // check if image is not nil

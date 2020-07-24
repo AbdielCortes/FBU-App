@@ -5,6 +5,10 @@
 //  Created by zurken on 7/14/20.
 //  Copyright © 2020 Abdiel Cortes. All rights reserved.
 //
+//  Post is a PFObject used to store all the data in a post using Parse. A post object is first
+//  created locally and then sent to the parse database. An image is stored as a file and in order to
+//  convert it into an image we use ParseUI.
+//
 
 #import <Parse/Parse.h>
 
@@ -22,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL hasImage;
 @property (nonatomic) BOOL isSellPost;
 
+// creates post object and sends it to parses
 + (void)postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withLocation:(NSString * _Nullable)location withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
 @end

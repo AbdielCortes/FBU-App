@@ -5,6 +5,10 @@
 //  Created by zurken on 7/17/20.
 //  Copyright © 2020 Abdiel Cortes. All rights reserved.
 //
+//  Shows the profile image, username, and contact info of the account that was selected.
+//  Shows a follow/unfollow button, that allows user to follow the account or unfollow them if
+//  they were already following the account.
+//
 
 #import <UIKit/UIKit.h>
 #import "Post.h"

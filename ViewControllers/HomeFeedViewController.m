@@ -20,6 +20,7 @@
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PostCellDelegate, NoImagePostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (assign, nonatomic) BOOL isMoreDataLoading; // is a Parse network request running?
 @property (assign, nonatomic) NSInteger querieLimit; // how many posts we're getting from parse
 @property (assign, nonatomic) BOOL morePosts; // determines wether we have already gotten all the posts from parse
@@ -77,14 +78,14 @@
     Post *post = self.posts[indexPath.row];
     
     UITableViewCell *cell;
-    if (post.hasImage) {
-        cell = [PostCell new];
+    if (post.hasImage) { // post has an image so we use PostCell
+        cell = [PostCell new]; // cast cell to PostCell
         cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
         [(PostCell *)cell setPost:post];
         ((PostCell *)cell).delegate = self;
     }
-    else {
-        cell = [NoImagePostCell new];
+    else { // post doesn't have an image so we use NoImagePostCell
+        cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
         cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
         [(NoImagePostCell *)cell setPost:post];
         ((NoImagePostCell *)cell).delegate = self;
@@ -94,13 +95,14 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-     if(!self.isMoreDataLoading){
+    // we first check isMoreDataLoading because we don't want to call this function again until the previous call is done
+     if (!self.isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
         // When the user has scrolled past the threshold, start requesting
-        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+        if (scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = YES;
             
             if (self.morePosts) { // if there are more posts to be found
@@ -127,15 +129,15 @@
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            if (self.refreshed) {
+            if (self.refreshed) { // if refresh was called
                 self.posts = posts; // update posts array
-                self.refreshed = NO;
+                self.refreshed = NO; // reset it so that refresh can be called again
             }
             else if (self.posts.count == posts.count) { // if fetch post got called but it didn'f find any extra posts
                 self.morePosts = NO; // sets more posts to NO so that scrollViewDidScroll wont call fetch posts
             }
             else { // else fetch posts found more posts
-                self.morePosts = YES;
+                self.morePosts = YES; // since this time we found more posts, then we can keep searching
                 self.posts = posts; // update posts array
             }
             
@@ -155,6 +157,7 @@
 }
 
 - (void)refreshPosts {
+    // raise flag saying that refreshPosts was called
     self.refreshed = YES;
     // resets querie limit to 10 so that it wont load the entire feed again, but just the first 10 posts
     self.querieLimit = 10;
@@ -162,6 +165,7 @@
     [self fetchPosts];
 }
 
+// logs the user out and sends them to the login screen
 - (IBAction)tappedLogOut:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -171,10 +175,12 @@
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) { }];
 }
 
+// tapping on a PostCell profile image sends you to that account's profile
 - (void)postCell:(nonnull PostCell *)postCell didTap:(nonnull PFUser *)user {
     [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
 }
 
+// tapping on a NoImagePostCell profile image sends you to that account's profile
 - (void)noImagePostCell:(NoImagePostCell *)noImagePostCell didTap:(PFUser *)user {
     [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
 }
@@ -184,6 +190,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // segue to post details view
     if ([segue.identifier  isEqual: @"PostCellDetails"] || [segue.identifier  isEqual: @"NoImagePostCellDetails"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:tappedCell];
@@ -191,6 +198,7 @@
         PostDetailsViewController *postDetailsVC = [segue destinationViewController];
         postDetailsVC.post = post;
     }
+    // segue to account profile view
     else if ([segue.identifier  isEqual: @"AccountProfileSegue"]) {
         AccountProfileViewController *accountProfileVC = [segue destinationViewController];
         accountProfileVC.account = (PFUser *)sender;

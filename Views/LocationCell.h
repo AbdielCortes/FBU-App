@@ -5,6 +5,9 @@
 //  Created by zurken on 7/21/20.
 //  Copyright © 2020 Abdiel Cortes. All rights reserved.
 //
+//  LocationCell is an UITableViewCell used in the LocationViewController. It is used
+//  to display the location info recieved from the Foursquare API.
+//
 
 #import <UIKit/UIKit.h>
 

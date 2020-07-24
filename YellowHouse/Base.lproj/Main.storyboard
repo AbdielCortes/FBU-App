@@ -426,8 +426,8 @@
                                     <constraint firstAttribute="width" constant="85" id="YdI-eZ-lbo"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-wU-Un5">
-                                <rect key="frame" x="120" y="146" width="274" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-wU-Un5">
+                                <rect key="frame" x="120" y="146" width="274" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1092,7 +1092,7 @@
             </objects>
             <point key="canvasLocation" x="5956.521739130435" y="115.84821428571428"/>
         </scene>
-        <!--Tag Location-->
+        <!--Near Me-->
         <scene sceneID="6b1-U4-K57">
             <objects>
                 <viewController id="3Cd-8H-2J9" customClass="LocationViewController" sceneMemberID="viewController">
@@ -1166,7 +1166,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XSl-gD-qeD"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tag Location" id="oGp-Nt-vaG"/>
+                    <navigationItem key="navigationItem" title="Near Me" id="oGp-Nt-vaG"/>
                     <connections>
                         <outlet property="searchBar" destination="O21-3E-h1q" id="f01-LU-NmR"/>
                         <outlet property="tableView" destination="AcU-jx-XBy" id="wNQ-uP-ak4"/>
@@ -1216,8 +1216,8 @@
                                     <constraint firstAttribute="height" constant="85" id="aNX-jw-myG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-9Z-fRr">
-                                <rect key="frame" x="120" y="146" width="274" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-9Z-fRr">
+                                <rect key="frame" x="120" y="146" width="274" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

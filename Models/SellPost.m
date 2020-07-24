@@ -19,7 +19,7 @@
         
     SellPost *newPost = [SellPost new];
     newPost.author = [PFUser currentUser];
-    newPost.image = [Utilities getPFFileFromImage:image];
+    newPost.image = [Utilities getPFFileFromImage:image]; // convert image into a file so that we can store it in Parse
     newPost.hasImage = YES;
     newPost.caption = caption;
     newPost.price = price;
@@ -37,6 +37,7 @@
         newPost.locationName = @"";
     }
     
+    // send sell post to Parse
     [newPost saveInBackgroundWithBlock:completion];
 }
 

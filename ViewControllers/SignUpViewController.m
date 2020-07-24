@@ -68,9 +68,12 @@
     newUser.email = self.emailField.text;
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
+    // sets profile image to default image
+    // having a nil profile image causes UI errors
     UIImage *profileImage = [UIImage imageNamed:@"profile"];
     newUser[@"profileImage"] = [Utilities getPFFileFromImage:profileImage];
     
+    // sends info to parse, creates an account and logs in user
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);

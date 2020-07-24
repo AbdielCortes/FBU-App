@@ -49,7 +49,7 @@ static NSString * const clientSecret = @"key";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // This is the selected venue
+    // get location coordinates and name from selected table view cell
     NSDictionary *venue = self.results[indexPath.row];
     NSNumber *lat = [venue valueForKeyPath:@"location.lat"];
     NSNumber *lng = [venue valueForKeyPath:@"location.lng"];
@@ -68,6 +68,7 @@ static NSString * const clientSecret = @"key";
     [self fetchLocationsWithQuery:searchBar.text nearLatitude:self.latitude longitude:self.longitude];
 }
 
+// fetch locations from the Foursquare API using the coordinates of the user's current location
 - (void)fetchLocationsWithQuery:(NSString *)query nearLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
     NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
     NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&ll=%@,%@&query=%@", clientID, clientSecret, latitude, longitude, query];

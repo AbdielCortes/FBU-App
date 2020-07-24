@@ -32,6 +32,7 @@
     
     if (image) {
         newPost.hasImage = YES;
+        // convert image into a file so that we can store it in Parse
         newPost.image = [Utilities getPFFileFromImage:image];
     }
     else {
@@ -51,6 +52,7 @@
         newPost.locationName = @"";
     }
     
+    // send post to Parse
     [newPost saveInBackgroundWithBlock:completion];
 }
 

@@ -30,6 +30,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
+    // call fetch user here so that when the user changes his info and comes back
+    // the viewl will reload the user data
     [self fetchUserData];
 }
 
