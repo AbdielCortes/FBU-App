@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 @import Parse;
 
-@interface PostDetailsViewController () <PostDetailsDelegate>
+@interface PostDetailsViewController () <PostDetailsDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
@@ -28,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -40,6 +41,12 @@
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedProfileImage:)];
     [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImage setUserInteractionEnabled:YES];
+    
+    // set up scroll view for image zooming
+    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 6.0;
+    self.scrollView.contentSize = CGSizeMake(450, 450);
+    self.scrollView.delegate = self;
     
     self.delegate = self;
     
@@ -89,6 +96,11 @@
         self.priceAndShipping.text = @"";
         self.contactInfo.text = @"";
     }
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.postImage;
 }
 
 // send post to AccountProfile when the profile image was tapped
