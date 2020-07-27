@@ -56,17 +56,19 @@
     self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
     
     // hide all the sell post fields until the user select that he wants to make a sell post
-    self.priceField.hidden = YES;
-    self.shippingField.hidden = YES;
-    self.contactInfoTextView.hidden = YES;
-    self.shippingLocation.hidden = YES;
-    self.whereShip.hidden = YES;
+    self.priceField.alpha = 0;
+    self.shippingField.alpha = 0;
+    self.contactInfoTextView.alpha = 0;
+    self.shippingLocation.alpha = 0;
+    self.whereShip.alpha = 0;
     
-    // show tag location button
-    self.postLocation.hidden = NO;
+//    // show tag location button
+    self.postLocation.alpha = 1;
     self.postLocationHeight.constant = 35;
-    self.tagLoc.hidden = NO;
+    self.tagLoc.alpha = 1;
     self.tagLoc.text = @"Tag Location";
+    
+    // has no location by default
     self.locationName = @"";
     self.hasLocation = NO;
     
@@ -104,30 +106,35 @@
 
 - (IBAction)tappedSellPost:(id)sender {
     if (self.sellPostSwitch.isOn) { // when switch is on show all the sell post fields
-        self.priceField.hidden = NO;
-        self.shippingField.hidden = NO;
-        self.contactInfoTextView.hidden = NO;
-        self.shippingLocation.hidden = NO;
-        self.whereShip.hidden = NO;
-        
-        // hide tag location button
-        self.postLocation.hidden = YES;
-        self.postLocationHeight.constant = 0;
-        self.tagLoc.hidden = YES;
+        [UIView animateWithDuration:0.8 animations:^{
+            self.priceField.alpha = 1;
+            self.shippingField.alpha = 1;
+            self.contactInfoTextView.alpha = 1;
+            self.shippingLocation.alpha = 1;
+            self.whereShip.alpha = 1;
+            
+            self.postLocation.alpha = 0;
+            self.postLocationHeight.constant = 0;
+            self.tagLoc.alpha = 0;
+            
+            [self.view layoutIfNeeded];
+        }];
         self.tagLoc.text = @"";
     }
     else { // when switch is off hide all the sell post fields
-        self.priceField.hidden = YES;
-        self.shippingField.hidden = YES;
-        self.contactInfoTextView.hidden = YES;
-        self.shippingLocation.hidden = YES;
-        self.whereShip.hidden = YES;
-        
-        // show tag location button
-        self.postLocation.hidden = NO;
-        self.postLocationHeight.constant = 35;
-        self.tagLoc.hidden = NO;
-        
+        [UIView animateWithDuration:0.8 animations:^{
+            self.priceField.alpha = 0;
+            self.shippingField.alpha = 0;
+            self.contactInfoTextView.alpha = 0;
+            self.shippingLocation.alpha = 0;
+            self.whereShip.alpha = 0;
+            
+            self.postLocation.alpha = 1;
+            self.postLocationHeight.constant = 35;
+            self.tagLoc.alpha = 1;
+            
+            [self.view layoutIfNeeded];
+        }];
         if ([self.locationName isEqualToString:@""]) { // user didn't select a location
             self.tagLoc.text = @"Tag Location";
         }
