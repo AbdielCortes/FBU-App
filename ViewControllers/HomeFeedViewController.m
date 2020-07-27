@@ -62,8 +62,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    [self fetchPosts];
-    
     NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
     if (selected) {
         [self.tableView deselectRowAtIndexPath:selected animated:YES];

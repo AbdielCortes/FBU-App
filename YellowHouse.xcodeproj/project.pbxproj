@@ -10,6 +10,8 @@
 		46BD233FD8AEEB0881B33C45 /* Pods_YellowHouse_YellowHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81C93B2D96F8BA62285B961 /* Pods_YellowHouse_YellowHouseUITests.framework */; };
 		80166EA424C25F6B00EDD732 /* NoImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80166EA324C25F6B00EDD732 /* NoImagePostCell.m */; };
 		80166EA724C2897000EDD732 /* AccountProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80166EA624C2897000EDD732 /* AccountProfileViewController.m */; };
+		801DF1C424CF445C000DB9AD /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 801DF1C324CF445C000DB9AD /* DiscoverViewController.m */; };
+		801DF1C724CF4A6C000DB9AD /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 801DF1C624CF4A6C000DB9AD /* AccountCell.m */; };
 		802CA9A124C1018900C59ACC /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A024C1018900C59ACC /* UserProfileViewController.m */; };
 		802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A324C10A5900C59ACC /* SettingsViewController.m */; };
 		8083221424BE299800734319 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221324BE299800734319 /* CreatePostViewController.m */; };
@@ -64,6 +66,10 @@
 		80166EA324C25F6B00EDD732 /* NoImagePostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoImagePostCell.m; sourceTree = "<group>"; };
 		80166EA524C2897000EDD732 /* AccountProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountProfileViewController.h; sourceTree = "<group>"; };
 		80166EA624C2897000EDD732 /* AccountProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountProfileViewController.m; sourceTree = "<group>"; };
+		801DF1C224CF445C000DB9AD /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		801DF1C324CF445C000DB9AD /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		801DF1C524CF4A6C000DB9AD /* AccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		801DF1C624CF4A6C000DB9AD /* AccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
 		802CA99F24C1018900C59ACC /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		802CA9A024C1018900C59ACC /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		802CA9A224C10A5900C59ACC /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 				809881FB24C7987A00272950 /* MapViewController.m */,
 				809881FD24C7A0AD00272950 /* LocationViewController.h */,
 				809881FE24C7A0AD00272950 /* LocationViewController.m */,
+				801DF1C224CF445C000DB9AD /* DiscoverViewController.h */,
+				801DF1C324CF445C000DB9AD /* DiscoverViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +271,8 @@
 				80166EA324C25F6B00EDD732 /* NoImagePostCell.m */,
 				8098820024C7A3DB00272950 /* LocationCell.h */,
 				8098820124C7A3DB00272950 /* LocationCell.m */,
+				801DF1C524CF4A6C000DB9AD /* AccountCell.h */,
+				801DF1C624CF4A6C000DB9AD /* AccountCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -523,6 +533,8 @@
 				809881FF24C7A0AD00272950 /* LocationViewController.m in Sources */,
 				809E85E324C60C4200E06A47 /* PostDetailsViewController.m in Sources */,
 				808D13C024BCE3DF000EF2E9 /* LoginViewController.m in Sources */,
+				801DF1C724CF4A6C000DB9AD /* AccountCell.m in Sources */,
+				801DF1C424CF445C000DB9AD /* DiscoverViewController.m in Sources */,
 				80AEFF4324BF9FB300F25B4E /* SellPost.m in Sources */,
 				808D13C924BD12F5000EF2E9 /* HomeFeedViewController.m in Sources */,
 				80166EA724C2897000EDD732 /* AccountProfileViewController.m in Sources */,
