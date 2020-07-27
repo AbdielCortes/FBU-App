@@ -47,6 +47,7 @@
     self.scrollView.maximumZoomScale = 6.0;
     self.scrollView.contentSize = CGSizeMake(450, 450);
     self.scrollView.delegate = self;
+    self.scrollView.layer.cornerRadius = 5.0f;
     
     self.delegate = self;
     
