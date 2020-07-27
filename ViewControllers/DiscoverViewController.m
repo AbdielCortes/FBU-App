@@ -61,6 +61,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self fetchUsersWithQuery:searchBar.text];
+    [searchBar resignFirstResponder];
 }
 
 - (void)fetchUsersWithQuery:(NSString *)query {

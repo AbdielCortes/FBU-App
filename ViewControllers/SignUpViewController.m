@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface SignUpViewController ()
+@interface SignUpViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -36,6 +36,30 @@
     [self.view addSubview:self.hud];
     
     self.signUpButton.layer.cornerRadius = 5.0f;
+    
+    self.emailField.delegate = self;
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    self.confirmPasswordField.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.emailField) {
+        [self.emailField resignFirstResponder];
+        [self.usernameField becomeFirstResponder];
+    }
+    else if (textField == self.usernameField) {
+        [self.emailField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+    }
+    else if (textField == self.passwordField) {
+        [self.passwordField resignFirstResponder];
+        [self.confirmPasswordField becomeFirstResponder];
+    }
+    else if (textField == self.confirmPasswordField) {
+        [self.confirmPasswordField resignFirstResponder];
+    }
+    return YES;
 }
 
 - (IBAction)tappedSignUp:(id)sender {

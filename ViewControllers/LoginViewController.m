@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -36,6 +36,21 @@
     
     self.loginButton.layer.cornerRadius = 5.0f;
     self.signUpButton.layer.cornerRadius = 5.0f;
+    
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.usernameField) {
+        [textField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+    }
+    else if (textField == self.passwordField) {
+        [textField resignFirstResponder];
+    }
+    
+    return YES;
 }
 
 - (IBAction)tappedLogin:(id)sender {
