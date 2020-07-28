@@ -48,6 +48,17 @@
     }
 }
 
+// follows the account if the user is not already following it, or unfollows the account
+// if the user is already following it
+//
+// if the user is not following the account, then:
+//    if  the following array is not null, then add the account
+//    else create an array and add the account
+//
+// else the user is already following this account:
+//    for loop to remove this account from the array
+//
+// save following array in database
 - (IBAction)tappedFollow:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
 

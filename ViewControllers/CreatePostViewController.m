@@ -15,7 +15,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UITextView+Placeholder.h>
 
-@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MapViewControllerDelegate>
+@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate,  MapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
@@ -29,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *contactInfoTextView;
 @property (weak, nonatomic) IBOutlet UIButton *shippingLocation;
 @property (weak, nonatomic) IBOutlet UILabel *whereShip;
+
+@property (nonatomic) int captionTextLimit;
+@property (nonatomic) int contactInfoTextLimit;
+@property (nonatomic) BOOL isOverTextLimit;
 
 @property (strong, nonatomic) NSString *locationName;
 @property (nonatomic) BOOL hasLocation; // tells us if the user has tagged a location
@@ -76,6 +80,43 @@
     self.postImage.layer.cornerRadius = 5.0f;
     self.captionTextView.layer.cornerRadius = 5.0f;
     self.contactInfoTextView.layer.cornerRadius = 5.0f;
+    
+    self.captionTextView.delegate = self;
+    self.captionTextView.backgroundColor = [UIColor systemGray6Color];
+    self.captionTextLimit = 250;
+    self.contactInfoTextView.delegate = self;
+    self.contactInfoTextView.backgroundColor = [UIColor systemGray6Color];
+    self.contactInfoTextLimit = 80;
+    self.isOverTextLimit = NO;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (textView == self.captionTextView) { // editing caption
+        // get text that's currently in text view
+        NSString *currentText = [self.captionTextView.text stringByReplacingCharactersInRange:range withString:text];
+        if (currentText.length > self.captionTextLimit) { // text is longer than the character limit
+            self.captionTextView.backgroundColor = [UIColor colorWithRed:1 green:0.47 blue:0.47 alpha:0.8];
+            self.isOverTextLimit = YES;
+        }
+        else {
+            self.captionTextView.backgroundColor = [UIColor systemGray6Color];
+            self.isOverTextLimit = NO;
+        }
+    }
+    else if (textView == self.contactInfoTextView) { // edition contact info
+        // get text that's currently in text view
+        NSString *currentText = [self.contactInfoTextView.text stringByReplacingCharactersInRange:range withString:text];
+        if (currentText.length > self.contactInfoTextLimit) {
+            self.contactInfoTextView.backgroundColor = [UIColor colorWithRed:1 green:0.47 blue:0.47 alpha:0.8];
+            self.isOverTextLimit = YES;
+        }
+        else {
+            self.contactInfoTextView.backgroundColor = [UIColor systemGray6Color];
+            self.isOverTextLimit = NO;
+        }
+    }
+    
+    return YES;
 }
 
 // opens the image gallery to pick an image and then set it as the post's image
@@ -148,7 +189,11 @@
     [self.hud showAnimated:YES]; // show progress pop up
     
     if (self.sellPostSwitch.isOn) { // user selected to create a sell post
-        if ([self.priceField.text isEqual:@""]) { // price field has no text
+        if (self.isOverTextLimit) { // text is exceeding the character limit
+            [Utilities showOkAlert:self withTitle:@"Over Text Limit" withMessage:@"Your caption or contact info is exceeding the character limit."];
+            [self.hud hideAnimated:YES];
+        }
+        else if ([self.priceField.text isEqual:@""]) { // price field has no text
             [Utilities showOkAlert:self withTitle:@"Price Required" withMessage:@"In order to create a sell post you must provide a price."];
             [self.hud hideAnimated:YES];
         }
@@ -190,8 +235,11 @@
         }
     }
     else {
-        // user didn't provide image or caption
-        if (self.postImage.image == nil && [self.captionTextView.text isEqual:@""]) {
+        if (self.isOverTextLimit) { // text is exceeding the character limit
+            [Utilities showOkAlert:self withTitle:@"Over Text Limit" withMessage:@"Your caption or contact info is exceeding the character limit."];
+            [self.hud hideAnimated:YES];
+        }
+        else if (self.postImage.image == nil && [self.captionTextView.text isEqual:@""]) { // user didn't provide image or caption
             [Utilities showOkAlert:self withTitle:@"Image or Caption Required" withMessage:@"In order to create a post you must provide an image or a caption."];
             [self.hud hideAnimated:YES];
         }

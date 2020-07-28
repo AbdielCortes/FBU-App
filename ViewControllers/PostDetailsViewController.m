@@ -83,7 +83,7 @@
         }];
     }
     else { // post dosen't have an image
-        [self.postImage removeFromSuperview]; // remove image view from view
+        [self.scrollView removeFromSuperview]; // remove image scroll view from view
     }
     
     self.location.text = self.post.locationName;;
