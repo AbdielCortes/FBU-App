@@ -1519,39 +1519,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-2f-3GI">
-                                <rect key="frame" x="120" y="108" width="274" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="eGv-Ga-IsY" customClass="PFImageView">
-                                <rect key="frame" x="20" y="108" width="85" height="85"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="Bio-kn-L5p"/>
-                                    <constraint firstAttribute="height" constant="85" id="aNX-jw-myG"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-9Z-fRr">
-                                <rect key="frame" x="120" y="146" width="274" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijp-Ja-xBv">
-                                <rect key="frame" x="0.0" y="201" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Qle-hW-eNw"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dCT-V5-Asx">
-                                <rect key="frame" x="0.0" y="202" width="414" height="694"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="115" id="or3-kJ-aic" customClass="ProfileCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="or3-kJ-aic" id="42R-4w-X0Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="TGO-yn-uB3" customClass="PFImageView">
+                                                    <rect key="frame" x="20" y="15" width="85" height="85"/>
+                                                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="Ju3-bz-jZG"/>
+                                                        <constraint firstAttribute="height" constant="85" id="LPi-bc-XpX"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-Zf-wJI">
+                                                    <rect key="frame" x="113" y="15" width="281" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-5u-lHg">
+                                                    <rect key="frame" x="113" y="47.5" width="281" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lVa-Zf-wJI" firstAttribute="top" secondItem="TGO-yn-uB3" secondAttribute="top" id="3cl-Y1-Gda"/>
+                                                <constraint firstAttribute="bottom" secondItem="TGO-yn-uB3" secondAttribute="bottom" priority="500" constant="15" id="5Z8-Dc-GMt"/>
+                                                <constraint firstItem="A4I-5u-lHg" firstAttribute="top" secondItem="lVa-Zf-wJI" secondAttribute="bottom" constant="2.5" id="Ero-fj-Kbh"/>
+                                                <constraint firstAttribute="trailing" secondItem="A4I-5u-lHg" secondAttribute="trailing" constant="20" id="WNW-pr-59O"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="A4I-5u-lHg" secondAttribute="bottom" priority="800" constant="15" id="dIf-8m-9n4"/>
+                                                <constraint firstItem="TGO-yn-uB3" firstAttribute="leading" secondItem="42R-4w-X0Z" secondAttribute="leading" constant="20" id="fLg-q2-jmI"/>
+                                                <constraint firstItem="TGO-yn-uB3" firstAttribute="top" secondItem="42R-4w-X0Z" secondAttribute="top" constant="15" id="fbm-aH-cjb"/>
+                                                <constraint firstItem="A4I-5u-lHg" firstAttribute="leading" secondItem="TGO-yn-uB3" secondAttribute="trailing" constant="8" id="tIa-2I-IPb"/>
+                                                <constraint firstItem="lVa-Zf-wJI" firstAttribute="leading" secondItem="TGO-yn-uB3" secondAttribute="trailing" constant="8" id="wBa-Oa-vMR"/>
+                                                <constraint firstAttribute="trailing" secondItem="lVa-Zf-wJI" secondAttribute="trailing" constant="20" id="wU0-5h-tYy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactInfo" destination="A4I-5u-lHg" id="HfL-FX-O5a"/>
+                                            <outlet property="profileImage" destination="TGO-yn-uB3" id="o8Z-Ar-9Y7"/>
+                                            <outlet property="username" destination="lVa-Zf-wJI" id="DBO-tv-mb8"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="550" id="jNY-N6-73v" customClass="PostCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="550"/>
+                                        <rect key="frame" x="0.0" y="143" width="414" height="550"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jNY-N6-73v" id="ap0-0T-Jnr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
@@ -1707,7 +1727,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoImagePostCell" rowHeight="134" id="Ey0-EQ-fS4" customClass="NoImagePostCell">
-                                        <rect key="frame" x="0.0" y="578" width="414" height="134"/>
+                                        <rect key="frame" x="0.0" y="693" width="414" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ey0-EQ-fS4" id="gwd-Th-NcR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
@@ -1835,22 +1855,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="U9r-2f-3GI" firstAttribute="top" secondItem="eGv-Ga-IsY" secondAttribute="top" id="1jx-Sq-ZZH"/>
-                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="top" secondItem="U9r-2f-3GI" secondAttribute="bottom" constant="8" id="23d-8Z-Gj1"/>
-                            <constraint firstItem="eGv-Ga-IsY" firstAttribute="top" secondItem="hg0-mu-FoU" secondAttribute="topMargin" constant="20" id="3Oe-aZ-HPS"/>
-                            <constraint firstItem="ijp-Ja-xBv" firstAttribute="leading" secondItem="hg0-mu-FoU" secondAttribute="leading" id="3PD-66-5Sp"/>
-                            <constraint firstItem="ijp-Ja-xBv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cIh-9Z-fRr" secondAttribute="bottom" constant="15" id="3u3-Xp-hoJ"/>
-                            <constraint firstItem="U9r-2f-3GI" firstAttribute="trailing" secondItem="hg0-mu-FoU" secondAttribute="trailingMargin" id="8Uq-wG-UlG"/>
                             <constraint firstAttribute="trailing" secondItem="dCT-V5-Asx" secondAttribute="trailing" id="99d-YK-lyX"/>
-                            <constraint firstItem="eGv-Ga-IsY" firstAttribute="leading" secondItem="hg0-mu-FoU" secondAttribute="leadingMargin" id="E9l-Fi-2an"/>
-                            <constraint firstItem="dCT-V5-Asx" firstAttribute="top" secondItem="ijp-Ja-xBv" secondAttribute="bottom" id="JEG-8w-5j3"/>
                             <constraint firstItem="dCT-V5-Asx" firstAttribute="leading" secondItem="hg0-mu-FoU" secondAttribute="leading" id="Kcb-Wv-Ml7"/>
-                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="trailing" secondItem="hg0-mu-FoU" secondAttribute="trailingMargin" id="MUH-71-z4T"/>
-                            <constraint firstItem="ijp-Ja-xBv" firstAttribute="top" secondItem="eGv-Ga-IsY" secondAttribute="bottom" priority="500" constant="8" id="MnI-XR-VwA"/>
                             <constraint firstAttribute="bottom" secondItem="dCT-V5-Asx" secondAttribute="bottom" id="UZg-yq-Oh1"/>
-                            <constraint firstItem="U9r-2f-3GI" firstAttribute="leading" secondItem="eGv-Ga-IsY" secondAttribute="trailing" constant="15" id="VuJ-rK-7IT"/>
-                            <constraint firstItem="cIh-9Z-fRr" firstAttribute="leading" secondItem="U9r-2f-3GI" secondAttribute="leading" id="fN0-bZ-oNP"/>
-                            <constraint firstAttribute="trailing" secondItem="ijp-Ja-xBv" secondAttribute="trailing" id="meD-Xc-WAe"/>
+                            <constraint firstItem="dCT-V5-Asx" firstAttribute="top" secondItem="hg0-mu-FoU" secondAttribute="top" id="hr1-XO-G6A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VyI-Vs-hkz"/>
                     </view>
@@ -1862,10 +1870,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="contactInfo" destination="cIh-9Z-fRr" id="48Q-Hw-cqM"/>
-                        <outlet property="profileImage" destination="eGv-Ga-IsY" id="rLE-ig-U9v"/>
                         <outlet property="tableView" destination="dCT-V5-Asx" id="wVj-fX-h6P"/>
-                        <outlet property="username" destination="U9r-2f-3GI" id="cjP-K5-pd3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ef1-LD-7jf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2038,7 +2043,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="G90-Ob-cS5"/>
         <segue reference="25l-bZ-h1k"/>
-        <segue reference="ASS-mr-sgJ"/>
+        <segue reference="Y8o-pV-5Tb"/>
         <segue reference="vJ2-wd-0QC"/>
     </inferredMetricsTieBreakers>
     <resources>

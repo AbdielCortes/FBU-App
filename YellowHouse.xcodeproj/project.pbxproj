@@ -12,6 +12,7 @@
 		80166EA724C2897000EDD732 /* AccountProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80166EA624C2897000EDD732 /* AccountProfileViewController.m */; };
 		801DF1C424CF445C000DB9AD /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 801DF1C324CF445C000DB9AD /* DiscoverViewController.m */; };
 		801DF1C724CF4A6C000DB9AD /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 801DF1C624CF4A6C000DB9AD /* AccountCell.m */; };
+		8023027224D1D11000660A9A /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8023027124D1D11000660A9A /* ProfileCell.m */; };
 		802CA9A124C1018900C59ACC /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A024C1018900C59ACC /* UserProfileViewController.m */; };
 		802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802CA9A324C10A5900C59ACC /* SettingsViewController.m */; };
 		8083221424BE299800734319 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083221324BE299800734319 /* CreatePostViewController.m */; };
@@ -70,6 +71,8 @@
 		801DF1C324CF445C000DB9AD /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		801DF1C524CF4A6C000DB9AD /* AccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
 		801DF1C624CF4A6C000DB9AD /* AccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		8023027024D1D11000660A9A /* ProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		8023027124D1D11000660A9A /* ProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		802CA99F24C1018900C59ACC /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		802CA9A024C1018900C59ACC /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		802CA9A224C10A5900C59ACC /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				8098820124C7A3DB00272950 /* LocationCell.m */,
 				801DF1C524CF4A6C000DB9AD /* AccountCell.h */,
 				801DF1C624CF4A6C000DB9AD /* AccountCell.m */,
+				8023027024D1D11000660A9A /* ProfileCell.h */,
+				8023027124D1D11000660A9A /* ProfileCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				80166EA424C25F6B00EDD732 /* NoImagePostCell.m in Sources */,
 				809881FC24C7987A00272950 /* MapViewController.m in Sources */,
 				802CA9A424C10A5900C59ACC /* SettingsViewController.m in Sources */,
+				8023027224D1D11000660A9A /* ProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

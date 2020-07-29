@@ -9,6 +9,7 @@
 #import "UserProfileViewController.h"
 #import "PostCell.h"
 #import "NoImagePostCell.h"
+#import "ProfileCell.h"
 #import "PostDetailsViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Parse/Parse.h>
@@ -16,16 +17,13 @@
 
 @interface UserProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UILabel *contactInfo;
-
-@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *posts;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -45,7 +43,10 @@
     
     [self fetchPosts];
 
-    [self fetchUserData];
+    // Pull up refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,7 +54,6 @@
 
     // call fetch user here so that when the user changes his info and comes back
     // the viewl will reload the user data
-    [self fetchUserData];
     
     NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
     if (selected) {
@@ -62,36 +62,40 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.posts.count;
+    return self.posts.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Post *post = self.posts[indexPath.row];
-    
-    UITableViewCell *cell;
-    if (post.hasImage) { // post has an image so we use PostCell
-        cell = [PostCell new]; // cast cell to PostCell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-        [(PostCell *)cell setPost:post];
+    if (indexPath.row == 0) {
+//        NSLog(@"%@", post.caption);
+        ProfileCell *header = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
+        [header setAccount:[PFUser currentUser]];
+        
+        return header;
     }
-    else { // post doesn't have an image so we use NoImagePostCell
-        cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
-        [(NoImagePostCell *)cell setPost:post];
+    else {
+        Post *post = self.posts[indexPath.row - 1];
+        
+        UITableViewCell *cell;
+        if (post.hasImage) { // post has an image so we use PostCell
+            cell = [PostCell new]; // cast cell to PostCell
+            cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+            [(PostCell *)cell setPost:post];
+        }
+        else { // post doesn't have an image so we use NoImagePostCell
+            cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
+            cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
+            [(NoImagePostCell *)cell setPost:post];
+        }
+        
+        return cell;
     }
-    
-    return cell;
 }
 
-- (void)fetchUserData {
-    PFUser *user = [PFUser currentUser];
-    
-    self.username.text = user.username;
-    self.contactInfo.text = user[@"contactInfo"];
-    
-    self.profileImage.file = user[@"profileImage"];
-    self.profileImage.layer.cornerRadius = 10.0f;
-    [self.profileImage loadInBackground];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) { // if tapped on profile cell, then run deselect animation
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)fetchPosts {
@@ -112,7 +116,9 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             self.posts = posts; // update posts array
+            
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             NSLog(@"Error fetching posts: %@", error);
