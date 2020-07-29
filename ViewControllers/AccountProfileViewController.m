@@ -10,26 +10,20 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "NoImagePostCell.h"
+#import "ProfileCell.h"
 #import "PostDetailsViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Parse/Parse.h>
 
 @interface AccountProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UILabel *contactInfo;
-
-@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (weak, nonatomic) IBOutlet UIButton *followButton;
-@property (strong, nonatomic) NSMutableArray *following;  // array that stores all the accounts that the user is followinf
-@property (nonatomic) BOOL isFollowing; // tells us if the user is already following this accounts
 
 @property (strong, nonatomic) NSArray *posts;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -49,33 +43,14 @@
     
     [self fetchPosts];
     
-    [self fetchUserData];
-    
-    self.followButton.hidden = NO;
-    if ([self.account.objectId isEqual:[PFUser currentUser].objectId]) { // user is not allowed to follow themself
-        self.followButton.hidden = YES; // hide follow button so that the user can't click it
-    }
-    else { // user is not looking at their own profile
-        self.following = [PFUser currentUser][@"following"]; // get array of accounts that the user is following
-        self.isFollowing = NO;
-        if (self.following) { // if following array is not null
-            // we search through the followed accounts to see if this account is already being followed by the user
-            for (PFUser *accountToFollow in self.following) {
-                if ([accountToFollow.objectId isEqual:self.account.objectId]) { // user is following this account
-                    self.isFollowing = YES;
-                    [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
-                }
-            }
-        }
-    }
+    // Pull up refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    // call fetch user here so that when the user changes his info and comes back
-    // the viewl will reload the user data
-    [self fetchUserData];
     
     NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
     if (selected) {
@@ -84,34 +59,40 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.posts.count;
+    return self.posts.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Post *post = self.posts[indexPath.row];
-    
-    UITableViewCell *cell;
-    if (post.hasImage) { // post has an image so we use PostCell
-        cell = [PostCell new]; // cast cell to PostCell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-        [(PostCell *)cell setPost:post];
+    if (indexPath.row == 0) {
+        ProfileCell *header = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
+        [header setAccount:self.account];
+        [header checkIfFollowing];
+        
+        return header;
     }
-    else { // post doesn't have an image so we use NoImagePostCell
-        cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
-        [(NoImagePostCell *)cell setPost:post];
+    else {
+        Post *post = self.posts[indexPath.row - 1];
+        
+        UITableViewCell *cell;
+        if (post.hasImage) { // post has an image so we use PostCell
+            cell = [PostCell new]; // cast cell to PostCell
+            cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+            [(PostCell *)cell setPost:post];
+        }
+        else { // post doesn't have an image so we use NoImagePostCell
+            cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
+            cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
+            [(NoImagePostCell *)cell setPost:post];
+        }
+        
+        return cell;
     }
-    
-    return cell;
 }
 
-- (void)fetchUserData {
-    self.username.text = self.account.username;
-    self.contactInfo.text = self.account[@"contactInfo"];
-    
-    self.profileImage.file = self.account[@"profileImage"];
-    self.profileImage.layer.cornerRadius = 10.0f;
-    [self.profileImage loadInBackground];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) { // if tapped on profile cell, then run deselect animation
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)fetchPosts {
@@ -132,7 +113,9 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             self.posts = posts; // update posts array
+            
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             NSLog(@"Error fetching posts: %@", error);
@@ -141,57 +124,6 @@
         // hide progress pop up
         // outside if/else because we want it to always hide no matter the result
         [self.hud hideAnimated:YES];
-    }];
-}
-
-// follows the account if the user is not already following it, or unfollows the account
-// if the user is already following it
-//
-// if the user is not following the account, then:
-//    if  the following array is not null, then add the account
-//    else create an array and add the account
-//
-// else the user is already following this account:
-//    for loop to remove this account from the array
-//
-// save following array in database
-- (IBAction)tappedFollow:(id)sender {
-    PFUser *currentUser = [PFUser currentUser];
-
-    if (!self.isFollowing) { // if user is not following this account
-        if (self.following) { // if following arra is not null (array is null when this is the first account the user follows)
-            [self.following addObject:self.account]; // add acount to array
-            currentUser[@"following"] = self.following; // send array to user
-        }
-        else { // this is the first account the user is following so the following array is null
-            NSMutableArray *newArray = [[NSMutableArray alloc] init]; // create array
-            [newArray addObject:self.account]; // add account
-            currentUser[@"following"] = newArray; // send array to user
-        }
-        
-        self.isFollowing = YES;
-        [self.followButton setTitle:@"Following" forState:UIControlStateNormal]; // change button text
-    }
-    else {
-        NSMutableArray *withoutAccount = [[NSMutableArray alloc] init]; // create new array to store all accounts except this one
-        for (PFUser *currentAccount in self.following) { // we search through the followed accounts to find this account
-            // if account is not equal to the account that we want to remove
-            if (![currentAccount.objectId isEqual:self.account.objectId]) {
-                [withoutAccount addObject:currentAccount]; // add account ot new array
-            }
-        }
-        
-        self.following = withoutAccount; // update following array
-        currentUser[@"following"] = withoutAccount; // send new array to user
-        self.isFollowing = NO;
-        [self.followButton setTitle:@"Follow" forState:UIControlStateNormal]; // change button text
-    }
-    
-    // save the changes to parse
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeded, NSError *error) {
-        if (error) {
-            NSLog(@"Error occured while changing user info: %@", error);
-        }
     }];
 }
 

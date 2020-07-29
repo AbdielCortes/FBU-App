@@ -19,7 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *followButtonHeight; // button height constraint
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *followButtonSpacing; // spacing between button and profile image
+@property (strong, nonatomic) NSMutableArray *following;  // array that stores all the accounts that the user is following
+@property (nonatomic) BOOL isFollowing; // tells us if the user is already following this accounts
+
 @property (strong, nonatomic) PFUser *account;
+
+- (void)checkIfFollowing; // sets to follow button to its correct function
 
 @end
 

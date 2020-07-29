@@ -37,7 +37,7 @@
     [self.view addSubview:self.hud];
     
     // Adding place holder text to contact info text view
-    self.contactInfoTextView.placeholder = @"Contact info";
+    self.contactInfoTextView.placeholder = @"Change contact information";
     self.contactInfoTextView.placeholderColor = [UIColor lightGrayColor];
     
     // rounding corners

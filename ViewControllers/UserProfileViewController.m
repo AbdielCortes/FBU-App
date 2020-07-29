@@ -51,9 +51,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    // call fetch user here so that when the user changes his info and comes back
-    // the viewl will reload the user data
     
     NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
     if (selected) {
@@ -67,7 +64,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-//        NSLog(@"%@", post.caption);
         ProfileCell *header = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
         [header setAccount:[PFUser currentUser]];
         
