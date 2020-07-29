@@ -20,9 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSString *locationName;
-@property (nonatomic, strong) NSNumber *likesCount;
-@property (nonatomic, strong) NSNumber *commentsCount;
-@property (nonatomic, strong) NSNumber *sharedCount;
+@property (nonatomic, strong) NSMutableArray *userLike;
 @property (nonatomic) BOOL hasImage;
 @property (nonatomic) BOOL isSellPost;
 

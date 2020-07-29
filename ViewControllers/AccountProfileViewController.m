@@ -66,7 +66,6 @@
     if (indexPath.row == 0) {
         ProfileCell *header = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
         [header setAccount:self.account];
-        [header checkIfFollowing];
         
         return header;
     }
@@ -135,7 +134,7 @@
     if ([segue.identifier  isEqual: @"AccountPostDetails"] || [segue.identifier  isEqual: @"AccountNoImageDetails"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:tappedCell];
-        Post *post = self.posts[cellIndexPath.row];
+        Post *post = self.posts[cellIndexPath.row - 1];
         PostDetailsViewController *postDetailsVC = [segue destinationViewController];
         postDetailsVC.post = post;
     }

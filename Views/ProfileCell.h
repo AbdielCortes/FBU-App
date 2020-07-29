@@ -27,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) PFUser *account;
 
-- (void)checkIfFollowing; // sets to follow button to its correct function
-
 @end
 
 NS_ASSUME_NONNULL_END

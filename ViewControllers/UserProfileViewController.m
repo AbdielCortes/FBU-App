@@ -134,7 +134,7 @@
     if ([segue.identifier  isEqual: @"PostDetails"] || [segue.identifier  isEqual: @"NoImageDetails"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:tappedCell];
-        Post *post = self.posts[cellIndexPath.row];
+        Post *post = self.posts[cellIndexPath.row - 1];
         PostDetailsViewController *postDetailsVC = [segue destinationViewController];
         postDetailsVC.post = post;
     }

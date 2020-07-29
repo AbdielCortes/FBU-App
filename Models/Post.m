@@ -15,9 +15,7 @@
 @dynamic image;
 @dynamic caption;
 @dynamic locationName;
-@dynamic likesCount;
-@dynamic commentsCount;
-@dynamic sharedCount;
+@dynamic userLike;
 @dynamic hasImage;
 @dynamic isSellPost;
 
@@ -40,9 +38,7 @@
     }
     
     newPost.caption = caption;
-    newPost.likesCount = @(0);
-    newPost.commentsCount = @(0);
-    newPost.sharedCount = @(0);
+    newPost.userLike = [[NSMutableArray alloc] init];
     newPost.isSellPost = NO;
     
     if (location) {

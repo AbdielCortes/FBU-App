@@ -30,10 +30,12 @@
     self.profileImage.file = account[@"profileImage"];
     self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
+    
+    [self checkIfFollowing];
 }
 
 // checks if the user is already following this account
-// this method must be called when the cell is created right after "setAccount" is called
+// this method is called when the cell account is set, inside "setAccount"
 // when the user is following the account it changes the button to "Following"
 // when the user is NOT following the account the button shows as "Follow"
 // when the user is looking at his own account the button is hidden

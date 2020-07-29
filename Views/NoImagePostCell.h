@@ -29,7 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *location;
 
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
+
 @property (weak, nonatomic) IBOutlet UILabel *likeCount;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (nonatomic) BOOL liked; // tells us if the user has already liked this post
+
 @property (weak, nonatomic) IBOutlet UILabel *shareCount;
 
 @property (strong, nonatomic) Post *post;
