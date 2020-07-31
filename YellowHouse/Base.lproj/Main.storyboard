@@ -214,11 +214,11 @@
             </objects>
             <point key="canvasLocation" x="1765" y="116"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="mAk-0y-YyB">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="evz-Xx-lpU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="jUs-Wr-2mI"/>
+                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" selectedImage="house.fill" id="jUs-Wr-2mI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S6Q-gg-fU2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1527,11 +1527,11 @@
             </objects>
             <point key="canvasLocation" x="6789.8550724637689" y="115.84821428571428"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="3HU-UM-Ixp">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="jLv-5D-wca" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="BOE-ou-doU"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="BOE-ou-doU"/>
                     <navigationItem key="navigationItem" id="Vue-Nm-jML"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hY2-SA-kFT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1921,11 +1921,11 @@
             </objects>
             <point key="canvasLocation" x="3424.6376811594205" y="1554.9107142857142"/>
         </scene>
-        <!--Discover-->
+        <!--Navigation Controller-->
         <scene sceneID="en1-fc-3k9">
             <objects>
                 <navigationController id="KFn-Jh-0ve" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass" catalog="system" id="Tkf-Ge-LXw"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Tkf-Ge-LXw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3gO-Ni-4KB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

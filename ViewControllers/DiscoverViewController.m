@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
@@ -44,8 +44,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
-//    [cell updateWithLocation:self.results[indexPath.row]];
     AccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountCell"];
     [cell setAccount:self.accounts[indexPath.row]];
     
@@ -54,7 +52,9 @@
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
-    [self fetchUsersWithQuery:newText];
+    if (newText.length >= 3) { // only start searching when the user has typed 3 or more characters
+        [self fetchUsersWithQuery:newText];
+    }
     
     return YES;
 }
@@ -65,22 +65,30 @@
 }
 
 - (void)fetchUsersWithQuery:(NSString *)query {
-    if ([query isEqualToString:@""]) {
-        self.accounts = nil;
-    }
-    else {
-        PFQuery *accountQuery = [PFUser query];
+    // dont search if the search bar is empty
+    // searching for an empty string will return all the users
+    if (query.length > 0) {
+        PFQuery *accountQuery = [PFQuery queryWithClassName:@"_User"];
         [accountQuery whereKey:@"username" hasPrefix:query];
+        //[accountQuery whereKey:@"username" matchesText:query];
+        
+        // only include this fields when getting the user
+        [accountQuery selectKeys:@[@"username", @"profileImage", @"contactInfo"]];
         
         [accountQuery findObjectsInBackgroundWithBlock:^(NSArray *accounts, NSError *error)  {
-            if (accounts) {
-                self.accounts = accounts;
-                [self.tableView reloadData];
+            if (!error) {
+                if (accounts) {
+                    self.accounts = accounts;
+                    [self.tableView reloadData];
+                }
             }
             else {
                 NSLog(@"Error fetching accounts: %@", error);
             }
         }];
+    }
+    else {
+        self.accounts = nil;
     }
 }
 
