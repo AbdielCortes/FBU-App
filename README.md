@@ -33,11 +33,10 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 
 **Optional Nice-to-have Stories**
 
-- [ ] Multi image posts
-- [ ] Liking posts
+- [x] Liking posts
+- [x] Commenting on posts
 - [ ] Sharing posts
-- [ ] Commenting on posts
-- [ ] Profile shows all of the users posts using a collection view
+- [x] Profile shows all of the users posts using a collection view
 - [ ] Private messages
 
 ### 2. Screen Archetypes
