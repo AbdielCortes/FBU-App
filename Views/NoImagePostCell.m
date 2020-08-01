@@ -41,6 +41,8 @@
     
     self.likeCount.text = [NSString stringWithFormat:@"%lu", post.userLike.count];
     [self checkIfLiked];
+    
+    self.commentCount.text = [NSString stringWithFormat:@"%lu", post.comments.count];
 }
 
 - (void)checkIfLiked {

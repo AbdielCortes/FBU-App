@@ -26,6 +26,7 @@
     newPost.shippingCost = shipping;
     newPost.contactInfo = contactInfo;
     newPost.userLike = [[NSMutableArray alloc] init];
+    newPost.comments = [[NSMutableArray alloc] init];
     newPost.isSellPost = YES;
     
     if (location) {

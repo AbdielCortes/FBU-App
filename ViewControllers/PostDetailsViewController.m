@@ -8,11 +8,14 @@
 
 #import "PostDetailsViewController.h"
 #import "AccountProfileViewController.h"
+#import "CreateCommentViewController.h"
+#import "Comment.h"
+#import "CommentCell.h"
 #import "NSDate+DateTools.h"
 #import <Parse/Parse.h>
 @import Parse;
 
-@interface PostDetailsViewController () <PostDetailsDelegate, UIScrollViewDelegate>
+@interface PostDetailsViewController () <PostDetailsDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
@@ -33,6 +36,10 @@
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -104,6 +111,39 @@
     
     self.likeCount.text = [NSString stringWithFormat:@"%lu", self.post.userLike.count];
     [self checkIfLiked];
+    
+    self.commentCount.text = [NSString stringWithFormat:@"%lu", self.post.comments.count];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    // Pull up refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(reloadPost) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.post.comments.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Comment *comment = self.post.comments[indexPath.row];
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    [cell setComment:comment];
+    
+    return cell;
+}
+
+- (void)reloadPost {
+    [self.post fetchInBackgroundWithBlock:^(PFObject *updatedPost, NSError *error) {
+        if (!error) {
+            self.post = (Post *)updatedPost;
+            
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        }
+    }];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -185,9 +225,13 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // segue to AccountProfile view
-    if ([segue.identifier  isEqual: @"DetailsProfileSegue"]) {
+    if ([segue.identifier  isEqual:@"DetailsProfileSegue"]) {
         AccountProfileViewController *accountProfileVC = [segue destinationViewController];
         accountProfileVC.account = (PFUser *)sender;
+    } 
+    else if ([segue.identifier  isEqual:@"CreateCommentSegue"]) {
+        CreateCommentViewController *createCommentVC = [segue destinationViewController];
+        createCommentVC.post = self.post;
     }
 }
 

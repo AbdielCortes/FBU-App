@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSString *locationName;
 @property (nonatomic, strong) NSMutableArray *userLike;
+@property (nonatomic, strong) NSMutableArray *comments;
 @property (nonatomic) BOOL hasImage;
 @property (nonatomic) BOOL isSellPost;
 
