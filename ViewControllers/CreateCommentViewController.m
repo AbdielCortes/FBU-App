@@ -10,10 +10,13 @@
 #import "Comment.h"
 #import "Utilities.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <UITextView+Placeholder.h>
 
-@interface CreateCommentViewController ()
+@interface CreateCommentViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (nonatomic) int commentTextLimit;
+@property (nonatomic) BOOL isOverTextLimit;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -29,6 +32,29 @@
     self.hud.label.text = @"Commenting";
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
+    
+    self.commentTextView.placeholder = @"Write comment";
+    self.commentTextView.placeholderColor = [UIColor lightGrayColor];
+    self.commentTextView.layer.cornerRadius = 5.0f;
+    self.commentTextView.delegate = self;
+    self.commentTextLimit = 250;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (textView == self.commentTextView) { // editing caption
+        // get text that's currently in text view
+        NSString *currentText = [self.commentTextView.text stringByReplacingCharactersInRange:range withString:text];
+        if (currentText.length > self.commentTextLimit) { // text is longer than the character limit
+            self.commentTextView.backgroundColor = [UIColor colorWithRed:1 green:0.47 blue:0.47 alpha:0.8];
+            self.isOverTextLimit = YES;
+        }
+        else {
+            self.commentTextView.backgroundColor = [UIColor systemGray6Color];
+            self.isOverTextLimit = NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (IBAction)tappedComment:(id)sender {
@@ -36,6 +62,10 @@
     
     if ([self.commentTextView.text isEqualToString:@""]) { // coment text view has no text
         [Utilities showOkAlert:self withTitle:@"No Comment" withMessage:@"In order to create a comment you must type something."];
+        [self.hud hideAnimated:YES];
+    }
+    else if (self.isOverTextLimit) {
+        [Utilities showOkAlert:self withTitle:@"Over Text" withMessage:@"Your comment is exceeding the text limit."];
         [self.hud hideAnimated:YES];
     }
     else {

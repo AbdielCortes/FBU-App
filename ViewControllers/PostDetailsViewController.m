@@ -130,7 +130,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Comment *comment = self.post.comments[indexPath.row];
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    [cell setComment:comment];
+    [cell setComment:comment andReloadTableView:self.tableView];
     
     return cell;
 }

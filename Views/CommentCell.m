@@ -21,7 +21,7 @@
     // Configure the view for the selected state
 }
 
-- (void)setComment:(Comment *)comment {
+- (void)setComment:(Comment *)comment andReloadTableView:(UITableView *)tableView {
     _comment = comment;
     
     // the post only stores the pointer to the comment so we need to fetch the object
@@ -37,6 +37,8 @@
                 self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
                 self.profileImage.clipsToBounds = YES;
                 [self.profileImage loadInBackground];
+                
+                [tableView reloadData];
             }];
         }
         else {
