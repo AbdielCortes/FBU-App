@@ -10,6 +10,10 @@
 #import "SellPost.h"
 #import "NSDate+DateTools.h"
 
+@interface PostCell () <UIScrollViewDelegate>
+
+@end
+
 @implementation PostCell
 
 - (void)awakeFromNib {
@@ -19,6 +23,13 @@
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedProfileImage:)];
     [self.profileImage addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImage setUserInteractionEnabled:YES];
+    
+    // set up scroll view for image zooming
+    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 6.0;
+    self.scrollView.contentSize = CGSizeMake(450, 450);
+    self.scrollView.delegate = self;
+    self.scrollView.layer.cornerRadius = 5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,6 +46,11 @@
     // converts date into a string that says how long ago the post was created
     // example: "2 hours ago"
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
+    // use formatter to show the date when the post was created
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    self.createdAt.text = [formatter stringFromDate:self.post.createdAt];
     
     self.profileImage.file = post.author[@"profileImage"];
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
@@ -93,6 +109,10 @@
     else {
         self.likeButton.selected = NO;
     }
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.postImage;
 }
 
 - (IBAction)tappedLike:(id)sender {

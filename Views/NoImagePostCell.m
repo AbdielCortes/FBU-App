@@ -37,6 +37,11 @@
     self.username.text = post.author.username;
     self.caption.text = post.caption;
     self.timeSinceCreation.text = post.createdAt.timeAgoSinceNow;
+    // use formatter to show the date when the post was created
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    self.createdAt.text = [formatter stringFromDate:self.post.createdAt];
     self.location.text = self.post.locationName;;
     
     self.likeCount.text = [NSString stringWithFormat:@"%lu", post.userLike.count];

@@ -65,7 +65,7 @@
         [self.hud hideAnimated:YES];
     }
     else if (self.isOverTextLimit) {
-        [Utilities showOkAlert:self withTitle:@"Over Text" withMessage:@"Your comment is exceeding the text limit."];
+        [Utilities showOkAlert:self withTitle:@"Over Text Limit" withMessage:@"Your comment is exceeding the text limit."];
         [self.hud hideAnimated:YES];
     }
     else {
