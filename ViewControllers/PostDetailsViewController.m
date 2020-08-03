@@ -81,7 +81,6 @@
     [self.profileImage loadInBackground];
     
     if (self.post.hasImage) { // post has an image
-        self.postImage.layer.cornerRadius = 5.0f;
         // gets image from parse
         [self.post[@"image"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {

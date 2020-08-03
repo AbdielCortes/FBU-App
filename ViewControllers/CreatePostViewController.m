@@ -15,7 +15,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UITextView+Placeholder.h>
 
-@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate,  MapViewControllerDelegate>
+@interface CreatePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, MapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
@@ -66,7 +66,7 @@
     self.shippingLocation.alpha = 0;
     self.whereShip.alpha = 0;
     
-//    // show tag location button
+    // show tag location button
     self.postLocation.alpha = 1;
     self.postLocationHeight.constant = 35;
     self.tagLoc.alpha = 1;
@@ -81,6 +81,7 @@
     self.captionTextView.layer.cornerRadius = 5.0f;
     self.contactInfoTextView.layer.cornerRadius = 5.0f;
     
+    // set background colors and delegates for text view character limits
     self.captionTextView.delegate = self;
     self.captionTextView.backgroundColor = [UIColor systemGray6Color];
     self.captionTextLimit = 250;
@@ -88,6 +89,10 @@
     self.contactInfoTextView.backgroundColor = [UIColor systemGray6Color];
     self.contactInfoTextLimit = 80;
     self.isOverTextLimit = NO;
+    
+    // text field delegates for moving the view up when the keyboard is covering it
+    self.priceField.delegate = self;
+    self.shippingField.delegate = self;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -117,6 +122,48 @@
     }
     
     return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    // calculate textField y distance from the center of the screen
+    // if positive, its above the center
+    // if negative, its below the center
+    CGFloat y = (self.view.frame.size.height / 2) - textField.frame.origin.y;
+    if (y < 0) { // we only want to move the view up, so we only move it when its negative
+        [self.view setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height)];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    // move view back to its original position
+    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+
+    [self.view endEditing:YES];
+    return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    // calculate textField y distance from the center of the screen
+    // if positive, its above the center
+    // if negative, its below the center
+    CGFloat y = (self.view.frame.size.height / 2) - textView.frame.origin.y;
+    if (y < 0) { // we only want to move the view up, so we only move it when its negative
+        [self.view setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height)];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    // move view back to its original position
+    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+
+    [self.view endEditing:YES];
+}
+
+// hides the keyboard when the user taps outside keyboard
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 // opens the image gallery to pick an image and then set it as the post's image
