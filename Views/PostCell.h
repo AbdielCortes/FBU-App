@@ -47,10 +47,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-// Delegate used when the user taps on the profile image to send the Account to the AccountProfile view
 @protocol PostCellDelegate
 
+// used when the user taps on the profile image to send the Account to the AccountProfile view
 - (void)postCell:(PostCell *)postCell didTap:(PFUser *)user;
+// used when the user taps share to show the share action sheet
+- (void)postCell:(PostCell *)postCell share:(NSArray *)activityItems;
 
 @end
 

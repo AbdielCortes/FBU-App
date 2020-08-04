@@ -91,6 +91,12 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) { // if tapped on post, then run deselect animation
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (void)fetchComments {
     [self.hud showAnimated:YES]; // show progress pop up
     // create query for comments
@@ -137,9 +143,21 @@
     [self performSegueWithIdentifier:@"DetailsProfileSegue" sender:user];
 }
 
+// show acticity view controller when the user tapps the share button
+- (void)postCell:(PostCell *)postCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
+}
+
 // tapping on a NoImagePostCell profile image sends you to that account's profile
 - (void)noImagePostCell:(NoImagePostCell *)noImagePostCell didTap:(PFUser *)user {
     [self performSegueWithIdentifier:@"DetailsProfileSegue" sender:user];
+}
+
+// show acticity view controller when the user tapps the share button
+- (void)noImagePostCell:(NoImagePostCell *)noImagePostCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
 }
 
 

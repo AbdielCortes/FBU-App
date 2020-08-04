@@ -15,7 +15,7 @@
 #import <Parse/Parse.h>
 @import Parse;
 
-@interface UserProfileViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface UserProfileViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, NoImagePostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -77,11 +77,13 @@
             cell = [PostCell new]; // cast cell to PostCell
             cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
             [(PostCell *)cell setPost:post];
+            ((PostCell *)cell).delegate = self;
         }
         else { // post doesn't have an image so we use NoImagePostCell
             cell = [NoImagePostCell new]; // cast cell to NoImagePostCell
             cell = [tableView dequeueReusableCellWithIdentifier:@"NoImagePostCell"];
             [(NoImagePostCell *)cell setPost:post];
+            ((NoImagePostCell *)cell).delegate = self;
         }
         
         return cell;
@@ -124,6 +126,26 @@
         // outside if/else because we want it to always hide no matter the result
         [self.hud hideAnimated:YES];
     }];
+}
+
+// required method for delegate, but its not needed here
+- (void)postCell:(nonnull PostCell *)postCell didTap:(nonnull PFUser *)user {
+}
+
+// show acticity view controller when the user tapps the share button
+- (void)postCell:(PostCell *)postCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
+}
+
+// required method for delegate, but its not needed here
+- (void)noImagePostCell:(NoImagePostCell *)noImagePostCell didTap:(PFUser *)user {
+}
+
+// show acticity view controller when the user tapps the share button
+- (void)noImagePostCell:(NoImagePostCell *)noImagePostCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
 }
 
 

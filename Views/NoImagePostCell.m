@@ -109,6 +109,19 @@
     }];
 }
 
+- (IBAction)tappedShare:(id)sender {
+    // create string to add all the strings in a no image post
+    NSString *postString = [NSString stringWithFormat:@"%@ posted: %@", self.post.author.username, self.caption.text];
+    // if post has location, then add it to the string
+    if (![self.location.text isEqualToString:@""]) {
+        postString = [NSString stringWithFormat:@"%@\nFrom: %@", postString, self.location.text];
+    }
+    // add string to array for delegate method
+    NSArray *activityItems = @[postString];
+    // call delegate method to show activity view controller
+    [self.delegate noImagePostCell:self share:activityItems];
+}
+
 // send post to AccountProfile when the profile image was tapped
 - (void)tappedProfileImage:(UITapGestureRecognizer *)sender {
     [self.delegate noImagePostCell:self didTap:self.post.author];

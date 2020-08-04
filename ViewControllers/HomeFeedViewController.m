@@ -178,9 +178,21 @@
     [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
 }
 
+// show acticity view controller when the user tapps the share button
+- (void)postCell:(PostCell *)postCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
+}
+
 // tapping on a NoImagePostCell profile image sends you to that account's profile
 - (void)noImagePostCell:(NoImagePostCell *)noImagePostCell didTap:(PFUser *)user {
     [self performSegueWithIdentifier:@"AccountProfileSegue" sender:user];
+}
+
+// show acticity view controller when the user tapps the share button
+- (void)noImagePostCell:(NoImagePostCell *)noImagePostCell share:(NSArray *)activityItems {
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:^{}];
 }
 
 

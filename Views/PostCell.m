@@ -151,9 +151,46 @@
     // save the changes to parse
     [self.post saveInBackgroundWithBlock:^(BOOL succeded, NSError *error) {
         if (error) {
-            NSLog(@"Error occured while changing user info: %@", error);
+            NSLog(@"Error occured while saving like: %@", error);
         }
     }];
+}
+
+- (IBAction)tappedShare:(id)sender {
+    // create array to store the objects that will be shared
+    NSMutableArray *activityItems = [[NSMutableArray alloc] init];
+    // add post image to array
+    [activityItems addObject:self.postImage.image];
+    // create string to store all the strings contained in a post
+    NSString *postString = @"";
+    if (![self.caption.text isEqualToString:@""]) { // if the post has a caption
+        postString = [NSString stringWithFormat:@"%@ posted: %@", self.post.author.username, self.caption.text];
+    }
+
+    if (self.post.isSellPost) { // if the post is a sell post
+        if ([self.caption.text isEqualToString:@""]) { // if the post dosen't have a caption
+            postString = [NSString stringWithFormat:@"%@\n%@", self.priceAndShipping.text, self.contactInfo.text];
+        }
+        else {
+            postString = [NSString stringWithFormat:@"%@\n%@\n%@", postString, self.priceAndShipping.text, self.contactInfo.text];
+        }
+    }
+
+    if (![self.location.text isEqualToString:@""]) { // if the post has a location
+        postString = [NSString stringWithFormat:@"%@\n%@", postString, self.location.text];
+    }
+    
+    // if the post where to have all the fields, then the final string will look like this
+    // username posted: postCaption
+    // $99 + $99 shipping
+    // contactInfo
+    // location
+    if (![postString isEqualToString:@""]) {
+        [activityItems addObject:postString];
+    }
+
+    // call delegate method to show activity view controller
+    [self.delegate postCell:self share:activityItems];
 }
 
 // send post to AccountProfile when the profile image was tapped
