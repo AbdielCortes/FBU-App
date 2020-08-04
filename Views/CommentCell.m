@@ -21,30 +21,15 @@
     // Configure the view for the selected state
 }
 
-- (void)setComment:(Comment *)comment andReloadTableView:(UITableView *)tableView {
-    _comment = comment;
+- (void)setComment:(Comment *)comment {
+    self.commentText.text = comment.text;
     
-    // the post only stores the pointer to the comment so we need to fetch the object
-    [comment fetchInBackgroundWithBlock:^(PFObject *com, NSError *error) {
-        if (!error) {
-            self.commentText.text = comment.text;
-            
-            // the comment only stores the pointer to the author so we need to fetch the object
-            [comment.author fetchInBackgroundWithBlock:^(PFObject *author, NSError *error) {
-                self.username.text = comment.author.username;
+    self.username.text = comment.author.username;
 
-                self.profileImage.file = comment.author[@"profileImage"];
-                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
-                self.profileImage.clipsToBounds = YES;
-                [self.profileImage loadInBackground];
-                
-                [tableView reloadData];
-            }];
-        }
-        else {
-           NSLog(@"Error fetching comment: %@", error);
-        }
-    }];
+    self.profileImage.file = comment.author[@"profileImage"];
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+    self.profileImage.clipsToBounds = YES;
+    [self.profileImage loadInBackground];
 }
 
 @end

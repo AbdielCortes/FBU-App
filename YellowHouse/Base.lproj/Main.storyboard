@@ -2192,7 +2192,7 @@
             </objects>
             <point key="canvasLocation" x="2587" y="842"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--Discover-->
         <scene sceneID="u5m-85-a3x">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Fta-1T-2o4" customClass="DiscoverViewController" sceneMemberID="viewController">
@@ -2253,7 +2253,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9VJ-o2-HsP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pyW-Mv-wig"/>
+                    <navigationItem key="navigationItem" title="Discover" id="pyW-Mv-wig"/>
                     <connections>
                         <outlet property="searchBar" destination="avd-bg-DOV" id="Ac4-JR-waB"/>
                         <outlet property="tableView" destination="cxO-ec-Wys" id="CFr-SU-yCV"/>
@@ -2340,7 +2340,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="G90-Ob-cS5"/>
-        <segue reference="s5c-Nl-RO1"/>
+        <segue reference="25l-bZ-h1k"/>
         <segue reference="c2Q-Rb-P8N"/>
         <segue reference="ZVB-Qw-2tR"/>
         <segue reference="IGB-x8-6NX"/>
