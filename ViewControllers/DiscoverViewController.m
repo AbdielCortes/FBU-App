@@ -92,8 +92,10 @@
 - (void)searchForUser:(NSString *)username {
     // we make everything lower case so that search is not case sensitive
     NSString *lowercaseQuery = [username lowercaseString];
-    // create array to store the users that match the query
-    NSMutableArray *matchingUsers = [[NSMutableArray alloc] init];
+    // create array to store the users that the query is the prefix to their username
+    NSMutableArray *prefixUsers = [[NSMutableArray alloc] init];
+    // create array to store the users that the username contains the query
+    NSMutableArray *containsStrUsers = [[NSMutableArray alloc] init];
     
     // linear search through all the users
     // we want to make sure that we look at all the users, because we're making sure that
@@ -105,15 +107,15 @@
         NSString *lowercaseName = [user.username lowercaseString];
         // check if the query is a prefix for the username first
         if ([lowercaseName hasPrefix:lowercaseQuery]) {
-            [matchingUsers addObject:user];
+            [prefixUsers addObject:user];
         }
         // check if the username contains the query
         else if ([lowercaseName containsString:lowercaseQuery]) {
-            [matchingUsers addObject:user];
+            [containsStrUsers addObject:user];
         }
     }
     // update results array
-    self.results = matchingUsers;
+    self.results = [prefixUsers arrayByAddingObjectsFromArray:containsStrUsers];
     // reload table view to show new data
     [self.tableView reloadData];
 }
