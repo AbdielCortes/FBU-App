@@ -87,10 +87,22 @@
         self.location.text = self.post.locationName;
     }
     
-    self.likeCount.text = [NSString stringWithFormat:@"%lu", post.userLike.count];
+    // set like count label
+    [self updateLikeCount];
+    
+    // set like button state
     [self checkIfLiked];
     
-    self.commentCount.text = [NSString stringWithFormat:@"%lu", post.comments.count];
+    // set comment count label
+    if (post.comments.count > 0 && post.comments.count < 1000) {
+        self.commentCount.text = [NSString stringWithFormat:@"%lu", post.comments.count];
+    }
+    else if (post.comments.count >= 1000) {
+        self.commentCount.text = @"999+";
+    }
+    else {
+        self.commentCount.text = @"";
+    }
 }
 
 - (void)checkIfLiked {
@@ -108,6 +120,18 @@
     }
     else {
         self.likeButton.selected = NO;
+    }
+}
+
+- (void)updateLikeCount {
+    if (self.post.userLike.count > 0 && self.post.userLike.count < 1000) {
+        self.likeCount.text = [NSString stringWithFormat:@"%lu", self.post.userLike.count];
+    }
+    else if (self.post.userLike.count >= 1000) {
+        self.likeCount.text = @"999+";
+    }
+    else {
+        self.likeCount.text = @"";
     }
 }
 
@@ -132,7 +156,7 @@
         self.post[@"userLike"] = withoutCurrentUser;
         
         // update like count label
-        self.likeCount.text = [NSString stringWithFormat:@"%lu", self.post.userLike.count];
+        [self updateLikeCount];
         // update liked boolean value
         self.liked = NO;
     }
@@ -143,7 +167,7 @@
         [self.post.userLike addObject:[PFUser currentUser]];
         self.post[@"userLike"] = self.post.userLike;
         // update like count label
-        self.likeCount.text = [NSString stringWithFormat:@"%lu", self.post.userLike.count];
+        [self updateLikeCount];
         // update liked boolean value
         self.liked = YES;
     }
