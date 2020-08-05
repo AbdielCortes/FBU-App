@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CommentCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *timeSinceCreation;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *commentText;
 

@@ -7,6 +7,7 @@
 //
 
 #import "CommentCell.h"
+#import "NSDate+DateTools.h"
 
 @implementation CommentCell
 
@@ -23,6 +24,8 @@
 
 - (void)setComment:(Comment *)comment {
     self.commentText.text = comment.text;
+    
+    self.timeSinceCreation.text = comment.createdAt.shortTimeAgoSinceNow;
     
     self.username.text = comment.author.username;
 
