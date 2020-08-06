@@ -244,8 +244,16 @@
             [Utilities showOkAlert:self withTitle:@"Price Required" withMessage:@"In order to create a sell post you must provide a price."];
             [self.hud hideAnimated:YES];
         }
+        else if (![self validateMoney:self.priceField.text]) { // price does not follow curency format
+            [Utilities showOkAlert:self withTitle:@"Invalid Price" withMessage:@"Price does not conform to the curency format."];
+            [self.hud hideAnimated:YES];
+        }
         else if ([self.shippingField.text isEqual:@""]) { // shipping cost field has no text
             [Utilities showOkAlert:self withTitle:@"Shipping Cost Required" withMessage:@"In order to create a sell post you must provide a shipping cost."];
+            [self.hud hideAnimated:YES];
+        }
+        else if (![self validateMoney:self.shippingField.text]) { // shipping does not follow curency format
+            [Utilities showOkAlert:self withTitle:@"Invalid Shipping" withMessage:@"Shipping does not conform to the curency format."];
             [self.hud hideAnimated:YES];
         }
         else if ([self.contactInfoTextView.text isEqual:@""]) { // contact info field has no text
@@ -311,6 +319,15 @@
             }];
         }
     }
+}
+
+// validate any money inputs
+// accepts: 50, 100, 1.11, 2000000.55
+// dosen't accept: 0500, 30., 5.1, 4.111
+- (BOOL)validateMoney:(NSString *)money {
+    NSString *moneyRegex = @"^([1-9][0-9]*|[0]{1})([0-9]{0}|[.]{0,1}[0-9]{2})$";
+    NSPredicate *moneyTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moneyRegex];
+    return [moneyTest evaluateWithObject:money];
 }
 
 - (IBAction)tappedClose:(id)sender {
