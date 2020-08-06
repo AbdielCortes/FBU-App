@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSString *locationName;
 @property (strong, nonatomic) NSNumber *currentLatitude;
 @property (strong, nonatomic) NSNumber *currentLongitude;
+@property (strong, nonatomic) NSNumber *searchLatitude;
+@property (strong, nonatomic) NSNumber *searchLongitude;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -32,6 +34,12 @@
     
     self.mapView.delegate = self;
     
+    // add long press gesture recognizer to map
+    UILongPressGestureRecognizer *mapLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressPinLocation:)];
+    mapLongPress.minimumPressDuration = 0.7;
+    [self.mapView addGestureRecognizer:mapLongPress];
+    [self.mapView setUserInteractionEnabled:YES];
+    
     // Create progress pop up
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     self.hud.label.text = @"Loading";
@@ -39,10 +47,6 @@
     [self.view addSubview:self.hud];
     
     [self getCurrentLocation];
-    // San Francisco: 37.783333, -122.416667
-    // New York City: 40.73, -73.99
-    
-    self.tagLocationButton.hidden = NO;
 }
 
 // uses CLLocation manager to get the user's current location
@@ -67,9 +71,11 @@
              CLLocationCoordinate2D coordinates = placemark.location.coordinate;
              self.currentLatitude = @(coordinates.latitude);
              self.currentLongitude = @(coordinates.longitude);
+             self.searchLatitude = @(coordinates.latitude);
+             self.searchLongitude = @(coordinates.longitude);
              
              MKCoordinateRegion currentLocation = MKCoordinateRegionMake(CLLocationCoordinate2DMake([self.currentLatitude doubleValue], [self.currentLongitude doubleValue]), MKCoordinateSpanMake(0.7, 0.7));
-             [self.mapView setRegion:currentLocation animated:false];
+             [self.mapView setRegion:currentLocation animated:YES];
          }
          else {
              NSLog(@"Geocode failed with error %@", error);
@@ -82,7 +88,7 @@
 }
 
 - (IBAction)tappedConfirm:(id)sender {
-    // pass data usign delegate
+    // pass data to create post view usign delegate
     [self.delegate mapViewController:self withLocationName:self.locationName];
     
     // return segue
@@ -98,9 +104,42 @@
     annotation.title = name;
     self.locationName = name;
     [self.mapView addAnnotation:annotation];
-    self.tagLocationButton.hidden = YES;
+    
+    // center map on selected location
+    MKCoordinateRegion currentLocation = MKCoordinateRegionMake(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
+    [self.mapView setRegion:currentLocation animated:YES];
     
     [self.navigationController popToViewController:self animated:YES];
+}
+
+// long pressing drops a pin in that location and sets that as the location for searching near by places
+- (void)longPressPinLocation:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    // get coordinates from tapped location
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    // create annotation to show what location was tapped
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = coordinate;
+    annotation.title = @"Search Near Here";
+    // set current location coordinates to tapped location
+    self.searchLatitude = @(coordinate.latitude);
+    self.searchLongitude = @(coordinate.longitude);
+    // add anotation to map
+    [self.mapView addAnnotation:annotation];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    // tapped on the Search Near Here pin
+    if ([view.annotation.title isEqualToString:@"Search Near Here"]) {
+        // remove annotation from map
+        [self.mapView removeAnnotation:view.annotation];
+        // set search coordinates back to current location
+        self.searchLatitude = self.currentLatitude;
+        self.searchLongitude = self.currentLongitude;
+    }
 }
 
 
@@ -112,8 +151,15 @@
     if ([segue.identifier  isEqual: @"LocationSegue"]) {
         LocationViewController *locationVC = [segue destinationViewController];
         locationVC.delegate = self;
-        locationVC.latitude = self.currentLatitude;
-        locationVC.longitude = self.currentLongitude;
+        locationVC.latitude = self.searchLatitude;
+        locationVC.longitude = self.searchLongitude;
+        
+        // remove previous annotation
+        for (MKPointAnnotation *annotation in [self.mapView annotations]) {
+            if (![annotation.title isEqualToString:@"Search Near Here"]) { // don't remove search near hear annotation
+                [self.mapView removeAnnotation:annotation];
+            }
+        }
     }
 }
 
