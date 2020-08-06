@@ -69,8 +69,16 @@
         [Utilities showOkAlert:self withTitle:@"Email Required" withMessage:@"In order to create an account you must provide an email address."];
         [self.hud hideAnimated:YES];
     }
+    else if (![self validateEmail:self.emailField.text]) { // email is not valid
+        [Utilities showOkAlert:self withTitle:@"Invalid Email" withMessage:@"The email address you provided is invalid."];
+        [self.hud hideAnimated:YES];
+    }
     else if ([self.usernameField.text isEqual:@""]) { // username field has no text
         [Utilities showOkAlert:self withTitle:@"Username Required" withMessage:@"In order to create an account you must provide a username."];
+        [self.hud hideAnimated:YES];
+    }
+    else if (self.usernameField.text.length < 3) { // username is too short
+        [Utilities showOkAlert:self withTitle:@"Invalid Username" withMessage:@"Username must be at least three characters long."];
         [self.hud hideAnimated:YES];
     }
     else if ([self.passwordField.text isEqual:@""] || [self.confirmPasswordField.text isEqual:@""]) { // password or confirmPass word have no text
@@ -117,6 +125,13 @@
         // outside if/else because we want it to always hide no matter the result
         [self.hud hideAnimated:YES];
     }];
+}
+
+// validate email using regex
+- (BOOL)validateEmail:(NSString*)email{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
 }
 
 /*
