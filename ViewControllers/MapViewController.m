@@ -117,6 +117,8 @@
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
     
+    // remove previous annotations
+    [self.mapView removeAnnotations:self.mapView.annotations];
     // get coordinates from tapped location
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
