@@ -31,6 +31,9 @@
     self.profileImage.layer.cornerRadius = 10.0f;
     [self.profileImage loadInBackground];
     
+    self.followButton.layer.cornerRadius = self.followButton.frame.size.height / 2;
+    self.followButton.backgroundColor = [UIColor colorWithRed:1 green:0.92 blue:0.38 alpha:1];
+    
     [self checkIfFollowing];
 }
 

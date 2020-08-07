@@ -35,8 +35,8 @@
                                 <rect key="frame" x="72" y="348" width="270" height="38"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tappedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ofm-YU-zie"/>
@@ -47,14 +47,14 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="59Y-k9-CjX" kind="show" id="hd1-TD-ci4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H41-yL-RoS">
-                                <rect key="frame" x="151.5" y="115" width="111" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H41-yL-RoS">
+                                <rect key="frame" x="146.5" y="115" width="121" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tappedSignUp:" destination="59Y-k9-CjX" eventType="touchUpInside" id="MtT-cO-j9a"/>
@@ -250,8 +250,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-nm-XF7">
-                                <rect key="frame" x="307" y="169" width="67" height="30"/>
-                                <state key="normal" title="Comment"/>
+                                <rect key="frame" x="274" y="169" width="100" height="33"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gRo-oB-DAJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Comment">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedComment:" destination="NVM-oS-40V" eventType="touchUpInside" id="FCx-Q8-PXc"/>
                                 </connections>
@@ -269,6 +276,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="OK6-Zn-XYY"/>
                     <connections>
+                        <outlet property="commentButton" destination="QSa-nm-XF7" id="NBR-LB-jjW"/>
                         <outlet property="commentTextView" destination="gPc-JJ-win" id="vZw-H2-Mmv"/>
                     </connections>
                 </viewController>
@@ -720,19 +728,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6R-CZ-tzA">
-                                                    <rect key="frame" x="30" y="108" width="65" height="20"/>
+                                                    <rect key="frame" x="20" y="108" width="85" height="20"/>
                                                     <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="65" id="oTY-WH-PJe"/>
                                                         <constraint firstAttribute="height" constant="20" id="tmc-uI-gZe"/>
                                                     </constraints>
-                                                    <state key="normal" title="Follow"/>
+                                                    <state key="normal" title="Follow">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="tappedFollow:" destination="pVw-cQ-Tsj" eventType="touchUpInside" id="eAN-Ao-FDq"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="S6R-CZ-tzA" firstAttribute="leading" secondItem="KQB-sL-e4P" secondAttribute="leading" id="2f2-ds-FFF"/>
                                                 <constraint firstItem="csc-bx-VJb" firstAttribute="top" secondItem="KQB-sL-e4P" secondAttribute="top" id="5D5-xN-5Tn"/>
                                                 <constraint firstAttribute="trailing" secondItem="mjR-Qk-l8C" secondAttribute="trailing" constant="20" id="6Kn-Qc-v6E"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mjR-Qk-l8C" secondAttribute="bottom" priority="800" constant="15" id="78y-cR-CHV"/>
@@ -742,6 +752,7 @@
                                                 <constraint firstItem="S6R-CZ-tzA" firstAttribute="centerX" secondItem="KQB-sL-e4P" secondAttribute="centerX" id="OmU-pF-l7u"/>
                                                 <constraint firstItem="mjR-Qk-l8C" firstAttribute="top" secondItem="csc-bx-VJb" secondAttribute="bottom" constant="2.5" id="Oto-FL-paP"/>
                                                 <constraint firstItem="csc-bx-VJb" firstAttribute="leading" secondItem="KQB-sL-e4P" secondAttribute="trailing" constant="8" id="VQG-Av-48L"/>
+                                                <constraint firstItem="S6R-CZ-tzA" firstAttribute="trailing" secondItem="KQB-sL-e4P" secondAttribute="trailing" id="eV2-m3-FgT"/>
                                                 <constraint firstItem="KQB-sL-e4P" firstAttribute="top" secondItem="QTe-jN-q6p" secondAttribute="top" constant="15" id="fS3-K0-9z2"/>
                                                 <constraint firstItem="S6R-CZ-tzA" firstAttribute="top" secondItem="KQB-sL-e4P" secondAttribute="bottom" constant="8" id="lNn-Ni-OxY"/>
                                                 <constraint firstItem="mjR-Qk-l8C" firstAttribute="leading" secondItem="KQB-sL-e4P" secondAttribute="trailing" constant="8" id="uUq-Cq-7G9"/>
@@ -2244,24 +2255,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GiF-ig-uur" customClass="PFImageView">
-                                <rect key="frame" x="20" y="150" width="88" height="88"/>
+                                <rect key="frame" x="20" y="150" width="85" height="85"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="Hoa-jA-tlF"/>
-                                    <constraint firstAttribute="width" constant="88" id="gDL-dm-aD1"/>
+                                    <constraint firstAttribute="height" constant="85" id="Hoa-jA-tlF"/>
+                                    <constraint firstAttribute="width" constant="85" id="gDL-dm-aD1"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uM9-Pq-ykQ">
-                                <rect key="frame" x="128" y="150" width="266" height="88"/>
+                                <rect key="frame" x="125" y="150" width="269" height="85"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="akd-AH-kCW"/>
+                                    <constraint firstAttribute="height" constant="85" id="akd-AH-kCW"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itC-UB-Zkr">
-                                <rect key="frame" x="20" y="150" width="88" height="88"/>
+                                <rect key="frame" x="20" y="150" width="85" height="85"/>
                                 <connections>
                                     <action selector="tappedProfileImage:" destination="51H-Wn-cNA" eventType="touchUpInside" id="uay-zR-Vx3"/>
                                 </connections>
@@ -2302,9 +2313,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="G90-Ob-cS5"/>
-        <segue reference="s5c-Nl-RO1"/>
+        <segue reference="HX0-0w-LHc"/>
         <segue reference="Y8o-pV-5Tb"/>
-        <segue reference="ZVB-Qw-2tR"/>
+        <segue reference="oip-yC-qcy"/>
         <segue reference="IGB-x8-6NX"/>
     </inferredMetricsTieBreakers>
     <resources>

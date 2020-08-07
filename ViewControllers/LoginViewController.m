@@ -35,7 +35,9 @@
     [self.view addSubview:self.hud];
     
     self.loginButton.layer.cornerRadius = 5.0f;
+    self.loginButton.backgroundColor = [UIColor colorWithRed:1 green:0.92 blue:0.38 alpha:1];
     self.signUpButton.layer.cornerRadius = 5.0f;
+    self.signUpButton.backgroundColor = [UIColor colorWithRed:1 green:0.92 blue:0.38 alpha:1];
     
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;

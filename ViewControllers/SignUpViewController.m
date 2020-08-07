@@ -36,6 +36,7 @@
     [self.view addSubview:self.hud];
     
     self.signUpButton.layer.cornerRadius = 5.0f;
+    self.signUpButton.backgroundColor = [UIColor colorWithRed:1 green:0.92 blue:0.38 alpha:1];
     
     self.emailField.delegate = self;
     self.usernameField.delegate = self;

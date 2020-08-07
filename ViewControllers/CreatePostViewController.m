@@ -90,6 +90,9 @@
     self.contactInfoTextLimit = 80;
     self.isOverTextLimit = NO;
     
+    // sell post switch on color
+    self.sellPostSwitch.onTintColor = [UIColor colorWithRed:1 green:0.87 blue:0.235 alpha:1];
+    
     // text field delegates for moving the view up when the keyboard is covering it
     self.priceField.delegate = self;
     self.shippingField.delegate = self;

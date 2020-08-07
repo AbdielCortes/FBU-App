@@ -14,6 +14,7 @@
 
 @interface CreateCommentViewController () <UITextViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (nonatomic) int commentTextLimit;
 @property (nonatomic) BOOL isOverTextLimit;
@@ -32,6 +33,9 @@
     self.hud.label.text = @"Commenting";
     self.hud.mode = MBProgressHUDModeIndeterminate;
     [self.view addSubview:self.hud];
+    
+    self.commentButton.layer.cornerRadius = self.commentButton.frame.size.height / 2;
+    self.commentButton.backgroundColor = [UIColor colorWithRed:1 green:0.92 blue:0.38 alpha:1];
     
     self.commentTextView.placeholder = @"Write comment";
     self.commentTextView.placeholderColor = [UIColor lightGrayColor];

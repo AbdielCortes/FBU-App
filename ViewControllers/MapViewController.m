@@ -142,6 +142,13 @@
         self.searchLatitude = self.currentLatitude;
         self.searchLongitude = self.currentLongitude;
     }
+    else { // tapped a location pin
+        // set locationName back to nil so that create post knows that it doesen't have a location
+        self.locationName = nil;
+    }
+    
+    // remove annotation from map
+    [self.mapView removeAnnotation:view.annotation];
 }
 
 

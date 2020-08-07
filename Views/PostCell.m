@@ -72,12 +72,21 @@
     if (post.isSellPost) { // if post is a sell post 
         SellPost *sellPost = (SellPost *)post; // cast Post into SellPost
         
-        if ([@([sellPost.shippingCost doubleValue]) isEqualToNumber:@(0)]) { // if the user typed 0 for the shipping
-            self.priceAndShipping.text = [NSString stringWithFormat:@"$%@ + free shipping", sellPost.price];
+        NSString *price;
+        NSString *shipping;
+        if ([@([sellPost.price doubleValue]) isEqualToNumber:@(0)]) { // if the user typed 0 for the price
+            price = @"Free";
         }
         else {
-            self.priceAndShipping.text = [NSString stringWithFormat:@"$%@ + $%@ shipping", sellPost.price, sellPost.shippingCost];
+            price = [NSString stringWithFormat:@"$%@", sellPost.price];
         }
+        if ([@([sellPost.shippingCost doubleValue]) isEqualToNumber:@(0)]) { // if the user typed 0 for the shipping
+            shipping = @"free shipping";
+        }
+        else {
+            shipping = [NSString stringWithFormat:@"$%@ shipping", sellPost.shippingCost];
+        }
+        self.priceAndShipping.text = [NSString stringWithFormat:@"%@ + %@", price, shipping];
 
         self.contactInfo.text = sellPost.contactInfo;
         
