@@ -35,7 +35,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 
 - [x] Liking posts
 - [x] Commenting on posts
-- [ ] Sharing posts
+- [x] Sharing posts
 - [x] Profile shows all of the users posts using a collection view
 - [ ] Private messages
 
@@ -92,7 +92,7 @@ An app that allows artist to showcase their work and sell it. Users can follow o
 - [x] You can sign up with a new user profile
 - [x] Somewhere in your app you can use the camera to take a picture and do something with the picture - When creating a post the user can use the camera and add that picture to the post
 - [x] Your app integrates with a SDK - [iOS MapKit SDK](https://developer.apple.com/documentation/mapkit) with [Foursquare API](https://developer.foursquare.com/), used for taggin locations on posts
-- [ ] Your app contains at least one more complex algorithm 
+- [x] Your app contains at least one more complex algorithm 
 - [x] Your app uses gesture recognizers - pinch zoom images
 - [x] Your app use an animation - transition animation when tapping post button in home feed
 - [x] Your app incorporates an external library to add visual polish - custom loading pop ups with [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
@@ -116,13 +116,12 @@ Wireframe created with [Figma](https://www.figma.com)
    | author        | Pointer to User| image author |
    | image         | File     | image that user posts |
    | hasImage      | Boolean  | says whether the post contains an image or not |
-   | caption       | String   | image caption by author |
+   | caption       | String   | text accompanying the post |
    | locationName  | String   | shows where the art is located or where its shipping from |
-   | commentsCount | Number   | number of comments that has been posted to an image |
-   | likesCount    | Number   | number of likes for the post |
-   | sharedCount   | Number   | number of times the post has been shared |
    | isSellPost    | Boolean  | says whether the post is a sell post or not |
-   | createdAt     | DateTime | date when post is created (default field) |
+   | userLike      | Array    | array containing pointers to the users that liked the post |
+   | comments      | Array    | array containing pointers to the comments made on this post |
+   | createdAt     | DateTime | date when post was created (default field) |
    
 #### Sell Post (Inherits from Post)
 
@@ -131,6 +130,15 @@ Wireframe created with [Figma](https://www.figma.com)
    | contactInfo    | String     | users contact information |
    | price          | String     | price of the item being sold |
    | shppingCost    | String     | shipping cost for the item |
+   
+#### Comment
+
+   | Property       | Type           | Description  |
+   | -------------- | -------------- | ------------ |
+   | author         | Pointer to User| image author |
+   | createdAt      | DateTime       | date when comment was created (default field) |
+   | parentPost     | String         | objectId of the post this comment belongs to |
+   | text           | String         | text that the user commented |
    
 ### 2. Networking
 
